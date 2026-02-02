@@ -1,0 +1,14 @@
+# Wave Confinement Theory - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core scientific computing
+numpy>=1.20.0
+scipy>=1.7.0
+sympy>=1.9
+
+# Visualization
+matplotlib>=3.4.0
+
+# Optional: For advanced numerical solvers
+# numba>=0.54.0
+# cupy>=9.0.0  # GPU acceleration
