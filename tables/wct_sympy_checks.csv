@@ -1,0 +1,6 @@
+check_id,name,status,value,expected,residual,failure_reason
+D1_10,effective_curvature_mass_relation,PASS,M,M,,
+CURV1,curvature_torsion_sigma,PASS,L^-1,L^-1,,
+CURV2,curvature_torsion_sigma_raw,PASS,L^-2,L^-2,,
+K1,koide_relation,PASS,0.6666605115,0.6666666667,-6.155189e-06,
+LIM1,limit_checks,PASS,all limits OK,all limits OK,,

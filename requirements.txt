@@ -6,6 +6,10 @@ numpy>=1.20.0
 scipy>=1.7.0
 sympy>=1.9
 
+# Audit harness
+pyyaml>=5.4
+pytest>=7.0
+
 # Visualization
 matplotlib>=3.4.0
 
