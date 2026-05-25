@@ -1,0 +1,54 @@
+# WCT equation registry.
+# Each entry is a check ID -> metadata. Schema:
+#   name: short identifier
+#   equation: textual form (sympy-parseable on RHS where applicable)
+#   symbols: {symbol_name: dimension_name}
+#   expected_dimension: name from wct_sympy.dimensions.NAMED_DIMENSIONS
+#   expected_value: optional symbolic/numeric target
+
+D1_10:
+  name: effective_curvature_mass_relation
+  equation: "m = hbar/c * k_eff"
+  symbols:
+    m: mass
+    hbar: action
+    c: velocity
+    k_eff: inverse_length
+  expected_dimension: mass
+
+K1:
+  name: koide_relation
+  equation: "(me + mmu + mtau)/(sqrt(me)+sqrt(mmu)+sqrt(mtau))**2"
+  symbols:
+    me: mass
+    mmu: mass
+    mtau: mass
+  expected_value: "2/3"
+  tolerance: 1.0e-2
+
+CURV1:
+  name: curvature_torsion_sigma
+  equation: "sigma = sqrt(kappa**2 + tau**2)"
+  symbols:
+    kappa: inverse_length
+    tau: inverse_length
+    sigma: inverse_length
+  expected_dimension: inverse_length
+
+CURV2:
+  name: curvature_torsion_sigma_raw
+  equation: "sigma_raw = kappa**2 + tau**2"
+  symbols:
+    kappa: inverse_length
+    tau: inverse_length
+    sigma_raw: inverse_length_squared
+  expected_dimension: inverse_length_squared
+
+LIM1:
+  name: limit_checks
+  equation: "k_eff -> 0 implies m -> 0; c, hbar finite/nonzero; Koide masses > 0"
+  symbols:
+    m: mass
+    hbar: action
+    c: velocity
+    k_eff: inverse_length
