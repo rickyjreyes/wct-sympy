@@ -11,18 +11,54 @@ from .models import AuditStatus, EquationSpec
 
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY_PATH = ROOT / "equations" / "full_registry.yaml"
+DERIVED_OVERRIDES_PATH = ROOT / "equations" / "derived_overrides.yaml"
+
+
+def _load_compact_rows(path: Path) -> list[list[object]]:
+    raw = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+    if not isinstance(raw, list):
+        raise ValueError(f"{path.name} must be a YAML list")
+    for row in raw:
+        if not isinstance(row, list) or len(row) != 3:
+            raise ValueError(f"invalid compact registry row in {path.name}: {row!r}")
+    return raw
+
+
+def _apply_derived_overrides(
+    rows: list[list[object]], override_path: Path
+) -> list[list[object]]:
+    if not override_path.exists():
+        return rows
+
+    overrides = _load_compact_rows(override_path)
+    override_map: dict[str, list[object]] = {}
+    for row in overrides:
+        equation_id = str(row[0])
+        if equation_id in override_map:
+            raise ValueError(f"duplicate derived override: {equation_id}")
+        override_map[equation_id] = row
+
+    base_ids = {str(row[0]) for row in rows}
+    unknown = sorted(set(override_map) - base_ids)
+    if unknown:
+        raise ValueError(f"derived overrides reference unknown IDs: {unknown}")
+
+    return [override_map.get(str(row[0]), row) for row in rows]
 
 
 def load_full_registry(path: str | Path | None = None) -> list[EquationSpec]:
     target = Path(path) if path else REGISTRY_PATH
-    raw = yaml.safe_load(target.read_text(encoding="utf-8")) or []
-    if not isinstance(raw, list):
-        raise ValueError("full registry must be a YAML list")
+    raw = _load_compact_rows(target)
+
+    override_path = (
+        DERIVED_OVERRIDES_PATH
+        if target == REGISTRY_PATH
+        else target.with_name("derived_overrides.yaml")
+    )
+    raw = _apply_derived_overrides(raw, override_path)
 
     specs: list[EquationSpec] = []
     for row in raw:
-        if not isinstance(row, list) or len(row) != 3:
-            raise ValueError(f"invalid compact registry row: {row!r}")
         equation_id, checker, status_text = map(str, row)
         status = AuditStatus(status_text)
         source = "MASTER_EQUATIONS.md" if equation_id.startswith("M") else "EQUATIONS.md"

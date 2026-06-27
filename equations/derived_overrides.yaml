@@ -1,0 +1,14 @@
+# Batch 1: theorem-level derivations and definition reclassifications.
+# Each row is [equation_id, checker, expected_status].
+- [E5, check_effective_wavenumber_chain_derived, PASS]
+- [E9, check_phase_flux_from_polar_field, PASS]
+- [E13, check_bandpass_gradient_flow, PASS]
+- [E14, check_bandpass_gradient_flow, PASS]
+- [E18, check_lyapunov_gradient_flow, PASS]
+- [E58, check_green_kernel_bounded, PASS]
+- [CM9, check_cm9_first_order_equivalence, PASS]
+- [CM11, check_cm11_gaussian_damping, PASS]
+- [CM12, classify_definition, DEFINITION]
+- [CM13, classify_definition, DEFINITION]
+- [CM16, classify_definition, DEFINITION]
+- [CM18, classify_definition, DEFINITION]

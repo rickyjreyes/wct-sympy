@@ -1,60 +1,50 @@
 # SymPy Full Coverage for the WCT Corpus
 
-This layer expands `wct-sympy` from a five-check harness into a full-corpus audit. It does not mark every displayed equation as proved.
+The audit contains 142 stable equation objects. A `PASS` means the encoded implication follows under its stated assumptions; it is not a Lean proof or empirical validation.
 
-## Coverage
-
-The registry contains **142 stable equation IDs**:
-
-- 9 master systems: `M1`-`M8`, with `M6A` and `M6B` separated;
-- 83 canonical equations: `E1A`, `E1B`, `E2`-`E82`;
-- 10 curvature-locking equations: `CLE1`-`CLE10`;
-- 20 cosmology equations: `CM1`-`CM20`;
-- `G1`, `EX`, `EY`, `EZ`, and `FA`;
-- topology and correction-note IDs `TOP1`-`TOP9` and `CORR1`-`CORR6`.
-
-Every ID has a checker and an expected scientific status.
-
-| Status | Meaning |
-|---|---|
-| `PASS` | The encoded implication follows under its declared assumptions. |
-| `FAIL` | Algebra, dimensions, logic, or an explicit counterexample contradicts the current statement. |
-| `CONDITIONAL` | Missing sign, domain, regularity, counting, or model assumptions are required. |
-| `DEFINITION` | A definition or ansatz, not a theorem. |
-| `OPEN` | Proof or empirical validation lies outside symbolic algebra. |
-
-## Current classification after correction pass
+## Current classification
 
 | Status | Count |
 |---|---:|
-| PASS | 51 |
+| PASS | 59 |
 | FAIL | 0 |
-| CONDITIONAL | 32 |
-| DEFINITION | 23 |
-| OPEN | 36 |
+| CONDITIONAL | 27 |
+| DEFINITION | 26 |
+| OPEN | 30 |
 | **Total** | **142** |
 
-These counts are not a theory score. They prevent definitions, conjectures, and phenomenological ansatze from being reported as symbolic proofs.
+## Derivation batch 1
 
-## Resolved contradictions
+Eight objects are promoted to `PASS`:
 
-The correction pass replaces or weakens every previously encoded contradiction:
+- `E5`: exact loop closure and constant positive weight imply the effective-wavenumber chain.
+- `E9`: for `psi=sqrt(u) exp(i theta)`, the normalized phase current is `u grad(theta)`.
+- `E13`, `E14`: the band-pass functional generates the amplitude equation under negative gradient flow.
+- `E18`: nonnegative coefficients give `E>=0`; exact negative gradient flow gives `dE/dt<=0`.
+- `E58`: for positive `r` and `a`, the Green kernel obeys `0<G(k)<=1/r`.
+- `CM9`: the first-order velocity system is equivalent to the second-order oscillator equations.
+- `CM11`: curvature diffusion integrates to the Gaussian mode-damping envelope.
 
-1. The node regularizer is now a modulus-squared reciprocal with strictly positive denominator.
-2. Swift-Hohenberg fourth-order terms use an explicit negative sign for ultraviolet damping.
-3. The weighted lock integral uses the derived `alpha*L_s` term.
-4. `H^2` gives an `L^2` curvature bound; `L^infinity` curvature requires `H^s`, `s>n/2+2`.
-5. Alpha-drop uses retained fractions in `(0,1]`; configuration-count claims remain conditional.
-6. The entropy/support relation is `exp(H)<=K`.
-7. Quality factor uses loss power, and the energy balance treats fusion as a source.
-8. The gap-mass law is `m_eff^2=hbar^2 Delta_*/c^4`.
-9. The selected wavelength is `2*pi*sqrt(2*b/a)`.
-10. Coherence length is defined by a spectral second moment or gradient ratio.
-11. The CLE variation includes its fourth-order term.
-12. The CLE eigenvalue/radius chain uses `sigma_*^2` and `R=1/sigma_*`.
-13. Periodic angular modes are an integer family; torus uniqueness is conditional.
+Four objects are reclassified as definitions rather than open theorem obligations:
 
-A zero `FAIL` count means no contradiction remains in the **current encoded statements**. It does not imply that the conditional, open, or empirical claims are proven.
+- `CM12`: dimensionless power spectrum;
+- `CM13`: peak ratios;
+- `CM16`: horizon scale;
+- `CM18`: closure set.
+
+The original registry remains the historical baseline. `equations/derived_overrides.yaml` contains only the new derivation results.
+
+## Audit policy
+
+| Status | Meaning |
+|---|---|
+| `PASS` | The encoded implication follows under declared assumptions. |
+| `FAIL` | Algebra, dimensions, logic, or a counterexample contradicts the statement. |
+| `CONDITIONAL` | Additional mathematical or model hypotheses are still required. |
+| `DEFINITION` | A definition or ansatz, not a theorem. |
+| `OPEN` | Proof or empirical validation remains unresolved. |
+
+A zero `FAIL` count does not prove the open or conditional physics.
 
 ## Commands
 
@@ -64,22 +54,4 @@ python scripts/check_lean_coverage.py
 pytest -q
 ```
 
-Strict theory mode now succeeds when no encoded `FAIL` remains:
-
-```bash
-python scripts/check_full_coverage.py --strict-theory
-```
-
-## Separation from `wct-lean`
-
-`wct-sympy` does not depend on Lean at runtime. The repositories have separate jobs:
-
-- `wct-sympy`: algebra, dimensions, limits, numerical residuals, and executable counterexamples;
-- `wct-lean`: kernel-checked definitions, assumptions, lemmas, and theorems;
-- `interoperability/lean_map.yaml`: metadata linking only claims with an existing Lean declaration.
-
-A SymPy `PASS` is never labeled `PROVED`; `PROVED` is reserved for declarations checked by Lean in `rickyjreyes/wct-lean`.
-
-## Integration
-
-The full path is additive. The original `wct_sympy/checks.py` and `scripts/check_all.py` remain available for the five-check harness, while `scripts/check_full_coverage.py` runs the corpus-wide audit.
+`wct-sympy` supplies symbolic audits. Kernel-checked theorem status remains the role of `wct-lean`.
