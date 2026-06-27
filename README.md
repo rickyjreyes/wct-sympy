@@ -12,13 +12,13 @@
 - spectral extrema and sign conventions;
 - limiting behavior and denominator safety;
 - numerical residuals and explicit counterexamples;
-- consistency between equations that describe the same quantity.
+- consistency between equations describing the same quantity.
 
 It is an **audit and regression system**, not a proof that Wave Confinement Theory is physically correct.
 
 ## Current audit state
 
-The full registry contains **142 stable equation objects**:
+The registry contains **142 stable equation objects**:
 
 - 9 master systems: `M1`-`M8`, with `M6A` and `M6B` separated;
 - 83 canonical equations: `E1A`, `E1B`, `E2`-`E82`;
@@ -31,22 +31,22 @@ The full registry contains **142 stable equation objects**:
 |---|---:|---|
 | `PASS` | **51** | The encoded algebraic, dimensional, numerical, or logical check succeeds under its declared assumptions. |
 | `FAIL` | **0** | No currently encoded statement is contradicted by its assigned checker. |
-| `CONDITIONAL` | **32** | The statement requires explicit sign, domain, regularity, counting, model, or boundary assumptions. |
+| `CONDITIONAL` | **32** | Explicit sign, domain, regularity, counting, model, or boundary assumptions are still required. |
 | `DEFINITION` | **23** | The object is a definition or ansatz rather than a theorem. |
 | `OPEN` | **36** | The claim requires analysis, formal proof, calibrated simulation, or experiment beyond SymPy. |
 | **Total** | **142** | Complete registry coverage. |
 
-A zero `FAIL` count means:
+A zero `FAIL` count means
 
-\[
+$$
 \text{no known contradiction remains in the current encoded statements.}
-\]
+$$
 
-It does **not** mean:
+It does **not** mean that
 
-\[
+$$
 32\ \text{conditional claims}+36\ \text{open claims}
-\]
+$$
 
 have been proved or experimentally validated.
 
@@ -54,159 +54,157 @@ have been proved or experimentally validated.
 
 The repository originally encoded 24 contradictions. Each was handled by one of two legitimate operations:
 
-\[
+$$
 \text{incorrect equation}\longrightarrow\text{corrected equation}
-\]
+$$
 
 or
 
-\[
+$$
 \text{unproved unconditional claim}\longrightarrow\text{conditional claim}.
-\]
+$$
 
-Major corrections include:
+### 1. Nonsingular curvature regularization
 
-1. **Nonsingular curvature regularization**
+$$
+R_\varepsilon(\psi)
+=
+\frac{\bar\psi}
+{|\psi|^2+\varepsilon^2e^{-2\alpha|\psi|^2}},
+\qquad
+\Theta_\varepsilon[\psi]
+=
+-(\Delta\psi)R_\varepsilon(\psi).
+$$
 
-   \[
-   R_\varepsilon(\psi)
-   =
-   \frac{\bar\psi}
-   {|\psi|^2+\varepsilon^2e^{-2\alpha|\psi|^2}},
-   \qquad
-   \Theta_\varepsilon[\psi]
-   =
-   -(\Delta\psi)R_\varepsilon(\psi).
-   \]
+For $\varepsilon>0$, the denominator is strictly positive.
 
-   For \(\varepsilon>0\), the denominator is strictly positive.
+### 2. Finite-band damping sign
 
-2. **Finite-band damping sign**
+$$
+\partial_tA
+=
+\mu A-g|A|^2A-b(\Delta+k_*^2)^2A,
+\qquad b>0.
+$$
 
-   \[
-   \partial_tA
-   =
-   \mu A-g|A|^2A-b(\Delta+k_*^2)^2A,
-   \qquad b>0.
-   \]
+The Fourier contribution is $-b(k^2-k_*^2)^2$, so ultraviolet modes are damped.
 
-   The Fourier contribution is \(-b(k^2-k_*^2)^2\), so ultraviolet modes are damped.
+### 3. Weighted locking identity
 
-3. **Weighted locking identity**
+From $\partial_s\varphi=\sigma+\alpha/w$,
 
-   From \(\partial_s\varphi=\sigma+\alpha/w\),
+$$
+\oint_\Gamma w\,\partial_s\varphi\,ds
+=
+\oint_\Gamma w\sigma\,ds+\alpha L_s.
+$$
 
-   \[
-   \oint_\Gamma w\,\partial_s\varphi\,ds
-   =
-   \oint_\Gamma w\sigma\,ds+\alpha L_s.
-   \]
+### 4. Curvature regularity split
 
-4. **Curvature regularity split**
+$$
+\psi\in H^2,\quad |D_\varepsilon(\psi)|\ge\delta>0
+\Longrightarrow
+\|\Theta_\varepsilon[\psi]\|_{L^2}
+\le
+\delta^{-1}\|\Delta\psi\|_{L^2}.
+$$
 
-   \[
-   \psi\in H^2,\quad |D_\varepsilon(\psi)|\ge\delta>0
-   \Longrightarrow
-   \|\Theta_\varepsilon[\psi]\|_{L^2}
-   \le
-   \delta^{-1}\|\Delta\psi\|_{L^2}.
-   \]
+Bounded curvature requires stronger regularity:
 
-   Bounded curvature requires stronger regularity:
+$$
+\psi\in H^s,\qquad s>\frac n2+2
+\Longrightarrow
+\Theta_\varepsilon[\psi]\in L^\infty.
+$$
 
-   \[
-   \psi\in H^s,\qquad s>\frac n2+2
-   \Longrightarrow
-   \Theta_\varepsilon[\psi]\in L^\infty.
-   \]
+### 5. Entropy and support direction
 
-5. **Entropy and support direction**
+For support size $K$,
 
-   For support size \(K\),
+$$
+H\le\log K,
+\qquad
+e^H\le K.
+$$
 
-   \[
-   H\le\log K,
-   \qquad
-   e^H\le K.
-   \]
+### 6. Quality factor and power balance
 
-6. **Quality factor and power balance**
+$$
+Q=\omega\frac{U}{P_{\mathrm{loss}}},
+$$
 
-   \[
-   Q=\omega\frac{U}{P_{\mathrm{loss}}},
-   \]
+$$
+\frac{dW}{dt}
+=
+P_{\mathrm{in}}+P_{\mathrm{fusion}}-P_{\mathrm{loss}}-P_{\mathrm{out}}.
+$$
 
-   \[
-   \frac{dW}{dt}
-   =
-   P_{\mathrm{in}}+P_{\mathrm{fusion}}-P_{\mathrm{loss}}-P_{\mathrm{out}}.
-   \]
+### 7. Effective mass from a spectral gap
 
-7. **Effective mass from a spectral gap**
+If
 
-   If
+$$
+\omega_j^2=c^2\lambda_j+\Delta_*,
+$$
 
-   \[
-   \omega_j^2=c^2\lambda_j+\Delta_*,
-   \]
+then
 
-   then
+$$
+m_{\mathrm{eff}}^2
+=
+\frac{\hbar^2\Delta_*}{c^4}.
+$$
 
-   \[
-   m_{\mathrm{eff}}^2
-   =
-   \frac{\hbar^2\Delta_*}{c^4}.
-   \]
+### 8. Selected wavelength
 
-8. **Selected wavelength**
+From
 
-   From
+$$
+k_* = \sqrt{\frac{a}{2b}},
+$$
 
-   \[
-   k_* = \sqrt{\frac{a}{2b}},
-   \]
+the corresponding wavelength is
 
-   the corresponding wavelength is
+$$
+\lambda_*
+=
+\frac{2\pi}{k_*}
+=
+2\pi\sqrt{\frac{2b}{a}}.
+$$
 
-   \[
-   \lambda_*
-   =
-   \frac{2\pi}{k_*}
-   =
-   2\pi\sqrt{\frac{2b}{a}}.
-   \]
+### 9. Curvature-locked electron sector
 
-9. **Curvature-locked electron sector**
+The radius/eigenvalue convention is
 
-   The radius/eigenvalue convention is now
+$$
+-\Delta\psi=\sigma_*^2\psi,
+\qquad
+R=\frac1{\sigma_*}.
+$$
 
-   \[
-   -\Delta\psi=\sigma_*^2\psi,
-   \qquad
-   R=\frac1{\sigma_*}.
-   \]
+Periodic angular modes form the integer family
 
-   Periodic angular modes are an integer family,
+$$
+f(\theta)=A\cos(m\theta)+B\sin(m\theta),
+\qquad m\in\mathbb Z_{\ge0},
+$$
 
-   \[
-   f(\theta)=A\cos(m\theta)+B\sin(m\theta),
-   \qquad m\in\mathbb Z_{\ge0},
-   \]
+rather than a unique constant solution.
 
-   rather than a unique constant solution.
+### 10. Coherence length
 
-10. **Coherence length**
-
-   \[
-   \xi_{\mathrm{coh}}
-   =
-   \left(\sum_k p_k|k|^2\right)^{-1/2}
-   =
-   \left(
-   \frac{\int|\psi|^2dx}
-   {\int|\nabla\psi|^2dx}
-   \right)^{1/2}.
-   \]
+$$
+\xi_{\mathrm{coh}}
+=
+\left(\sum_k p_k|k|^2\right)^{-1/2}
+=
+\left(
+\frac{\int|\psi|^2dx}
+{\int|\nabla\psi|^2dx}
+\right)^{1/2}.
+$$
 
 ## Repository boundaries
 
@@ -238,8 +236,6 @@ The CI matrix runs the full audit on Python 3.10, 3.11, and 3.12.
 
 ## Generated outputs
 
-Running the audit produces:
-
 ```text
 tables/wct_sympy_checks.csv
 tables/wct_full_coverage.csv
@@ -249,7 +245,7 @@ COVERAGE_MATRIX.md
 FULL_COVERAGE_STATUS.txt
 ```
 
-These files make the registry machine-readable for downstream use in notebooks, documentation systems, graph databases, and formalization workflows.
+These outputs make the registry machine-readable for notebooks, documentation systems, graph databases, and formalization workflows.
 
 ## Project layout
 
@@ -272,7 +268,7 @@ Every equation object must have:
 4. an expected scientific status;
 5. regression coverage when executable semantics exist.
 
-New claims should not be labeled `PASS` merely because they are syntactically represented. They must satisfy an actual symbolic, dimensional, numerical, or logical check. Claims that require PDE existence theory, global convergence, uniqueness, phenomenological calibration, or experiment remain `CONDITIONAL` or `OPEN` until those obligations are discharged.
+A claim is not labeled `PASS` merely because it is syntactically represented. It must satisfy an actual symbolic, dimensional, numerical, or logical check. Claims requiring PDE existence theory, global convergence, uniqueness, phenomenological calibration, or experiment remain `CONDITIONAL` or `OPEN` until those obligations are discharged.
 
 ## Primary documentation
 
@@ -284,20 +280,20 @@ New claims should not be labeled `PASS` merely because they are syntactically re
 
 ## Scientific interpretation
 
-The repository currently establishes:
+The repository currently establishes
 
-\[
+$$
 \boxed{
 \text{internal symbolic consistency of the corrected encoded equation set}
 }
-\]
+$$
 
-It does not yet establish:
+It does not yet establish
 
-\[
+$$
 \boxed{
 \text{global PDE well-posedness, uniqueness, physical completeness, or empirical validity of WCT}
 }
-\]
+$$
 
 Those remaining obligations belong to formal analysis, Lean formalization, calibrated simulation, and experiment.
