@@ -9,7 +9,7 @@ linked.
 | D1_10  | Curvature -> effective mass: `m = (hbar/c) * k_eff`      | WCT main paper, Eq. D.1.10     |
 | CURV1  | Scalar curvature/torsion magnitude `sigma = sqrt(kappa^2+tau^2)` carries `L^-1` | WCT geometry section |
 | CURV2  | Raw sum `sigma_raw = kappa^2 + tau^2` carries `L^-2` (must NOT be conflated with `sigma`) | WCT geometry section, audit footnote |
-| K1     | Charged-lepton Koide relation `Q = (sum m_i)/(sum sqrt(m_i))^2 ≈ 2/3` | Koide (1983); WCT lepton-mass section |
+| K1     | Charged-lepton Koide relation `Q = (sum m_i)/(sum sqrt(m_i))^2 ~= 2/3` | Koide (1983); WCT lepton-mass section |
 | LIM1   | Boundary/limit behavior of D1_10 and Koide inputs        | WCT consistency appendix       |
 
 ## Notes
