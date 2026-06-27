@@ -48,6 +48,7 @@ These counts are not a theory score. They prevent definitions, conjectures, and 
 
 ```bash
 python scripts/check_full_coverage.py
+python scripts/check_lean_coverage.py
 pytest -q
 ```
 
@@ -59,6 +60,29 @@ python scripts/check_full_coverage.py --strict-theory
 
 Normal mode exits successfully when the implementation reproduces the declared baseline, including expected scientific failures.
 
+## Separation from `wct-lean`
+
+`wct-sympy` does not depend on Lean at runtime. The repositories have separate jobs:
+
+- `wct-sympy`: algebra, dimensions, limits, numerical residuals, and executable counterexamples;
+- `wct-lean`: kernel-checked definitions, assumptions, lemmas, and theorems;
+- `interoperability/lean_map.yaml`: metadata linking only claims with an existing Lean declaration.
+
+The mapping distinguishes exact formal counterparts from dimensional support, domain-safety support, adjacent lemmas, and stated TODOs. A SymPy `PASS` is never labeled `PROVED`; `PROVED` is reserved for declarations checked by Lean in `rickyjreyes/wct-lean`.
+
+Validate the bridge without installing Lean:
+
+```bash
+python scripts/check_lean_coverage.py
+```
+
+Formal verification remains in the Lean repository:
+
+```bash
+cd ../wct-lean
+lake build
+```
+
 ## Integration
 
-The new path is additive. The original `wct_sympy/checks.py` and `scripts/check_all.py` remain available for the five-check harness, while `scripts/check_full_coverage.py` runs the corpus-wide audit.
+The full path is additive. The original `wct_sympy/checks.py` and `scripts/check_all.py` remain available for the five-check harness, while `scripts/check_full_coverage.py` runs the corpus-wide audit.
