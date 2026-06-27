@@ -12,6 +12,8 @@ This index covers all 142 registered equation objects after applying `equations/
 
 A SymPy `PASS` is not a Lean proof or empirical validation.
 
+> **Status precedence:** the `51 PASS / 32 CONDITIONAL / 23 DEFINITION / 36 OPEN` distribution embedded in the canonical equation document is the pre-derivation baseline. After the active derived overrides are applied, the effective distribution is `59 / 27 / 26 / 30`. The equation document remains canonical for equation text and assumptions; this index is canonical for the current effective SymPy classification.
+
 ## PASS — 59
 
 `M2 M3 M4 M7 E1A E1B E2 E3 E4 E5 E6 E7 E8 E9 E10 E11 E12 E13 E14 E16 E17 E18 E20 E21 E24 E26 E28 E29 E30 E33 E37 E38 E45 E47 E49 E51 E53 E57 E58 E59 E61 E62 E64 E65 E67 E69 E81 CLE2 CLE4 CLE6 CLE7 CLE9 CLE10 G1 EX EY EZ CM9 CM11`
