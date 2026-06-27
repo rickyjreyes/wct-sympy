@@ -20,190 +20,122 @@ It is an **audit and regression system**, not a proof that Wave Confinement Theo
 
 The registry contains **142 stable equation objects**:
 
-- 9 master systems: `M1`–`M8`, with `M6A` and `M6B` separated;
-- 83 canonical equations: `E1A`, `E1B`, `E2`–`E82`;
-- 10 curvature-locked electron equations: `CLE1`–`CLE10`;
-- 20 curvature-acoustic cosmology equations: `CM1`–`CM20`;
+- 9 master systems: `M1`-`M8`, with `M6A` and `M6B` separated;
+- 83 canonical equations: `E1A`, `E1B`, `E2`-`E82`;
+- 10 curvature-locked electron equations: `CLE1`-`CLE10`;
+- 20 curvature-acoustic cosmology equations: `CM1`-`CM20`;
 - 5 logarithmic or auxiliary equations: `G1`, `EX`, `EY`, `EZ`, `FA`;
-- 15 topology and correction objects: `TOP1`–`TOP9`, `CORR1`–`CORR6`.
+- 15 topology and correction objects: `TOP1`-`TOP9`, `CORR1`-`CORR6`.
 
 | Status | Count | Meaning |
 |---|---:|---|
-| `PASS` | **51** | The encoded algebraic, dimensional, numerical, or logical check succeeds under its declared assumptions. |
-| `FAIL` | **0** | No currently encoded statement is contradicted by its assigned checker. |
-| `CONDITIONAL` | **32** | Explicit sign, domain, regularity, counting, model, or boundary assumptions are still required. |
-| `DEFINITION` | **23** | The object is a definition or ansatz rather than a theorem. |
-| `OPEN` | **36** | The claim requires analysis, formal proof, calibrated simulation, or experiment beyond SymPy. |
+| `PASS` | **59** | The encoded implication follows under its declared assumptions. |
+| `FAIL` | **0** | No current encoded statement is contradicted by its assigned checker. |
+| `CONDITIONAL` | **27** | Additional mathematical or model assumptions remain required. |
+| `DEFINITION` | **26** | The object is a definition or ansatz rather than a theorem. |
+| `OPEN` | **30** | Analysis, formal proof, calibrated simulation, or experiment remains unresolved. |
 | **Total** | **142** | Complete registry coverage. |
 
-A zero `FAIL` count means:
+A zero `FAIL` count means no known contradiction remains in the current encoded statements. It does **not** prove the 27 conditional or 30 open obligations.
 
-> No known contradiction remains in the current encoded statements.
+## Derivation batch 1
 
-It does **not** mean that the remaining claims have been proved or experimentally validated. The unresolved total is 32 conditional claims plus 36 open claims, or 68 obligations.
+The first explicit derivation pass promotes eight equation objects to `PASS`:
 
-## Correction pass
+1. `E5`: exact loop closure plus constant positive weight proves the effective-wavenumber chain.
+2. `E9`: polar decomposition gives the normalized phase current.
+3. `E13` and `E14`: the band-pass functional generates the amplitude equation under negative gradient flow.
+4. `E18`: nonnegative coefficients give a nonnegative functional, and exact negative gradient flow gives monotone descent.
+5. `E58`: positive spectral offset bounds the Green kernel.
+6. `CM9`: the first-order velocity system is equivalent to the second-order oscillator system.
+7. `CM11`: curvature diffusion integrates to the Gaussian damping envelope.
 
-The repository originally encoded 24 contradictions. Each was handled by correcting the equation or weakening an unproved unconditional claim to `CONDITIONAL`.
+Four cosmology entries are reclassified from `OPEN` to `DEFINITION`:
 
-### 1. Nonsingular curvature regularization
+- `CM12`: dimensionless power-spectrum definition;
+- `CM13`: peak-ratio definitions;
+- `CM16`: horizon-scale definitions;
+- `CM18`: closure-set definition.
+
+The historical baseline remains in `equations/full_registry.yaml`. Additive theorem and classification changes are isolated in `equations/derived_overrides.yaml`.
+
+See [`DERIVATIONS_BATCH_1.md`](DERIVATIONS_BATCH_1.md) for the assumptions, derivations, and numerical examples.
+
+## Representative derived identities
+
+### Phase current
+
+For
 
 $$
-Rε(ψ) = ψ̄ / (|ψ|² + ε² exp(−2α|ψ|²))
+\psi=\sqrt{u}\,e^{i\theta},
 $$
 
-$$
-Θε[ψ] = −(Δψ)Rε(ψ)
-$$
-
-For ε > 0, the denominator is strictly positive.
-
-### 2. Finite-band damping sign
+one obtains
 
 $$
-∂ₜA = μA − g|A|²A − b(Δ + k⋆²)²A,    b > 0
+\operatorname{Im}(\overline\psi\,\nabla\psi)=u\nabla\theta.
 $$
 
-The Fourier contribution is
-
-$$
-−b(k² − k⋆²)²
-$$
-
-so ultraviolet modes are damped.
-
-### 3. Weighted locking identity
+### Band-pass gradient flow
 
 From
 
 $$
-∂ₛφ = σ + α/w
+\mathcal E[A]
+=
+\int\left(-r|A|^2-a|\nabla A|^2+b|\Delta A|^2+\frac{\beta}{2}|A|^4\right)dx,
 $$
 
-it follows that
+negative gradient flow gives
 
 $$
-∮Γ w ∂ₛφ ds = ∮Γ wσ ds + αLₛ
+\partial_tA=rA-a\Delta A-b\Delta^2A-\beta|A|^2A.
 $$
 
-### 4. Curvature regularity split
+### Lyapunov descent
+
+For exact negative gradient flow,
 
 $$
-ψ ∈ H²,    |Dε(ψ)| ≥ δ > 0
+\partial_t\psi=-\frac{\delta\mathcal E}{\delta\overline\psi},
 $$
 
-implies
+one has
 
 $$
-‖Θε[ψ]‖₂ ≤ δ⁻¹‖Δψ‖₂
+\frac{d\mathcal E}{dt}
+=-\left\|\frac{\delta\mathcal E}{\delta\overline\psi}\right\|_2^2
+\le0.
 $$
 
-Bounded curvature requires stronger regularity:
+### Green-kernel bound
+
+For `r>0` and `a>0`,
 
 $$
-ψ ∈ Hˢ,    s > n/2 + 2
+G(k)=\frac{1}{r+a(k^2-k_*^2)^2}
 $$
 
-implies
+satisfies
 
 $$
-Θε[ψ] ∈ L∞
-$$
-
-### 5. Entropy and support direction
-
-For support size K:
-
-$$
-H ≤ log(K)
-$$
-
-$$
-exp(H) ≤ K
-$$
-
-Equality holds only for a uniform distribution on its support.
-
-### 6. Quality factor and power balance
-
-$$
-Q = ωU / P(loss)
-$$
-
-$$
-dW/dt = P(in) + P(fusion) − P(loss) − P(out)
-$$
-
-### 7. Effective mass from a spectral gap
-
-If
-
-$$
-ωⱼ² = c²λⱼ + Δ⋆
-$$
-
-then
-
-$$
-m(eff)² = ℏ²Δ⋆ / c⁴
-$$
-
-### 8. Selected wavelength
-
-From
-
-$$
-k⋆ = √(a / 2b)
-$$
-
-it follows that
-
-$$
-λ⋆ = 2π/k⋆ = 2π√(2b/a)
-$$
-
-### 9. Curvature-locked electron sector
-
-The consistent eigenvalue and radius convention is
-
-$$
-−Δψ = σ⋆²ψ
-$$
-
-$$
-R = 1/σ⋆
-$$
-
-Periodic angular modes form the integer family
-
-$$
-f(θ) = A cos(mθ) + B sin(mθ),    m ∈ ℤ,    m ≥ 0
-$$
-
-rather than a unique constant solution.
-
-### 10. Coherence length
-
-$$
-ξ(coh) = √(1 / ∑ₖ pₖ|k|²)
-$$
-
-$$
-ξ(coh) = √(∫|ψ|² dx / ∫|∇ψ|² dx)
+0<G(k)\le\frac1r.
 $$
 
 ## Repository boundaries
 
-| Repository or document | Responsibility |
+| Component | Responsibility |
 |---|---|
-| `rickyjreyes/wct-sympy` | Algebra, dimensions, limits, numerical residuals, consistency checks, and executable counterexamples. |
-| `rickyjreyes/wct-lean` | Kernel-checked definitions, assumptions, lemmas, and theorems. |
+| `wct-sympy` | Algebra, dimensions, limits, residuals, consistency checks, and executable counterexamples. |
+| `wct-lean` | Kernel-checked definitions, assumptions, lemmas, and theorems. |
 | `MASTER_EQUATIONS.md` | Canonical master architecture. |
 | `EQUATIONS.md` | Canonical equation families and corrected forms. |
-| `equations/full_registry.yaml` | Stable equation IDs, checker assignments, and expected statuses. |
-| `interoperability/lean_map.yaml` | Explicit SymPy-to-Lean relationship metadata. |
+| `equations/full_registry.yaml` | Historical baseline registry. |
+| `equations/derived_overrides.yaml` | Additive derivation and reclassification results. |
+| `interoperability/lean_map.yaml` | SymPy-to-Lean relationship metadata. |
 
-A SymPy `PASS` is never reported as a Lean proof. `PROVED` is reserved for declarations successfully checked by the Lean kernel.
+A SymPy `PASS` is never reported as a Lean proof. `PROVED` is reserved for declarations accepted by the Lean kernel.
 
 ## Reproduce the audit
 
@@ -220,56 +152,15 @@ python scripts/check_lean_coverage.py
 
 The CI matrix runs the full audit on Python 3.10, 3.11, and 3.12.
 
-## Generated outputs
-
-```text
-tables/wct_sympy_checks.csv
-tables/wct_full_coverage.csv
-tables/wct_full_coverage.json
-tables/lean_coverage.json
-COVERAGE_MATRIX.md
-FULL_COVERAGE_STATUS.txt
-```
-
-These outputs make the registry machine-readable for notebooks, documentation systems, graph databases, and formalization workflows.
-
-## Project layout
-
-```text
-wct_sympy/          symbolic audit implementation
-equations/          machine-readable registries
-interoperability/   SymPy-to-Lean declaration map
-scripts/            command-line entry points
-tests/              regression tests
-tables/             generated reports
-```
-
-## Audit policy
-
-Every equation object must have:
-
-1. a stable ID;
-2. a canonical source location;
-3. an assigned checker;
-4. an expected scientific status;
-5. regression coverage when executable semantics exist.
-
-A claim is not labeled `PASS` merely because it is syntactically represented. It must satisfy an actual symbolic, dimensional, numerical, or logical check.
-
-Claims requiring PDE existence theory, global convergence, uniqueness, phenomenological calibration, or experiment remain `CONDITIONAL` or `OPEN` until those obligations are discharged.
-
 ## Primary documentation
 
 - [`MASTER_EQUATIONS.md`](MASTER_EQUATIONS.md)
 - [`EQUATIONS.md`](EQUATIONS.md)
+- [`DERIVATIONS_BATCH_1.md`](DERIVATIONS_BATCH_1.md)
 - [`FULL_COVERAGE.md`](FULL_COVERAGE.md)
 - [`COVERAGE_MATRIX.md`](COVERAGE_MATRIX.md)
 - [`WCT_GAP_ANALYSIS.md`](WCT_GAP_ANALYSIS.md)
 
-## Scientific interpretation
+## Scientific boundary
 
-The repository currently establishes internal symbolic consistency of the corrected encoded equation set.
-
-It does not yet establish global PDE well-posedness, uniqueness, physical completeness, or empirical validity of Wave Confinement Theory.
-
-Those remaining obligations belong to formal analysis, Lean formalization, calibrated simulation, and experiment.
+The repository establishes internal symbolic consequences of the corrected encoded equation set. It does not establish global PDE well-posedness, uniqueness, physical completeness, or empirical validity of WCT.
