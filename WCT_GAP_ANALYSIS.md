@@ -1,8 +1,8 @@
-# Wave Confinement Theory — Gap Analysis & Roadmap
+# Wave Confinement Theory -- Gap Analysis & Roadmap
 
 ## Current State Assessment
 
-### ✅ What You Have (Strong)
+### [OK] What You Have (Strong)
 
 | Component | Files | Status |
 |-----------|-------|--------|
@@ -13,7 +13,7 @@
 | Hamiltonian/Lagrangian | `hamilton_wct.py`, `euler_lagrange.py` | Derived |
 | Suppression/fractal plots | `.png` files | Generated |
 
-### ⚠️ Gaps Identified
+### [!] Gaps Identified
 
 ---
 
@@ -23,12 +23,12 @@
 ```python
 r = 0.5646      # Where does this come from?
 beta = 3.95     # Why this value?
-gamma = 0.05    # Entropy feedback — derived how?
+gamma = 0.05    # Entropy feedback -- derived how?
 ```
 
 **Needed**: A `PARAMETERS.md` or derivation script showing:
 - Physical meaning of each parameter
-- How they connect to measured constants (α, G, ℏ, etc.)
+- How they connect to measured constants (alpha, G, hbar, etc.)
 - Whether they're fitted, derived, or postulated
 
 ---
@@ -40,11 +40,11 @@ gamma = 0.05    # Entropy feedback — derived how?
 **Needed**:
 ```
 wct_predict_masses.py
-├── Electron mass from ψ-electron (CLE9: R = 1/σ*)
-├── Muon/tau from curvature harmonics
-├── Koide relation verification
-├── Proton mass from confinement
-└── Comparison table: WCT vs measured
+|-- Electron mass from psi-electron (CLE9: R = 1/sigma*)
+|-- Muon/tau from curvature harmonics
+|-- Koide relation verification
+|-- Proton mass from confinement
+`-- Comparison table: WCT vs measured
 ```
 
 **Key equation to implement**:
@@ -59,10 +59,10 @@ $$m = \frac{\hbar}{c} \langle\sigma\rangle_w = \frac{\hbar}{c} \left\langle \sqr
 **Needed**:
 ```
 wct_solver/
-├── wct_1d_evolution.py      # 1D curvature-feedback PDE
-├── wct_2d_evolution.py      # 2D pattern formation
-├── wct_3d_confinement.py    # 3D soliton search
-└── wct_spectral_solver.py   # Fourier-space evolution
+|-- wct_1d_evolution.py      # 1D curvature-feedback PDE
+|-- wct_2d_evolution.py      # 2D pattern formation
+|-- wct_3d_confinement.py    # 3D soliton search
+`-- wct_spectral_solver.py   # Fourier-space evolution
 ```
 
 **Core equation to solve** (Master Eq. 7 - UWCT):
@@ -77,36 +77,36 @@ $$\partial_t \psi = -\frac{\nabla^2\psi}{\psi + \varepsilon e^{-\alpha|\psi|^2}}
 **Needed**:
 ```
 wct_cosmology/
-├── cmb_power_spectrum.py    # Generate C_ℓ from WCT
-├── planck_comparison.py     # Compare to Planck 2018
-├── peak_ratios.py           # r₂₁, r₃₁, s₂₁, s₃₁
-└── hubble_tension.py        # Does WCT address H₀ tension?
+|-- cmb_power_spectrum.py    # Generate C_l from WCT
+|-- planck_comparison.py     # Compare to Planck 2018
+|-- peak_ratios.py           # r_21, r_31, s_21, s_31
+`-- hubble_tension.py        # Does WCT address H_0 tension?
 ```
 
 **Target**: Can WCT reproduce these measured values?
-- First peak: ℓ ≈ 220
-- Peak ratios: r₂₁ ≈ 0.46, r₃₁ ≈ 0.44
-- Spectral index: nₛ ≈ 0.965
+- First peak: l ~= 220
+- Peak ratios: r_21 ~= 0.46, r_31 ~= 0.44
+- Spectral index: n_s ~= 0.965
 
 ---
 
 ## 5. G SCALE PROBLEM RESOLUTION
 
-**Current state**: G_WCT/G_measured ~ 10⁶⁵ with ξ = 10μm.
+**Current state**: G_WCT/G_measured ~ 10^65 with xi = 10um.
 
 **Options to explore**:
 
 ### Option A: Scale hierarchy
 ```python
-xi_vacuum = 1e-5      # 10 μm — wave dynamics
-xi_gravity = l_P**2   # ~ 10⁻⁷⁰ m — gravitational coupling
+xi_vacuum = 1e-5      # 10 um -- wave dynamics
+xi_gravity = l_P**2   # ~ 10^-70 m -- gravitational coupling
 ```
 
 ### Option B: Modified formula
 $$G = \frac{c^3}{\hbar \sqrt{\Lambda}} \cdot f(\langle\Theta\rangle, \sigma)$$
 
-### Option C: Emergent ξ
-Derive ξ from first principles rather than postulating it.
+### Option C: Emergent xi
+Derive xi from first principles rather than postulating it.
 
 **Needed**: `wct_gravity_scale.py` exploring these options.
 
@@ -119,11 +119,11 @@ Derive ξ from first principles rather than postulating it.
 **Needed**:
 ```
 tests/
-├── test_equation_consistency.py   # E1 + E2 → E3, etc.
-├── test_dimensional_analysis.py   # All equations dimensionally correct
-├── test_symmetry_preservation.py  # Noether currents conserved
-├── test_stability_bounds.py       # n ≤ 3 constraint
-└── test_limits.py                 # Classical/quantum limits
+|-- test_equation_consistency.py   # E1 + E2 -> E3, etc.
+|-- test_dimensional_analysis.py   # All equations dimensionally correct
+|-- test_symmetry_preservation.py  # Noether currents conserved
+|-- test_stability_bounds.py       # n <= 3 constraint
+`-- test_limits.py                 # Classical/quantum limits
 ```
 
 ---
@@ -134,7 +134,7 @@ tests/
 
 **For future development**:
 - How does U(1) emerge from phase symmetry?
-- Can SU(2)×U(1) arise from curvature topology?
+- Can SU(2)xU(1) arise from curvature topology?
 - Is color SU(3) related to 3D stability constraint?
 
 ---
@@ -145,9 +145,9 @@ tests/
 
 | Prediction | WCT Value | How to Test |
 |------------|-----------|-------------|
-| Min black hole mass | ~10²² kg | Primordial BH searches |
+| Min black hole mass | ~10^22 kg | Primordial BH searches |
 | Ghost-mode frequency | G1 equation | JUNO reactor neutrinos |
-| Fractal dimension limit | D_f → ~4 | High-energy scattering |
+| Fractal dimension limit | D_f -> ~4 | High-energy scattering |
 | Curvature signatures | ??? | Precision spectroscopy |
 
 ---
@@ -156,9 +156,9 @@ tests/
 
 | Equation | Script Needed |
 |----------|---------------|
-| E44 (Θ-eigenmode) | `wct_validate_theta_eigenmodes.py` |
+| E44 (Theta-eigenmode) | `wct_validate_theta_eigenmodes.py` |
 | E49 (effective mass) | `wct_validate_effective_mass.py` |
-| CLE8 (ψ-electron solution) | `wct_validate_psi_electron.py` |
+| CLE8 (psi-electron solution) | `wct_validate_psi_electron.py` |
 | CM5-CM7 (oscillators) | `wct_validate_acoustic_oscillators.py` |
 
 ---
@@ -166,24 +166,24 @@ tests/
 ## Priority Roadmap
 
 ### Phase 1: Foundation (Immediate)
-1. ☐ Document parameter origins (`PARAMETERS.md`)
-2. ☐ Fix G scale issue or document it as open problem
-3. ☐ Add unit tests for dimensional consistency
+1. [ ] Document parameter origins (`PARAMETERS.md`)
+2. [ ] Fix G scale issue or document it as open problem
+3. [ ] Add unit tests for dimensional consistency
 
 ### Phase 2: Predictions (Short-term)
-4. ☐ Implement particle mass predictions
-5. ☐ Build 1D numerical solver
-6. ☐ Generate CMB comparison
+4. [ ] Implement particle mass predictions
+5. [ ] Build 1D numerical solver
+6. [ ] Generate CMB comparison
 
 ### Phase 3: Validation (Medium-term)
-7. ☐ Compare to Planck CMB data
-8. ☐ Compute JUNO ghost-mode signatures
-9. ☐ Publish falsifiable predictions
+7. [ ] Compare to Planck CMB data
+8. [ ] Compute JUNO ghost-mode signatures
+9. [ ] Publish falsifiable predictions
 
 ### Phase 4: Extensions (Long-term)
-10. ☐ 3D soliton finder
-11. ☐ Gauge emergence investigation
-12. ☐ Quantum measurement framework
+10. [ ] 3D soliton finder
+11. [ ] Gauge emergence investigation
+12. [ ] Quantum measurement framework
 
 ---
 
@@ -215,9 +215,9 @@ scipy>=1.7
 **Strongest areas**: Mathematical formulation, equation catalog, scope definition
 
 **Biggest gaps**: 
-1. Parameter derivations (where do r, β, γ come from?)
+1. Parameter derivations (where do r, beta, gamma come from?)
 2. Numerical solvers (no actual PDE evolution)
 3. Quantitative predictions (masses, CMB peaks)
 4. G scale problem (unresolved)
 
-**Recommended next step**: Start with `PARAMETERS.md` to document where r=0.5646, β=3.95, γ=0.05 originate.
+**Recommended next step**: Start with `PARAMETERS.md` to document where r=0.5646, beta=3.95, gamma=0.05 originate.
