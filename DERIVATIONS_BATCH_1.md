@@ -2,7 +2,7 @@
 
 This document discharges the first set of `CONDITIONAL` and `OPEN` symbolic obligations in the 142-object WCT registry.
 
-A result is promoted to `PASS` only as an implication under the assumptions stated below. The physical interpretation of the equations is not treated as experimentally established by these derivations.
+A result is promoted to `PASS` only as an implication under its stated assumptions. These derivations establish internal mathematical consequences, not empirical validation.
 
 ## Status delta
 
@@ -15,59 +15,37 @@ A result is promoted to `PASS` only as an implication under the assumptions stat
 | `OPEN` | 36 | 30 | -6 |
 | **Total** | **142** | **142** | **0** |
 
-The apparent `DEFINITION` delta is \(+3\), not \(+4\), because `E9` moves from `DEFINITION` to `PASS` while `CM12`, `CM13`, `CM16`, and `CM18` move from `OPEN` to `DEFINITION`.
+The `DEFINITION` change is `+3` because `E9` moves from `DEFINITION` to `PASS`, while `CM12`, `CM13`, `CM16`, and `CM18` move from `OPEN` to `DEFINITION`.
 
 ---
 
 ## 1. E5 — Effective-wavenumber chain
 
-### Definitions
+Let `Gamma` be a closed loop with arclength `s`, length `L_s`, positive weight `w(s)`, phase `phi(s)`, curvature rate `sigma(s)`, and winding number `n`.
 
-Let:
-
-- \(\Gamma\) be a closed loop;
-- \(s\) be arclength;
-- \(L_s=\oint_\Gamma ds>0\) be loop length;
-- \(w(s)>0\) be the loop weight;
-- \(\sigma(s)\) be the curvature spectral rate;
-- \(arphi(s)\) be phase;
-- \(n\in\mathbb Z\) be winding number.
-
-The locking action is
+The constrained locking action is
 
 $$
 S[\varphi]
 =
-\oint_\Gamma w(s)\bigl(\partial_s\varphi-\sigma\bigr)^2ds
+\oint_\Gamma w(s)\bigl(\partial_s\varphi-\sigma\bigr)^2\,ds
 +
 \Lambda\left(\oint_\Gamma\partial_s\varphi\,ds-2\pi n\right).
 $$
 
-### Variation
-
-For \(arphi\mapstoarphi+\epsilon\eta\),
-
-$$
-\delta S
-=
-\oint_\Gamma
-\left[2w(\partial_s\varphi-\sigma)+\Lambda\right]
-\partial_s\eta\,ds.
-$$
-
-Integration by parts on a closed loop gives
+Variation and integration by parts on the closed loop give
 
 $$
 \partial_s\left[2w(\partial_s\varphi-\sigma)+\Lambda\right]=0.
 $$
 
-Therefore there is a constant \(\alpha\) such that
+Therefore, for a constant `alpha`,
 
 $$
 w(\partial_s\varphi-\sigma)=\alpha,
 $$
 
-hence
+so
 
 $$
 \partial_s\varphi
@@ -75,7 +53,7 @@ $$
 \sigma+\frac{\alpha}{w}.
 $$
 
-The winding condition gives
+The winding constraint implies
 
 $$
 2\pi n
@@ -85,7 +63,7 @@ $$
 \alpha\oint_\Gamma\frac{ds}{w(s)},
 $$
 
-so
+hence
 
 $$
 \alpha
@@ -94,15 +72,13 @@ $$
 {\oint_\Gamma ds/w(s)}.
 $$
 
-### Exact-lock theorem
-
-Exact locking means \(\alpha=0\). Therefore
+Exact locking means `alpha = 0`, so
 
 $$
 \oint_\Gamma\sigma\,ds=2\pi n.
 $$
 
-After absorbing orientation into \(|n|\),
+After absorbing orientation into the absolute winding number,
 
 $$
 \frac{2\pi|n|}{L_s}
@@ -110,7 +86,7 @@ $$
 \frac{1}{L_s}\oint_\Gamma\sigma\,ds.
 $$
 
-If \(w(s)=w_0>0\) is constant, then
+For constant positive weight `w_0`,
 
 $$
 \langle\sigma\rangle_w
@@ -121,7 +97,7 @@ $$
 \frac{1}{L_s}\oint_\Gamma\sigma\,ds.
 $$
 
-Thus
+Therefore
 
 $$
 \boxed{
@@ -137,9 +113,9 @@ $$
 
 under exact closure and constant positive weight.
 
-### Worked example
+### Numerical example
 
-For a circle of radius \(R=2\),
+For a circle of radius `R = 2`,
 
 $$
 \kappa=\frac12,
@@ -151,7 +127,7 @@ $$
 L_s=4\pi.
 $$
 
-For \(n=1\),
+For `n = 1`,
 
 $$
 \oint_\Gamma\sigma\,ds
@@ -161,7 +137,7 @@ $$
 2\pi,
 $$
 
-and therefore
+and
 
 $$
 k_{\mathrm{eff}}
@@ -177,8 +153,6 @@ $$
 
 ## 2. E9 — Phase flux from polar decomposition
 
-### Definitions
-
 Let
 
 $$
@@ -187,15 +161,13 @@ $$
 u>0.
 $$
 
-Define the normalized phase current by
+Define normalized phase current by
 
 $$
 \mathbf S
 :=
-\operatorname{Im}(\bar\psi\nabla\psi).
+\operatorname{Im}(\overline{\psi}\,\nabla\psi).
 $$
-
-### Derivation
 
 Differentiate:
 
@@ -205,20 +177,20 @@ $$
 e^{i\theta}
 \left(
 \nabla\sqrt{u}
-+i\sqrt{u}\nabla\theta
++i\sqrt{u}\,\nabla\theta
 \right).
 $$
 
-Multiply by \(ar\psi=\sqrt{u}e^{-i\theta}\):
+Then
 
 $$
-\bar\psi\nabla\psi
+\overline{\psi}\,\nabla\psi
 =
 \frac12\nabla u
 +i\,u\nabla\theta.
 $$
 
-Taking the imaginary part gives
+Taking the imaginary part yields
 
 $$
 \boxed{
@@ -226,19 +198,9 @@ $$
 }.
 $$
 
-Thus `E9` is a derived identity once phase flux is defined as the normalized polar current.
+### Numerical example
 
-### Worked example
-
-Take
-
-$$
-u(x)=4,
-\qquad
-\theta(x)=3x.
-$$
-
-Then
+Take `u(x) = 4` and `theta(x) = 3x`. Then
 
 $$
 \psi(x)=2e^{3ix},
@@ -247,25 +209,17 @@ $$
 and
 
 $$
-\operatorname{Im}(\bar\psi\,\partial_x\psi)
+\operatorname{Im}(\overline{\psi}\,\partial_x\psi)
+=12
 =
-\operatorname{Im}\left(2e^{-3ix}\cdot6ie^{3ix}\right)
-=12.
-$$
-
-Also
-
-$$
-u\,\partial_x\theta=4\cdot3=12.
+u\,\partial_x\theta.
 $$
 
 ---
 
 ## 3. E13 and E14 — Band-pass functional and gradient flow
 
-### Definitions
-
-Let \(A\) be a complex amplitude. Define
+Define
 
 $$
 \mathcal E[A]
@@ -279,26 +233,22 @@ $$
 \right)dx.
 $$
 
-Assume periodic boundary conditions or sufficient decay so that boundary terms vanish.
-
-### Functional derivative
-
-Treating \(A\) and \(ar A\) as independent variables,
+Assume periodic boundary conditions or sufficient decay. Treating `A` and its complex conjugate as independent variational fields gives
 
 $$
-\frac{\delta\mathcal E}{\delta\bar A}
+\frac{\delta\mathcal E}{\delta\overline A}
 =
 -rA+a\Delta A+b\Delta^2A+\beta|A|^2A.
 $$
 
-The negative \(L^2\)-gradient flow is
+Under negative gradient flow,
 
 $$
 \partial_tA
-=-\frac{\delta\mathcal E}{\delta\bar A}.
+=-\frac{\delta\mathcal E}{\delta\overline A},
 $$
 
-Therefore
+so
 
 $$
 \boxed{
@@ -308,33 +258,23 @@ rA-a\Delta A-b\Delta^2A-\beta|A|^2A
 }.
 $$
 
-Since
-
-$$
-\sigma(k)=r+ak^2-bk^4,
-$$
-
-and Fourier transformation sends
-
-$$
-\Delta\mapsto-k^2,
-\qquad
-\Delta^2\mapsto k^4,
-$$
-
-this is equivalent to
+Because Fourier transformation sends `Delta` to `-k^2`, this is equivalent to
 
 $$
 \boxed{
 \partial_tA
 =
 \sigma(-i\nabla)A-\beta|A|^2A
-}.
+}
 $$
 
-Thus `E13` follows from `E14` under the stated boundary assumptions.
+with
 
-### Worked one-mode example
+$$
+\sigma(k)=r+ak^2-bk^4.
+$$
+
+### One-mode example
 
 For
 
@@ -342,15 +282,7 @@ $$
 A(x,t)=q(t)e^{ikx},
 $$
 
-one has
-
-$$
-\Delta A=-k^2A,
-\qquad
-\Delta^2A=k^4A.
-$$
-
-Hence
+one obtains
 
 $$
 \dot q
@@ -358,23 +290,7 @@ $$
 (r+ak^2-bk^4)q-\beta|q|^2q.
 $$
 
-Taking
-
-$$
-r=1,
-\quad
-a=2,
-\quad
-b=1,
-\quad
-k=1,
-\quad
-\beta=1,
-\quad
-q=1,
-$$
-
-produces
+At `r = 1`, `a = 2`, `b = 1`, `k = 1`, `beta = 1`, and `q = 1`,
 
 $$
 \dot q=(1+2-1)-1=1.
@@ -383,8 +299,6 @@ $$
 ---
 
 ## 4. E18 — Positivity and Lyapunov descent
-
-### Definition
 
 Let
 
@@ -398,70 +312,36 @@ c_1|\nabla\psi|^2
 \right)dx,
 $$
 
-with
-
-$$
-c_1\ge0,
-\qquad
-c_2\ge0.
-$$
-
-Then
+with nonnegative `c_1` and `c_2`. Then
 
 $$
 \boxed{\mathcal E[\psi]\ge0}.
 $$
 
-### Gradient-flow theorem
-
-Assume
+Assume exact negative gradient flow:
 
 $$
 \partial_t\psi
-=-\frac{\delta\mathcal E}{\delta\bar\psi}.
+=-\frac{\delta\mathcal E}{\delta\overline\psi}.
 $$
 
-The variational chain rule gives
-
-$$
-\frac{d\mathcal E}{dt}
-=
-2\operatorname{Re}
-\left\langle
-\frac{\delta\mathcal E}{\delta\bar\psi},
-\partial_t\psi
-\right\rangle.
-$$
-
-Substitute the flow:
-
-$$
-\frac{d\mathcal E}{dt}
-=
--2
-\left\|
-\frac{\delta\mathcal E}{\delta\bar\psi}
-\right\|_2^2
-\le0.
-$$
-
-Up to the normalization convention for the complex gradient,
+The variational chain rule gives, up to the chosen complex-gradient normalization,
 
 $$
 \boxed{
 \frac{d\mathcal E}{dt}
-=-\left\|\frac{\delta\mathcal E}{\delta\bar\psi}\right\|_2^2
+=-\left\|
+\frac{\delta\mathcal E}{\delta\overline\psi}
+\right\|_2^2
 \le0
 }.
 $$
 
-This proves Lyapunov descent for the exact negative gradient flow. It does not prove that the full WCT evolution equation is identical to that gradient flow.
+This proves descent for the exact gradient flow. It does not prove that every proposed WCT evolution equals that flow.
 
 ---
 
 ## 5. E58 — Bounded band-selective Green kernel
-
-### Definition
 
 Let
 
@@ -471,29 +351,13 @@ G(k)
 \frac{1}{r+a(k^2-k_*^2)^2},
 $$
 
-with
-
-$$
-r>0,
-\qquad
-a>0.
-$$
-
-### Bound
-
-Because
+where `r > 0` and `a > 0`. Since
 
 $$
 a(k^2-k_*^2)^2\ge0,
 $$
 
-one has
-
-$$
-r+a(k^2-k_*^2)^2\ge r>0.
-$$
-
-Therefore
+it follows that
 
 $$
 \boxed{
@@ -509,31 +373,27 @@ $$
 G(k_*)=\frac1r.
 $$
 
-For \(r=2\), \(a=3\), and \(k_*=4\),
+For `r = 2`, `a = 3`, `k_* = 4`,
 
 $$
-G(4)=\frac12.
+G(4)=\frac12,
 $$
 
-At \(k=5\),
+whereas
 
 $$
 G(5)
 =
 \frac{1}{2+3(25-16)^2}
 =
-\frac1{245}
-<
-\frac12.
+\frac1{245}.
 $$
 
 ---
 
 ## 6. CM9 — First-order mode evolution
 
-### Definitions
-
-Start with the photon-like oscillator
+Start from
 
 $$
 \ddot\delta_\gamma
@@ -553,28 +413,20 @@ $$
 \dot\delta_\gamma=v_\gamma,
 $$
 
-and
-
 $$
 \dot v_\gamma
 =-c_s^2k^2\delta_\gamma-k^2\Phi.
 $$
 
-Similarly, from
+Similarly,
 
 $$
 \ddot\delta_b
 +\mathcal R c_s^2k^2\delta_\gamma
-=-k^2\Phi,
+=-k^2\Phi
 $$
 
-with
-
-$$
-v_b:=\dot\delta_b,
-$$
-
-one obtains
+is equivalent to
 
 $$
 \dot\delta_b=v_b,
@@ -585,23 +437,11 @@ $$
 =-\mathcal R c_s^2k^2\delta_\gamma-k^2\Phi.
 $$
 
-Therefore `CM9` is exactly the first-order representation of the `CM5` oscillator equations, provided both use the same coefficient convention.
+Thus `CM9` is exactly the first-order representation of `CM5`, provided both use the same coefficient convention.
 
-### Worked example
+### Numerical example
 
-Take
-
-$$
-c_s^2=\frac13,
-\qquad
-k=2,
-\qquad
-\delta_\gamma=3,
-\qquad
-\Phi=1.
-$$
-
-Then
+For `c_s^2 = 1/3`, `k = 2`, `delta_gamma = 3`, and `Phi = 1`,
 
 $$
 \dot v_\gamma
@@ -609,42 +449,27 @@ $$
 =-8.
 $$
 
-Thus the second-order equation gives
-
-$$
-\ddot\delta_\gamma=-8,
-$$
-
-which is identical because \(v_\gamma=\dot\delta_\gamma\).
+Since `v_gamma = dot(delta_gamma)`, the second-order equation gives the same acceleration.
 
 ---
 
 ## 7. CM11 — Gaussian curvature damping
 
-### Mode equation
-
-Assume the curvature-diffusion contribution acts mode by mode as
+Assume modewise curvature diffusion:
 
 $$
 \dot\delta_k(t)
 =-D_{\mathrm{curv}}(t)k^2\delta_k(t).
 $$
 
-Divide by \(\delta_k\):
+Then
 
 $$
 \frac{d}{dt}\ln\delta_k
 =-k^2D_{\mathrm{curv}}(t).
 $$
 
-Integrating from \(0\) to \(t\),
-
-$$
-\ln\frac{\delta_k(t)}{\delta_k(0)}
-=-k^2\int_0^tD_{\mathrm{curv}}(t')dt'.
-$$
-
-Hence
+Integration gives
 
 $$
 \delta_k(t)
@@ -663,7 +488,7 @@ k_D^{-2}(t)
 \int_0^tD_{\mathrm{curv}}(t')dt'.
 $$
 
-Then
+Therefore
 
 $$
 \boxed{
@@ -673,17 +498,7 @@ D(k,t)
 }.
 $$
 
-### Worked example
-
-For constant diffusivity \(D_{\mathrm{curv}}=0.2\) over \(t=5\),
-
-$$
-k_D^{-2}=0.2\cdot5=1,
-\qquad
-k_D=1.
-$$
-
-At \(k=2\),
+For constant `D_curv = 0.2` over `t = 5`, one has `k_D = 1`. At `k = 2`,
 
 $$
 D(2)=e^{-4}\approx0.0183156.
@@ -693,7 +508,7 @@ $$
 
 ## 8. Definition reclassifications
 
-The following equations do not assert theorem-level consequences. They define observables or a model set and therefore belong in `DEFINITION`, not `OPEN`.
+These equations define observables or a model set rather than theorem-level consequences.
 
 ### CM12 — Dimensionless power spectrum
 
@@ -751,13 +566,13 @@ $$
 }.
 $$
 
-Whether that set is physically sufficient remains a separate model-closure question.
+Whether this set is physically sufficient remains a separate closure problem.
 
 ---
 
 ## Remaining boundary
 
-This batch proves identities and implications internal to the encoded equations. It does not resolve:
+This batch does not establish:
 
 - global existence or uniqueness of the full nonlinear PDE;
 - coercivity of the complete WCT functional;
