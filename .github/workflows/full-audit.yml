@@ -19,6 +19,18 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
       - run: pip install -r requirements.txt
-      - run: pytest -q
+      - name: Run pytest
+        run: |
+          set +e
+          pytest -q > pytest.log 2>&1
+          code=$?
+          cat pytest.log
+          exit $code
+      - name: Upload pytest diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-${{ matrix.python-version }}
+          path: pytest.log
       - run: python scripts/check_all.py
       - run: python scripts/check_full_coverage.py
