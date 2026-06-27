@@ -18,6 +18,14 @@ sigma=sqrt(kappa^2+tau^2),
 m=(hbar/c)<sigma>_w.
 ```
 
+The corrected weighted lock identity is
+
+```math
+oint_Gamma w partial_s(phi) ds
+=
+oint_Gamma w sigma ds + alpha L_s.
+```
+
 ### Phase-flux and finite-band selection
 
 `E9`-`E16` cover phase flux, winding, shell closure, and
@@ -29,27 +37,62 @@ k_*=sqrt(a/(2b)).
 
 ### Curvature feedback
 
-`E17`-`E23` cover
+`E17`-`E23` use the nonsingular regularized reciprocal
 
 ```math
-Theta[psi]=-Delta psi/(psi+epsilon exp(-alpha|psi|^2))
+R_epsilon(psi)=conj(psi)/(|psi|^2+epsilon^2 exp(-2 alpha |psi|^2)),
 ```
 
-and its Lyapunov and cavity sectors.
+and
+
+```math
+Theta_epsilon[psi]=-(Delta psi)R_epsilon(psi).
+```
+
+The denominator is strictly positive for `epsilon>0`.
 
 ### Dimensional stability
 
-`E24`-`E27` and `E65`-`E70` cover the threshold
+`E24`-`E27` and `E65`-`E70` distinguish two regularity statements:
 
 ```math
-H^2(Omega)->L^infinity(Omega), 2>n/2,
+psi in H^2, |D_epsilon(psi)|>=delta
+  => ||Theta_epsilon[psi]||_L2 <= delta^(-1)||Delta psi||_L2,
 ```
 
-which gives integer `n<=3`.
+and
+
+```math
+psi in H^s, s>n/2+2
+  => Theta_epsilon[psi] in L^infinity.
+```
+
+The exact embedding threshold `H^2 -> L^infinity` gives integer `n<=3`; nonlinear subcriticality is a separate hypothesis.
 
 ### Entropy and recursive state evolution
 
-`E28`-`E36` and `E72`-`E81` cover alpha-drop, entropy, support, recursive decay, and information-cost claims. The audit checks the standard bound `exp(H)<=K` for support size `K`.
+`E28` uses retained fractions `rho_t in (0,1]`:
+
+```math
+alpha(n)=1+(1/n) sum_t log_2(rho_t)+beta(n),
+```
+
+with the explicit condition
+
+```math
+beta(n)<-(1/n)sum_t log_2(rho_t)
+```
+
+when `alpha(n)<1` is required.
+
+`E31` is conditional on a model-specific entropy-production proof. `E32`, `E41`, and `E72` remain conditional because the corrected exponent does not by itself prove the configuration-count bound.
+
+For support size `K`,
+
+```math
+H<=log K,
+exp(H)<=K.
+```
 
 ### Computation and resources
 
@@ -57,15 +100,76 @@ which gives integer `n<=3`.
 
 ### Cavity and effective mass
 
-`E44`-`E56` cover quality factor, power balance, gap dimensions, commutators, and effective potentials.
+`E44`-`E56` include the corrected relations
+
+```math
+Q_eff=omega U/P_loss,
+```
+
+```math
+dW/dt=P_in+P_fusion-P_loss-P_out,
+```
+
+and, for
+
+```math
+omega_j^2=c^2 lambda_j+Delta_*,
+```
+
+```math
+m_eff^2=hbar^2 Delta_*/c^4.
+```
 
 ### Spectral projection
 
-`E57`-`E64` cover shell symbols, Green kernels, projections, thresholds, and the wavelength implied by `k_*=sqrt(a/(2b))`.
+`E57`-`E64` cover shell symbols, Green kernels, projections, thresholds, and
+
+```math
+lambda_*=2 pi/k_*=2 pi sqrt(2b/a).
+```
 
 ### Curvature-locked electron
 
-`CLE1`-`CLE10` cover locking, toroidal separation, periodic modes, eigenmodes, and radius/eigenvalue conventions.
+`CLE1`-`CLE10` use the consistent inverse-length convention
+
+```math
+-Delta psi=sigma_*^2 psi,
+R=1/sigma_*.
+```
+
+For the real one-dimensional reduction with
+
+```math
+q=-psi_xx/psi-sigma_*^2,
+```
+
+the corrected generalized Euler-Lagrange equation is
+
+```math
+q psi_xx/psi^2-psi_xx-d_x^2(q/psi)=0.
+```
+
+Periodic angular modes form the family
+
+```math
+f(theta)=A cos(m theta)+B sin(m theta),  m in Z_{\ge 0}.
+```
+
+A torus eigenmode is not unique without an added lowest-mode, winding, chirality, normalization, and phase-selection principle; `CLE8` is therefore conditional.
+
+### Coherence length
+
+The corrected spectral/physical-space coherence length is
+
+```math
+xi_coh=(sum_k p_k |k|^2)^(-1/2)
+```
+
+or equivalently
+
+```math
+xi_coh=sqrt(int |psi|^2 dx / int |grad psi|^2 dx).
+```
 
 ### Logarithmic transforms
 

@@ -21,25 +21,45 @@ The associated mass identification is conditional on phase-curvature locking and
 m=(hbar/c)<sigma>_w.
 ```
 
-## M2 — Curvature Operator and Lyapunov Candidate
+## M2 — Nonsingular Curvature Operator and Lyapunov Candidate
+
+Define the modulus-squared regularized reciprocal
 
 ```math
-Theta[psi]=-Delta psi/(psi+epsilon exp(-alpha|psi|^2)).
+R_epsilon(psi)=conj(psi)/(|psi|^2+epsilon^2 exp(-2 alpha |psi|^2)),
 ```
+
+and the curvature operator
 
 ```math
-E_WCT[psi]=int(|grad psi|^2+|Theta[psi]|^2) dx.
+Theta_epsilon[psi]=-(Delta psi) R_epsilon(psi).
 ```
 
-The audit explicitly tests whether the displayed denominator is globally nonzero; it is not without an admissible-set restriction.
+For `epsilon>0`, the denominator is strictly positive for every complex `psi`. For nonzero `psi`,
+
+```math
+R_epsilon(psi) -> 1/psi
+```
+
+as `epsilon -> 0`. The Lyapunov candidate is
+
+```math
+E_WCT[psi]=int(|grad psi|^2+|Theta_epsilon[psi]|^2) dx.
+```
 
 ## M3 — Finite-Band Spectral Selector
 
 ```math
-partial_t A = mu A-g|A|^2A+b(Delta+k_*^2)^2A.
+partial_t A = mu A-g|A|^2A-b(Delta+k_*^2)^2A,  b>0.
 ```
 
-For `b>0`, off-shell suppression requires a negative sign in front of the fourth-order term, or an explicitly negative coefficient.
+The Fourier growth rate contains
+
+```math
+-b(k^2-k_*^2)^2,
+```
+
+so off-shell ultraviolet modes are damped.
 
 ## M4 — Dimensional Stability Threshold
 
@@ -60,24 +80,24 @@ The model is constrained by a finite curvature resource functional. Complexity e
 ## M6A — Unified Linear Operator
 
 ```math
-L_WCT=c1(Delta+sigma^2)+c2(Delta+k_*^2)^2+i c3 m+c4 R^(-(2+n/p)).
+L_WCT=c1(Delta+sigma^2)-c2(Delta+k_*^2)^2+i c3 m+c4 R^(-(2+n/p)),  c2>0.
 ```
 
 ## M6B — Nonlinear Curvature Operator
 
 ```math
-N_curv[psi]=-Delta psi/(psi+epsilon exp(-alpha|psi|^2)).
+N_curv[psi]=-(Delta psi) conj(psi)/(|psi|^2+epsilon^2 exp(-2 alpha |psi|^2)).
 ```
 
-The operator is registered as a proposed nonlinear curvature operator; uniqueness is an open theorem obligation.
+The operator is registered as a proposed nonlinear curvature operator; uniqueness remains an open theorem obligation.
 
 ## M7 — Full Curvature-Wavefield Equation
 
 ```math
-partial_t psi=N_curv[psi]+g|psi|^2psi+c1(Delta+sigma^2)psi+c2(Delta+k_*^2)^2psi+i c3 m psi+c4 R^(-(2+n/p))psi+eta psi circle xi(t).
+partial_t psi=N_curv[psi]+g|psi|^2psi+c1(Delta+sigma^2)psi-c2(Delta+k_*^2)^2psi+i c3 m psi+c4 R^(-(2+n/p))psi+eta psi circle xi(t),  c2>0.
 ```
 
-Finite-band damping requires the sign condition on `c2` stated under M3.
+The explicit negative fourth-order sign supplies finite-band damping.
 
 ## M8 — Curvature-Acoustic Cosmology System
 
@@ -95,4 +115,4 @@ This sector is classified as open pending derivation, parameter closure, and dat
 
 ## Audit policy
 
-Each master equation is classified as one of `PASS`, `FAIL`, `CONDITIONAL`, `DEFINITION`, or `OPEN`. A `FAIL` means a stated implication is contradicted by algebra, dimensions, or a counterexample; it does not mean the software failed.
+Each master equation is classified as one of `PASS`, `FAIL`, `CONDITIONAL`, `DEFINITION`, or `OPEN`. A SymPy `PASS` means the encoded algebraic, dimensional, or counterexample check passed; it is not a Lean proof or empirical validation.

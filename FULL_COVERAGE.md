@@ -18,31 +18,43 @@ Every ID has a checker and an expected scientific status.
 | Status | Meaning |
 |---|---|
 | `PASS` | The encoded implication follows under its declared assumptions. |
-| `FAIL` | Algebra, dimensions, logic, or an explicit counterexample contradicts the statement. |
-| `CONDITIONAL` | Missing sign, domain, regularity, or model assumptions are required. |
+| `FAIL` | Algebra, dimensions, logic, or an explicit counterexample contradicts the current statement. |
+| `CONDITIONAL` | Missing sign, domain, regularity, counting, or model assumptions are required. |
 | `DEFINITION` | A definition or ansatz, not a theorem. |
 | `OPEN` | Proof or empirical validation lies outside symbolic algebra. |
 
-## Baseline classification
+## Current classification after correction pass
 
 | Status | Count |
 |---|---:|
-| PASS | 32 |
-| FAIL | 24 |
-| CONDITIONAL | 27 |
+| PASS | 51 |
+| FAIL | 0 |
+| CONDITIONAL | 32 |
 | DEFINITION | 23 |
 | OPEN | 36 |
 | **Total** | **142** |
 
 These counts are not a theory score. They prevent definitions, conjectures, and phenomenological ansatze from being reported as symbolic proofs.
 
-## Encoded regression findings
+## Resolved contradictions
 
-1. `psi + epsilon*exp(-alpha*psi**2)` is not globally nonzero for real negative `psi`; the code computes a root for `epsilon=alpha=1`.
-2. The alpha-drop form is incompatible with `alpha<1` when each logarithmic term is positive and the remaining correction is nonnegative.
-3. For support size `K`, `H<=log(K)` and therefore `exp(H)<=K`; the reverse inequality is not general.
-4. `E12` gives `lambda_star=2*pi*sqrt(2*b/a)`, exposing the factor-of-`sqrt(2)` discrepancy in `E64`.
-5. The CLE chain mixes inverse-length and inverse-length-squared conventions for `sigma_star`.
+The correction pass replaces or weakens every previously encoded contradiction:
+
+1. The node regularizer is now a modulus-squared reciprocal with strictly positive denominator.
+2. Swift-Hohenberg fourth-order terms use an explicit negative sign for ultraviolet damping.
+3. The weighted lock integral uses the derived `alpha*L_s` term.
+4. `H^2` gives an `L^2` curvature bound; `L^infinity` curvature requires `H^s`, `s>n/2+2`.
+5. Alpha-drop uses retained fractions in `(0,1]`; configuration-count claims remain conditional.
+6. The entropy/support relation is `exp(H)<=K`.
+7. Quality factor uses loss power, and the energy balance treats fusion as a source.
+8. The gap-mass law is `m_eff^2=hbar^2 Delta_*/c^4`.
+9. The selected wavelength is `2*pi*sqrt(2*b/a)`.
+10. Coherence length is defined by a spectral second moment or gradient ratio.
+11. The CLE variation includes its fourth-order term.
+12. The CLE eigenvalue/radius chain uses `sigma_*^2` and `R=1/sigma_*`.
+13. Periodic angular modes are an integer family; torus uniqueness is conditional.
+
+A zero `FAIL` count means no contradiction remains in the **current encoded statements**. It does not imply that the conditional, open, or empirical claims are proven.
 
 ## Commands
 
@@ -52,13 +64,11 @@ python scripts/check_lean_coverage.py
 pytest -q
 ```
 
-Strict theory mode returns nonzero while any encoded scientific contradiction remains:
+Strict theory mode now succeeds when no encoded `FAIL` remains:
 
 ```bash
 python scripts/check_full_coverage.py --strict-theory
 ```
-
-Normal mode exits successfully when the implementation reproduces the declared baseline, including expected scientific failures.
 
 ## Separation from `wct-lean`
 
@@ -68,20 +78,7 @@ Normal mode exits successfully when the implementation reproduces the declared b
 - `wct-lean`: kernel-checked definitions, assumptions, lemmas, and theorems;
 - `interoperability/lean_map.yaml`: metadata linking only claims with an existing Lean declaration.
 
-The mapping distinguishes exact formal counterparts from dimensional support, domain-safety support, adjacent lemmas, and stated TODOs. A SymPy `PASS` is never labeled `PROVED`; `PROVED` is reserved for declarations checked by Lean in `rickyjreyes/wct-lean`.
-
-Validate the bridge without installing Lean:
-
-```bash
-python scripts/check_lean_coverage.py
-```
-
-Formal verification remains in the Lean repository:
-
-```bash
-cd ../wct-lean
-lake build
-```
+A SymPy `PASS` is never labeled `PROVED`; `PROVED` is reserved for declarations checked by Lean in `rickyjreyes/wct-lean`.
 
 ## Integration
 

@@ -20,7 +20,17 @@ def test_cole_hopf_identity():
     assert result("EZ").status == AuditStatus.PASS
 
 
-def test_e12_e64_factor_mismatch():
+def test_e12_e64_wavelength_consistency():
     item = result("E64")
-    assert item.status == AuditStatus.FAIL
-    assert str(item.value["ratio"]) == "sqrt(2)"
+    assert item.status == AuditStatus.PASS
+    assert item.residual == 0.0
+
+
+def test_effective_mass_gap_dimensions():
+    assert result("E49").status == AuditStatus.PASS
+
+
+def test_cle_generalized_euler_lagrange_variation():
+    item = result("CLE2")
+    assert item.status == AuditStatus.PASS
+    assert item.residual == 0.0
