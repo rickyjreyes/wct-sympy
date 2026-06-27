@@ -16,6 +16,18 @@
 
 It is an **audit and regression system**, not a proof that Wave Confinement Theory is physically correct.
 
+## Start with the equations
+
+The SymPy repository audits canonical equation IDs; it is not the canonical equation text.
+
+- **All 142 effective SymPy classifications:** [`VERIFICATION_INDEX.md`](VERIFICATION_INDEX.md)
+- **Full corrected WCT equation registry:** [`WCT_FULL_EQUATION_LIST_CORRECTED.md`](https://github.com/rickyjreyes/geometry_of_resonance/blob/main/WCT_FULL_EQUATION_LIST_CORRECTED.md)
+- **Audited master equation architecture:** [`WCT_MASTER_EQUATIONS_UPDATED.md`](https://github.com/rickyjreyes/geometry_of_resonance/blob/main/WCT_MASTER_EQUATIONS_UPDATED.md)
+- **Lean kernel-checked support:** [`rickyjreyes/wct-lean`](https://github.com/rickyjreyes/wct-lean)
+- **Public cross-repository corpus map:** [WCT Research Corpus](https://rickyjreyes.github.io/research-corpus/)
+
+Use the canonical registry for the equation, symbols, assumptions, and scientific boundary. Use this repository for its executable classification and checker.
+
 ## Current audit state
 
 The registry contains **142 stable equation objects**:
@@ -129,9 +141,10 @@ $$
 |---|---|
 | `wct-sympy` | Algebra, dimensions, limits, residuals, consistency checks, and executable counterexamples. |
 | `wct-lean` | Kernel-checked definitions, assumptions, lemmas, and theorems. |
-| `MASTER_EQUATIONS.md` | Canonical master architecture. |
-| `EQUATIONS.md` | Canonical equation families and corrected forms. |
-| `equations/full_registry.yaml` | Historical baseline registry. |
+| `WCT_FULL_EQUATION_LIST_CORRECTED.md` | Canonical equation text, IDs, assumptions, and statuses. |
+| `WCT_MASTER_EQUATIONS_UPDATED.md` | Canonical master architecture. |
+| `VERIFICATION_INDEX.md` | Visible effective classification of all 142 registered objects. |
+| `equations/full_registry.yaml` | Historical baseline registry and checker assignment. |
 | `equations/derived_overrides.yaml` | Additive derivation and reclassification results. |
 | `interoperability/lean_map.yaml` | SymPy-to-Lean relationship metadata. |
 
@@ -154,11 +167,12 @@ The CI matrix runs the full audit on Python 3.10, 3.11, and 3.12.
 
 ## Primary documentation
 
+- [`VERIFICATION_INDEX.md`](VERIFICATION_INDEX.md) — all 142 effective classifications
+- [Canonical full equation registry](https://github.com/rickyjreyes/geometry_of_resonance/blob/main/WCT_FULL_EQUATION_LIST_CORRECTED.md)
 - [`MASTER_EQUATIONS.md`](MASTER_EQUATIONS.md)
 - [`EQUATIONS.md`](EQUATIONS.md)
 - [`DERIVATIONS_BATCH_1.md`](DERIVATIONS_BATCH_1.md)
 - [`FULL_COVERAGE.md`](FULL_COVERAGE.md)
-- [`COVERAGE_MATRIX.md`](COVERAGE_MATRIX.md)
 - [`WCT_GAP_ANALYSIS.md`](WCT_GAP_ANALYSIS.md)
 
 ## Scientific boundary
