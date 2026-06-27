@@ -38,50 +38,51 @@ The registry contains **142 stable equation objects**:
 
 A zero `FAIL` count means:
 
-```text
-No known contradiction remains in the current encoded statements.
-```
+> No known contradiction remains in the current encoded statements.
 
 It does **not** mean that the remaining claims have been proved or experimentally validated:
 
-```text
-32 conditional claims + 36 open claims = 68 unresolved obligations
-```
+$$
+32\text{ conditional claims} + 36\text{ open claims} = 68\text{ unresolved obligations}
+$$
 
 ## Correction pass
 
 The repository originally encoded 24 contradictions. Each was handled by one of two legitimate operations:
 
-```text
-incorrect equation → corrected equation
-```
+$$
+\text{incorrect equation} \rightarrow \text{corrected equation}
+$$
 
 or
 
-```text
-unproved unconditional claim → conditional claim
-```
+$$
+\text{unproved unconditional claim} \rightarrow \text{conditional claim}
+$$
 
 ### 1. Nonsingular curvature regularization
 
-```text
-Rε(ψ) = ψ̄ / (|ψ|² + ε² exp(−2α|ψ|²))
+$$
+Rε(ψ) = ψ̄ / (|ψ|² + ε²\exp(−2α|ψ|²))
+$$
+
+$$
 Θε[ψ] = −(Δψ)Rε(ψ)
-```
+$$
 
 For `ε > 0`, the denominator is strictly positive.
 
 ### 2. Finite-band damping sign
 
-```text
-∂ₜA = μA − g|A|²A − b(Δ + k⋆²)²A,    b > 0
-```
+$$
+∂ₜA = μA − g|A|²A − b(Δ + k⋆²)²A, \qquad b > 0
+$$
 
 The Fourier contribution is
 
-```text
+$$
 −b(k² − k⋆²)²
-```
+$$
 
 so ultraviolet modes are damped.
 
@@ -89,102 +90,121 @@ so ultraviolet modes are damped.
 
 From
 
-```text
+$$
 ∂ₛφ = σ + α/w
-```
+$$
 
 it follows that
 
-```text
-∮Γ w ∂ₛφ ds = ∮Γ wσ ds + αLₛ
-```
+$$
+∮Γ\,w\,∂ₛφ\,ds = ∮Γ\,wσ\,ds + αLₛ
+$$
 
 ### 4. Curvature regularity split
 
-```text
-ψ ∈ H²,  |Dε(ψ)| ≥ δ > 0
-    ⇒ ‖Θε[ψ]‖L² ≤ δ⁻¹‖Δψ‖L²
-```
+$$
+ψ ∈ H², \qquad |Dε(ψ)| ≥ δ > 0
+$$
+
+implies
+
+$$
+‖Θε[ψ]‖₂ ≤ δ⁻¹‖Δψ‖₂
+$$
 
 Bounded curvature requires stronger regularity:
 
-```text
-ψ ∈ Hˢ,  s > n/2 + 2
-    ⇒ Θε[ψ] ∈ L∞
-```
+$$
+ψ ∈ Hˢ, \qquad s > n/2 + 2
+$$
+
+implies
+
+$$
+Θε[ψ] ∈ L∞
+$$
 
 ### 5. Entropy and support direction
 
 For support size `K`:
 
-```text
-H ≤ log K
-exp(H) ≤ K
-```
+$$
+H ≤ \log K
+$$
+
+$$
+\exp(H) ≤ K
+$$
 
 Equality holds only for a uniform distribution on its support.
 
 ### 6. Quality factor and power balance
 
-```text
-Q = ωU / P(loss)
-```
+$$
+Q = ωU / P(\mathrm{loss})
+$$
 
-```text
-dW/dt = P(in) + P(fusion) − P(loss) − P(out)
-```
+$$
+dW/dt = P(\mathrm{in}) + P(\mathrm{fusion}) − P(\mathrm{loss}) − P(\mathrm{out})
+$$
 
 ### 7. Effective mass from a spectral gap
 
 If
 
-```text
+$$
 ωⱼ² = c²λⱼ + Δ⋆
-```
+$$
 
 then
 
-```text
-m_eff² = ℏ²Δ⋆ / c⁴
-```
+$$
+m(\mathrm{eff})² = ℏ²Δ⋆ / c⁴
+$$
 
 ### 8. Selected wavelength
 
 From
 
-```text
+$$
 k⋆ = √(a / 2b)
-```
+$$
 
 it follows that
 
-```text
+$$
 λ⋆ = 2π/k⋆ = 2π√(2b/a)
-```
+$$
 
 ### 9. Curvature-locked electron sector
 
 The consistent eigenvalue and radius convention is
 
-```text
+$$
 −Δψ = σ⋆²ψ
+$$
+
+$$
 R = 1/σ⋆
-```
+$$
 
 Periodic angular modes form the integer family
 
-```text
-f(θ) = A cos(mθ) + B sin(mθ),    m ∈ ℤ≥0
-```
+$$
+f(θ) = A\cos(mθ) + B\sin(mθ), \qquad m ∈ ℤ_{≥0}
+$$
 
 rather than a unique constant solution.
 
 ### 10. Coherence length
 
-```text
-ξ(coh) = (Σₖ pₖ|k|²)⁻¹ᐟ²
-       = √(∫|ψ|² dx / ∫|∇ψ|² dx)
-```
+$$
+ξ(\mathrm{coh}) = √\left(1 / ∑ₖ pₖ|k|²\right)
+$$
+
+$$
+ξ(\mathrm{coh}) = √\left(∫|ψ|²\,dx / ∫|∇ψ|²\,dx\right)
+$$
 
 ## Repository boundaries
 
@@ -264,15 +284,14 @@ Claims requiring PDE existence theory, global convergence, uniqueness, phenomeno
 
 The repository currently establishes:
 
-```text
-internal symbolic consistency of the corrected encoded equation set
-```
+$$
+\text{internal symbolic consistency of the corrected encoded equation set}
+$$
 
 It does not yet establish:
 
-```text
-global PDE well-posedness, uniqueness, physical completeness,
-or empirical validity of Wave Confinement Theory
-```
+$$
+\text{global PDE well-posedness, uniqueness, physical completeness, or empirical validity of WCT}
+$$
 
 Those remaining obligations belong to formal analysis, Lean formalization, calibrated simulation, and experiment.
