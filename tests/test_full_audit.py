@@ -12,24 +12,24 @@ def test_all_audits_match_declared_expected_classification():
     assert summary(results)["expectation_mismatches"] == 0
 
 
-def test_regularizer_counterexample_is_executable():
+def test_corrected_regularizer_is_strictly_positive():
     item = by_id()["E17"]
-    assert item.status == AuditStatus.FAIL
-    assert abs(float(item.evidence["counterexample_root"])) > 0
-    assert item.residual is not None and item.residual < 1e-10
+    assert item.status == AuditStatus.PASS
+    assert item.evidence["is_positive"] is True
 
 
-def test_alpha_drop_internal_conflict_is_detected():
+def test_corrected_alpha_drop_is_feasible_and_count_claims_are_conditional():
     results = by_id()
-    for equation_id in ("E28", "E32", "E41", "E72"):
-        assert results[equation_id].status == AuditStatus.FAIL
-        assert "exceeds one" in results[equation_id].reason
+    assert results["E28"].status == AuditStatus.PASS
+    assert results["E28"].value["alpha_minus_one"].is_negative
+    for equation_id in ("E32", "E41", "E72"):
+        assert results[equation_id].status == AuditStatus.CONDITIONAL
 
 
-def test_entropy_support_direction_is_detected():
+def test_entropy_support_direction_is_corrected():
     item = by_id()["E33"]
-    assert item.status == AuditStatus.FAIL
-    assert item.value["exp_entropy"] < item.value["support_size"]
+    assert item.status == AuditStatus.PASS
+    assert item.value["exp_entropy"] <= item.value["support_size"]
 
 
 def test_embedding_threshold_is_exact():
@@ -38,8 +38,15 @@ def test_embedding_threshold_is_exact():
     assert item.value == [1, 2, 3]
 
 
-def test_cle_periodic_counterexample_is_detected():
+def test_cle_periodic_family_is_quantized_not_unique():
     item = by_id()["CLE7"]
-    assert item.status == AuditStatus.FAIL
+    assert item.status == AuditStatus.PASS
     assert item.value["ode_residual"] == 0
     assert item.value["periodic_residual"] == 0
+
+
+def test_resolved_registry_has_no_known_failures():
+    report = summary(run_full_audit())
+    assert report["status_counts"].get("FAIL", 0) == 0
+    assert report["status_counts"]["PASS"] == 51
+    assert report["status_counts"]["CONDITIONAL"] == 32

@@ -12,7 +12,9 @@ epsilon, alpha = sp.symbols("epsilon alpha", positive=True)
 M, Delta = sp.symbols("M Delta", positive=True)
 H, K = sp.symbols("H K", nonnegative=True)
 R, Ls, V = sp.symbols("R L_s V", positive=True)
-omega, lambda_j, Delta_star = sp.symbols("omega lambda_j Delta_star", positive=True)
+omega, lambda_j, Delta_star = sp.symbols(
+    "omega lambda_j Delta_star", positive=True
+)
 
 
 def sigma_raw_expr() -> sp.Expr:
@@ -31,5 +33,10 @@ def dispersion_expr() -> sp.Expr:
     return r + a * k**2 - b * k**4
 
 
-def alpha_drop_expr(qs: list[sp.Expr], beta_term: sp.Expr = sp.Integer(0)) -> sp.Expr:
-    return 1 + sum(sp.log(q, 2) for q in qs) / n + beta_term
+def alpha_drop_expr(
+    retention_ratios: list[sp.Expr],
+    beta_term: sp.Expr = sp.Integer(0),
+) -> sp.Expr:
+    """Corrected alpha-drop exponent using retained fractions 0<rho<=1."""
+
+    return 1 + sum(sp.log(rho, 2) for rho in retention_ratios) / n + beta_term

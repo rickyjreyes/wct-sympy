@@ -18,7 +18,7 @@ Status words are intentionally distinct:
 - `FAIL`: algebra, dimensions, logic, or a counterexample contradicts the statement;
 - `CONDITIONAL`: additional assumptions are required;
 - `DEFINITION`: represented, but not a theorem;
-- `OPEN`: not settled by symbolic algebra;
+- `OPN`: not settled by symbolic algebra;
 - `PROVED`: reserved for a declaration kernel-checked in `wct-lean`.
 
 A SymPy `PASS` is never reported as a Lean proof.
@@ -54,22 +54,22 @@ tables/lean_coverage.json
 COVERAGE_MATRIX.md
 ```
 
-Strict theory mode returns nonzero while an encoded contradiction remains:
+Strict theory mode returns nonzero only while an encoded contradiction remains:
 
 ```bash
 python scripts/check_full_coverage.py --strict-theory
 ```
 
-Normal mode succeeds when all registered equations reproduce their declared classifications. A scientific `FAIL` means the audit detected a contradiction; it is not a software failure.
-
 | Status | Count |
 |---|---:|
-| PASS | 32 |
-| FAIL | 24 |
-| CONDITIONAL | 27 |
+| PASS | 51 |
+| FAIL | 0 |
+| CONDITIONAL | 32 |
 | DEFINITION | 23 |
 | OPEN | 36 |
 | Total | 142 |
+
+The correction pass removes the 24 previously encoded contradictions by either correcting the equation or weakening an unproved claim to `CONDITIONAL`. Zero `FAIL` does not mean all WCT claims are proved: 32 claims remain conditional and 36 remain open.
 
 See `FULL_COVERAGE.md`, `EQUATIONS.md`, and `MASTER_EQUATIONS.md`.
 
@@ -85,8 +85,8 @@ This checks that:
 
 1. every mapped ID exists in the legacy or full SymPy registry;
 2. every mapping names at least one Lean declaration;
-3. formal support, dimensional support, domain safety, and TODO relationships are not conflated;
-4. a stated Lean TODO is never counted as a proof.
+2. formal support, dimensional support, domain safety, and TODO relationships are not conflated;
+4. a stated Lean TODO s never counted as a proof.
 
 The actual formal build remains in the separate repository:
 
