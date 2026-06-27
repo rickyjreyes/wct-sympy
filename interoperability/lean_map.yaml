@@ -1,0 +1,121 @@
+version: 1
+lean_repository: rickyjreyes/wct-lean
+lean_library_root: WCTLean
+policy:
+  sympy_pass_means: "The registered symbolic, dimensional, numerical, or counterexample check passed."
+  lean_proved_means: "The named Lean declaration is kernel-checked in wct-lean."
+  prohibition: "A SymPy PASS must never be reported as a Lean proof."
+mappings:
+  - sympy_id: D1_10
+    registry: legacy
+    sympy_claim: "(hbar / c) * k_eff has mass dimension"
+    relationship: formalizes_same_claim
+    lean_status: proved
+    lean_source: WCTLean/Dimension.lean
+    lean_declarations:
+      - hbar_div_c_mul_k_is_mass
+
+  - sympy_id: E6
+    registry: full
+    sympy_claim: "m = (hbar / c) <sigma>_w is dimensionally a mass"
+    relationship: dimensional_support
+    lean_status: proved
+    lean_source: WCTLean/Dimension.lean
+    lean_declarations:
+      - hbar_div_c_mul_k_is_mass
+      - weighted_average_preserves_dimension
+    caveat: "Lean proves the dimensional closure, not the physical identification of mass with curvature."
+
+  - sympy_id: E7
+    registry: full
+    sympy_claim: "The solenoidal curvature average gives the same mass dimension"
+    relationship: dimensional_support
+    lean_status: proved
+    lean_source: WCTLean/Dimension.lean
+    lean_declarations:
+      - hbar_div_c_mul_k_is_mass
+      - weighted_average_preserves_dimension
+    caveat: "Lean proves dimensions only."
+
+  - sympy_id: E2
+    registry: full
+    sympy_claim: "A weighted average preserves the dimension of the averaged scalar"
+    relationship: formalizes_same_claim
+    lean_status: proved
+    lean_source: WCTLean/Dimension.lean
+    lean_declarations:
+      - weightedSum_dim
+      - weighted_average_preserves_dimension
+
+  - sympy_id: CURV1
+    registry: legacy
+    sympy_claim: "sqrt(kappa^2 + tau^2) has inverse-length dimension"
+    relationship: dimensional_support
+    lean_status: proved
+    lean_source: WCTLean/Curvature.lean
+    lean_declarations:
+      - sqrt_inverse_length_squared
+      - sqrt_kappa_sq_dim
+
+  - sympy_id: CURV2
+    registry: legacy
+    sympy_claim: "kappa^2 + tau^2 has inverse-length-squared dimension"
+    relationship: dimensional_support
+    lean_status: proved
+    lean_source: WCTLean/Curvature.lean
+    lean_declarations:
+      - kappa_sq_dim
+      - tau_sq_dim
+
+  - sympy_id: E1A
+    registry: full
+    sympy_claim: "kappa^2 + tau^2 is an inverse-length-squared density"
+    relationship: dimensional_support
+    lean_status: proved
+    lean_source: WCTLean/Curvature.lean
+    lean_declarations:
+      - kappa_sq_dim
+      - tau_sq_dim
+
+  - sympy_id: E1B
+    registry: full
+    sympy_claim: "sqrt(kappa^2 + tau^2) is an inverse-length spectral rate"
+    relationship: dimensional_support
+    lean_status: proved
+    lean_source: WCTLean/Curvature.lean
+    lean_declarations:
+      - sqrt_inverse_length_squared
+      - sqrt_kappa_sq_dim
+
+  - sympy_id: K1
+    registry: legacy
+    sympy_claim: "The charged-lepton Koide expression is numerically near 2/3"
+    relationship: domain_safety_only
+    lean_status: proved
+    lean_source: WCTLean/Koide.lean
+    lean_declarations:
+      - koide_denominator_positive
+      - koide_well_defined
+      - koide_positive
+    caveat: "Lean does not prove the numerical equality K = 2/3."
+
+  - sympy_id: E14
+    registry: full
+    sympy_claim: "The band-pass functional is a Lyapunov candidate under its stated sign convention"
+    relationship: supporting_lemma_only
+    lean_status: proved
+    lean_source: WCTLean/Energy.lean
+    lean_declarations:
+      - square_nonnegative
+      - positive_quadratic_energy_nonnegative
+    caveat: "These Lean lemmas prove positivity blocks, not Lyapunov descent of the full functional."
+
+  - sympy_id: E78
+    registry: full
+    sympy_claim: "Fourier/Fisher-information bound family"
+    relationship: adjacent_todo_only
+    lean_status: stated_todo
+    lean_source: WCTLean/Fourier.lean
+    lean_declarations:
+      - cos_orthogonality_TODO
+    caveat: "The declaration records a proposition and is not a proof."
