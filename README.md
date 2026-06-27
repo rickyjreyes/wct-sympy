@@ -40,42 +40,28 @@ A zero `FAIL` count means:
 
 > No known contradiction remains in the current encoded statements.
 
-It does **not** mean that the remaining claims have been proved or experimentally validated:
-
-$$
-32\text{ conditional claims} + 36\text{ open claims} = 68\text{ unresolved obligations}
-$$
+It does **not** mean that the remaining claims have been proved or experimentally validated. The unresolved total is 32 conditional claims plus 36 open claims, or 68 obligations.
 
 ## Correction pass
 
-The repository originally encoded 24 contradictions. Each was handled by one of two legitimate operations:
-
-$$
-\text{incorrect equation} \rightarrow \text{corrected equation}
-$$
-
-or
-
-$$
-\text{unproved unconditional claim} \rightarrow \text{conditional claim}
-$$
+The repository originally encoded 24 contradictions. Each was handled by correcting the equation or weakening an unproved unconditional claim to `CONDITIONAL`.
 
 ### 1. Nonsingular curvature regularization
 
 $$
-Rε(ψ) = ψ̄ / (|ψ|² + ε²\exp(−2α|ψ|²))
+Rε(ψ) = ψ̄ / (|ψ|² + ε² exp(−2α|ψ|²))
 $$
 
 $$
 Θε[ψ] = −(Δψ)Rε(ψ)
 $$
 
-For `ε > 0`, the denominator is strictly positive.
+For ε > 0, the denominator is strictly positive.
 
 ### 2. Finite-band damping sign
 
 $$
-∂ₜA = μA − g|A|²A − b(Δ + k⋆²)²A, \qquad b > 0
+∂ₜA = μA − g|A|²A − b(Δ + k⋆²)²A,    b > 0
 $$
 
 The Fourier contribution is
@@ -97,13 +83,13 @@ $$
 it follows that
 
 $$
-∮Γ\,w\,∂ₛφ\,ds = ∮Γ\,wσ\,ds + αLₛ
+∮Γ w ∂ₛφ ds = ∮Γ wσ ds + αLₛ
 $$
 
 ### 4. Curvature regularity split
 
 $$
-ψ ∈ H², \qquad |Dε(ψ)| ≥ δ > 0
+ψ ∈ H²,    |Dε(ψ)| ≥ δ > 0
 $$
 
 implies
@@ -115,7 +101,7 @@ $$
 Bounded curvature requires stronger regularity:
 
 $$
-ψ ∈ Hˢ, \qquad s > n/2 + 2
+ψ ∈ Hˢ,    s > n/2 + 2
 $$
 
 implies
@@ -126,14 +112,14 @@ $$
 
 ### 5. Entropy and support direction
 
-For support size `K`:
+For support size K:
 
 $$
-H ≤ \log K
+H ≤ log(K)
 $$
 
 $$
-\exp(H) ≤ K
+exp(H) ≤ K
 $$
 
 Equality holds only for a uniform distribution on its support.
@@ -141,11 +127,11 @@ Equality holds only for a uniform distribution on its support.
 ### 6. Quality factor and power balance
 
 $$
-Q = ωU / P(\mathrm{loss})
+Q = ωU / P(loss)
 $$
 
 $$
-dW/dt = P(\mathrm{in}) + P(\mathrm{fusion}) − P(\mathrm{loss}) − P(\mathrm{out})
+dW/dt = P(in) + P(fusion) − P(loss) − P(out)
 $$
 
 ### 7. Effective mass from a spectral gap
@@ -159,7 +145,7 @@ $$
 then
 
 $$
-m(\mathrm{eff})² = ℏ²Δ⋆ / c⁴
+m(eff)² = ℏ²Δ⋆ / c⁴
 $$
 
 ### 8. Selected wavelength
@@ -191,7 +177,7 @@ $$
 Periodic angular modes form the integer family
 
 $$
-f(θ) = A\cos(mθ) + B\sin(mθ), \qquad m ∈ ℤ_{≥0}
+f(θ) = A cos(mθ) + B sin(mθ),    m ∈ ℤ,    m ≥ 0
 $$
 
 rather than a unique constant solution.
@@ -199,11 +185,11 @@ rather than a unique constant solution.
 ### 10. Coherence length
 
 $$
-ξ(\mathrm{coh}) = √\left(1 / ∑ₖ pₖ|k|²\right)
+ξ(coh) = √(1 / ∑ₖ pₖ|k|²)
 $$
 
 $$
-ξ(\mathrm{coh}) = √\left(∫|ψ|²\,dx / ∫|∇ψ|²\,dx\right)
+ξ(coh) = √(∫|ψ|² dx / ∫|∇ψ|² dx)
 $$
 
 ## Repository boundaries
@@ -282,16 +268,8 @@ Claims requiring PDE existence theory, global convergence, uniqueness, phenomeno
 
 ## Scientific interpretation
 
-The repository currently establishes:
+The repository currently establishes internal symbolic consistency of the corrected encoded equation set.
 
-$$
-\text{internal symbolic consistency of the corrected encoded equation set}
-$$
-
-It does not yet establish:
-
-$$
-\text{global PDE well-posedness, uniqueness, physical completeness, or empirical validity of WCT}
-$$
+It does not yet establish global PDE well-posedness, uniqueness, physical completeness, or empirical validity of Wave Confinement Theory.
 
 Those remaining obligations belong to formal analysis, Lean formalization, calibrated simulation, and experiment.
