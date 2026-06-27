@@ -7,6 +7,7 @@ from .full_checks_mid_a import *  # noqa: F401,F403
 from .full_checks_mid_b import *  # noqa: F401,F403
 from .full_checks_tail import *  # noqa: F401,F403
 from .full_checks_resolved import *  # noqa: F401,F403
+from .full_checks_derived import *  # noqa: F401,F403
 
 CHECKERS = {
     name: obj
