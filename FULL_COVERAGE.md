@@ -21,7 +21,7 @@ Every ID has a checker and an expected scientific status.
 | `FAIL` | Algebra, dimensions, logic, or an explicit counterexample contradicts the current statement. |
 | `CONDITIONAL` | Missing sign, domain, regularity, counting, or model assumptions are required. |
 | `DEFINITION` | A definition or ansatz, not a theorem. |
-| `OPN` | Proof or empirical validation lies outside symbolic algebra. |
+| `OPEN` | Proof or empirical validation lies outside symbolic algebra. |
 
 ## Current classification after correction pass
 
@@ -78,7 +78,7 @@ python scripts/check_full_coverage.py --strict-theory
 - `wct-lean`: kernel-checked definitions, assumptions, lemmas, and theorems;
 - `interoperability/lean_map.yaml`: metadata linking only claims with an existing Lean declaration.
 
-A SymPy `PASS` is never labeled `PROVED`; {PROVED}` is reserved for declarations checked by Lean in `rickyjreyes/wct-lean`.
+A SymPy `PASS` is never labeled `PROVED`; `PROVED` is reserved for declarations checked by Lean in `rickyjreyes/wct-lean`.
 
 ## Integration
 
