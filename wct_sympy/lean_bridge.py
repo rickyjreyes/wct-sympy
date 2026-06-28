@@ -22,11 +22,12 @@ _ALLOWED_REGISTRIES = {"legacy", "full"}
 _ALLOWED_RELATIONSHIPS = {
     "formalizes_same_claim",
     "dimensional_support",
+    "definition_only",
     "domain_safety_only",
     "supporting_lemma_only",
     "adjacent_todo_only",
 }
-_ALLOWED_STATUSES = {"proved", "stated_todo"}
+_ALLOWED_STATUSES = {"proved", "definition", "stated_todo"}
 
 
 @dataclass(frozen=True)
@@ -108,20 +109,24 @@ def validate_lean_map(metadata: dict[str, Any], mappings: list[LeanMapping]) -> 
             raise ValueError(f"{item.sympy_id}: not present in legacy registry")
         if item.lean_status == "stated_todo" and item.relationship != "adjacent_todo_only":
             raise ValueError(f"{item.sympy_id}: TODO declaration cannot be represented as a proof")
+        if item.lean_status == "definition" and item.relationship != "definition_only":
+            raise ValueError(f"{item.sympy_id}: definition status requires definition_only")
 
 
 def lean_coverage_summary(mappings: list[LeanMapping]) -> dict[str, Any]:
     mapped_full = {item.sympy_id for item in mappings if item.registry == "full"}
     mapped_legacy = {item.sympy_id for item in mappings if item.registry == "legacy"}
     proved = [item for item in mappings if item.lean_status == "proved"]
+    definitions = [item for item in mappings if item.lean_status == "definition"]
     todos = [item for item in mappings if item.lean_status == "stated_todo"]
     return {
         "mapping_count": len(mappings),
         "proved_mapping_count": len(proved),
+        "definition_mapping_count": len(definitions),
         "todo_mapping_count": len(todos),
         "full_registry_mapped": len(mapped_full),
         "full_registry_total": len(load_full_registry()),
         "legacy_registry_mapped": len(mapped_legacy),
         "legacy_registry_total": len(_legacy_registry_ids()),
-        "note": "Mapping coverage is not theorem coverage; many WCT claims remain intentionally open.",
+        "note": "Mapping coverage is not theorem coverage; definitions and TODOs remain distinct from proved support.",
     }
