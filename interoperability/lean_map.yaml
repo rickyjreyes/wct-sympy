@@ -49,7 +49,7 @@ mappings:
   - sympy_id: E3
     registry: full
     sympy_claim: "Nonnegative weights make the finite locking mismatch nonnegative and exact locking makes it zero"
-    relationship: algebraic_support
+    relationship: formalizes_same_claim
     lean_status: proved
     lean_source: WCTLean/ResolvedAudit.lean
     lean_declarations:
@@ -94,7 +94,7 @@ mappings:
   - sympy_id: E9
     registry: full
     sympy_claim: "A supplied polar factorization yields the phase-current identity and zero residual is equivalent to the continuity equation"
-    relationship: algebraic_support
+    relationship: formalizes_same_claim
     lean_status: proved
     lean_source: WCTLean/DerivedAudit.lean
     lean_declarations:
@@ -128,7 +128,7 @@ mappings:
   - sympy_id: E17
     registry: full
     sympy_claim: "The historical scalar denominator has an explicit zero and therefore requires repair"
-    relationship: counterexample_repair
+    relationship: supporting_lemma_only
     lean_status: proved
     lean_source: WCTLean/ResolvedAudit.lean
     lean_declarations:
@@ -179,39 +179,6 @@ mappings:
       - photonSecondOrder_iff_firstOrder
       - baryonSecondOrder_iff_firstOrder
     caveat: "The coefficient convention is fixed by the supplied definitions."
-
-  - sympy_id: CM12
-    registry: full
-    sympy_claim: "Dimensionless power spectrum observable"
-    relationship: definition_only
-    lean_status: definition
-    lean_source: WCTLean/DerivedAudit.lean
-    lean_declarations:
-      - dimensionlessPowerSpectrum
-    caveat: "Kernel acceptance of a definition is not a cosmological derivation."
-
-  - sympy_id: CM13
-    registry: full
-    sympy_claim: "Peak-power and peak-scale ratios"
-    relationship: definition_only
-    lean_status: definition
-    lean_source: WCTLean/DerivedAudit.lean
-    lean_declarations:
-      - peakPowerRatio21
-      - peakPowerRatio31
-      - peakScaleRatio21
-      - peakScaleRatio31
-    caveat: "Kernel acceptance of these definitions is not a fit to cosmological data."
-
-  - sympy_id: CM16
-    registry: full
-    sympy_claim: "Horizon wavenumber from a supplied radius"
-    relationship: definition_only
-    lean_status: definition
-    lean_source: WCTLean/DerivedAudit.lean
-    lean_declarations:
-      - horizonWavenumber
-    caveat: "The horizon integral and cosmological dynamics are not formalized here."
 
   - sympy_id: CURV1
     registry: legacy
