@@ -1,6 +1,6 @@
 schema_version: 2.0.0
 registry_id: wct-effective-registry
-generated_at: '2026-06-28T02:35:41+00:00'
+generated_at: '2026-06-28T06:51:07+00:00'
 status_policy:
   PASS: The assigned check succeeds under its declared assumptions.
   CONDITIONAL: Additional mathematical, model, regularity, or empirical assumptions
@@ -73,12 +73,68 @@ claims:
   - ASM-COMPATIBLE-ORIENTATION
   - ASM-EXACT-INTEGRATED-LOCKING
   - ASM-CONSTANT-POSITIVE-WEIGHT
-  papers: []
-  evidence: []
+  papers:
+  - publication_id: geometry-of-resonance
+    title: 'The Geometry of Resonance: Wave Confinement Theory and the Emergence of
+      Mass, Force, and Spacetime'
+    local_url: https://rickyjreyes.github.io/publications/geometry-of-resonance.html
+    doi: 10.5281/zenodo.15644222
+    relationship: introduces
+  - publication_id: effective-mass-solenoidal-topology
+    title: 'Emergence of Effective Mass: Solenoidal Topology of Vibrational Energy'
+    local_url: https://rickyjreyes.github.io/publications/effective-mass-solenoidal-topology.html
+    doi: 10.5281/zenodo.17459463
+    relationship: derives
+  - publication_id: rest-energy-density-weighted-loop-curvature
+    title: 'Rest Energy from Density-Weighted Loop Curvature: A Covariant Locking
+      Principle'
+    local_url: https://rickyjreyes.github.io/publications/rest-energy-density-weighted-loop-curvature.html
+    doi: 10.5281/zenodo.20533537
+    relationship: qualifies
+  - publication_id: logarithmic-curvature-flow-lepton-spectrum
+    title: Logarithmic Curvature Flow, Filament Localization, and the Geometric Origin
+      of the Lepton Mass Spectrum
+    local_url: https://rickyjreyes.github.io/publications/logarithmic-curvature-flow-lepton-spectrum.html
+    doi: 10.5281/zenodo.18936949
+    relationship: extends
+  repositories:
+  - https://github.com/rickyjreyes/geometry_of_resonance
+  - https://github.com/rickyjreyes/wct-sympy
+  - https://github.com/rickyjreyes/wct-lean
+  formal_declarations:
+  - effectiveWavenumber_eq_loopAverage
+  - constantWeightedAverage_eq_loopAverage
+  - resolved_e5_effectiveWavenumber_chain
+  - hbar_div_c_mul_k_is_mass
+  evidence:
+  - evidence_id: EVID-MASS-SYMPY-E5
+    type: SYMBOLIC_CHECK
+    source: https://rickyjreyes.github.io/sympy/#E5
+    status: CONDITIONAL
+    independent: false
+    description: Exact loop closure plus constant positive weight closes the registered
+      effective-wavenumber algebraic chain; it does not establish dynamical realization
+      or physical mass generation.
+  - evidence_id: EVID-MASS-LEAN-E5
+    type: LEAN_THEOREM
+    source: https://github.com/rickyjreyes/wct-lean/blob/main/THEOREMS.md
+    status: CONDITIONAL
+    independent: false
+    description: Lean kernel checks the finite algebraic E5 chain under explicit closure
+      and weighting hypotheses.
+  empirical_status: NOT_TESTED
+  independent_replication: NONE
+  falsifiers:
+  - A calibrated system satisfying the declared locking assumptions does not produce
+    the predicted effective mass relation within stated uncertainty.
+  - The required curvature scale cannot be selected dynamically without fitting the
+    target mass.
   unresolved_obligations:
   - Establish that the dynamically selected curvature scale determines physical mass
     rather than merely supplying a dimensionally valid mapping.
   - Close or calibrate the model-dependent proportionality in E19.
+  - Publish a parameter-frozen empirical test connecting measured curvature or spectral
+    scale to inertial mass.
 - claim_id: CLM-FINITE-BAND-SELECTION
   title: Finite-band pattern selection
   status: CONDITIONAL
@@ -97,11 +153,67 @@ claims:
   - E64
   assumptions:
   - ASM-POSITIVE-SPECTRAL-OFFSET
-  papers: []
-  evidence: []
+  papers:
+  - publication_id: phase-flux-field
+    title: 'Phase-Flux Field (PFF): Axiomatic Substrate for Wave Confinement Theory'
+    local_url: https://rickyjreyes.github.io/publications/phase-flux-field.html
+    doi: 10.5281/zenodo.17578766
+    relationship: introduces
+  - publication_id: self-emergent-fourier-cymatics
+    title: 'Self-Emergent Fourier Cymatics: Entropic Eigenmodes out of Chaos'
+    local_url: https://rickyjreyes.github.io/publications/self-emergent-fourier-cymatics.html
+    doi: 10.5281/zenodo.17732648
+    relationship: tests
+  - publication_id: geometry-of-resonance
+    title: 'The Geometry of Resonance: Wave Confinement Theory and the Emergence of
+      Mass, Force, and Spacetime'
+    local_url: https://rickyjreyes.github.io/publications/geometry-of-resonance.html
+    doi: 10.5281/zenodo.15644222
+    relationship: extends
+  repositories:
+  - https://github.com/rickyjreyes/geometry_of_resonance
+  - https://github.com/rickyjreyes/wct-sympy
+  - https://github.com/rickyjreyes/wct-lean
+  formal_declarations:
+  - bandpass_oneMode_symbol
+  - bandGreenDenominator_pos
+  - bandGreenKernel_le_inverseOffset
+  - bandGreenKernel_at_shell
+  evidence:
+  - evidence_id: EVID-BAND-SYMPY
+    type: SYMBOLIC_CHECK
+    source: https://rickyjreyes.github.io/sympy/#M3
+    status: SUPPORTING
+    independent: false
+    description: Executable checks verify the preferred-shell extremum, sign convention,
+      projection identities, selected wavelength, and bounded Green kernel under declared
+      assumptions.
+  - evidence_id: EVID-BAND-LEAN
+    type: LEAN_THEOREM
+    source: https://github.com/rickyjreyes/wct-lean/blob/main/THEOREMS.md
+    status: CONDITIONAL
+    independent: false
+    description: Lean checks the one-mode polynomial symbol and Green-kernel inequalities,
+      not the complete nonlinear pattern-selection theorem.
+  - evidence_id: EVID-BAND-SIMULATION
+    type: SIMULATION
+    source: https://rickyjreyes.github.io/publications/self-emergent-fourier-cymatics.html
+    status: CONDITIONAL
+    independent: false
+    description: Author-generated numerical studies report finite-band spectral concentration
+      for selected models and parameters.
+  empirical_status: SIMULATED
+  independent_replication: NONE
+  falsifiers:
+  - With frozen equations, discretization, parameters, and initial-condition ensemble,
+    the predicted preferred shell fails to appear or is not robust to resolution and
+    domain changes.
+  - The measured selected wavelength disagrees with the declared dispersion maximum
+    after uncertainty propagation.
   unresolved_obligations:
   - Distinguish linear spectral selection from nonlinear global pattern selection.
   - Connect the selected shell to calibrated experimental observables.
+  - Publish a frozen cross-resolution and cross-integrator reproduction bundle.
 - claim_id: CLM-DIMENSIONALITY
   title: Spatial-dimensionality stability criterion
   status: CONDITIONAL
@@ -115,18 +227,116 @@ claims:
   assumptions:
   - ASM-STANDARD-SOBOLEV-DOMAIN
   - ASM-H2-CONFINEMENT-ROUTE
-  papers: []
-  evidence: []
+  papers:
+  - publication_id: hard-upper-bound-spatial-dimensionality
+    title: Hard Upper Bound on Spatial Dimensionality in Wave Confinement Theory
+    local_url: https://rickyjreyes.github.io/publications/hard-upper-bound-spatial-dimensionality.html
+    doi: 10.5281/zenodo.17081283
+    relationship: introduces
+  - publication_id: geometry-of-resonance
+    title: 'The Geometry of Resonance: Wave Confinement Theory and the Emergence of
+      Mass, Force, and Spacetime'
+    local_url: https://rickyjreyes.github.io/publications/geometry-of-resonance.html
+    doi: 10.5281/zenodo.15644222
+    relationship: contextualizes
+  repositories:
+  - https://github.com/rickyjreyes/geometry_of_resonance
+  - https://github.com/rickyjreyes/wct-sympy
+  evidence:
+  - evidence_id: EVID-DIM-SOBOLEV
+    type: SYMBOLIC_CHECK
+    source: https://rickyjreyes.github.io/equations/#M4
+    status: SUPPORTING
+    independent: false
+    description: The registered mathematical result is the standard H2-to-L-infinity
+      threshold for integer dimension n at most 3 under standard domain hypotheses.
+  - evidence_id: EVID-DIM-E70
+    type: SYMBOLIC_CHECK
+    source: https://rickyjreyes.github.io/equations/#E70
+    status: CONDITIONAL
+    independent: false
+    description: E70 records the broader WCT stability interpretation as conditional
+      on the H2 confinement route being necessary.
+  empirical_status: NOT_APPLICABLE
+  independent_replication: NONE
+  qualification: The verified Sobolev threshold is not a universal biconditional theorem
+    excluding every possible stable higher-dimensional confinement mechanism.
+  falsifiers:
+  - A valid stable WCT confinement mechanism in dimension n greater than or equal
+    to 4 that does not require the declared H2-to-L-infinity route falsifies the universal
+    interpretation while leaving the Sobolev theorem intact.
   unresolved_obligations:
   - Prove that the H2 regularity route is necessary for every admissible stable WCT
     confinement mechanism, or retain explicitly conditional wording.
 - claim_id: CLM-KOIDE
   title: Koide mass relation from curvature-harmonic structure
   status: OPEN
-  equations: []
+  expression: Q = (m_e + m_mu + m_tau) / (sqrt(m_e) + sqrt(m_mu) + sqrt(m_tau))^2
+  target_value: 2/3
+  equations:
+  - TOP7
   assumptions: []
-  papers: []
-  evidence: []
+  papers:
+  - publication_id: wct-koide-mass-relation
+    title: 'Wave Confinement Theory Predicts the Koide Mass Relation: A Curvature-Harmonic
+      Origin of Fermion Mass Triplets'
+    local_url: https://rickyjreyes.github.io/publications/wct-koide-mass-relation.html
+    doi: 10.5281/zenodo.17887562
+    relationship: introduces
+  - publication_id: logarithmic-curvature-flow-lepton-spectrum
+    title: Logarithmic Curvature Flow, Filament Localization, and the Geometric Origin
+      of the Lepton Mass Spectrum
+    local_url: https://rickyjreyes.github.io/publications/logarithmic-curvature-flow-lepton-spectrum.html
+    doi: 10.5281/zenodo.18936949
+    relationship: extends
+  - publication_id: rest-energy-density-weighted-loop-curvature
+    title: 'Rest Energy from Density-Weighted Loop Curvature: A Covariant Locking
+      Principle'
+    local_url: https://rickyjreyes.github.io/publications/rest-energy-density-weighted-loop-curvature.html
+    doi: 10.5281/zenodo.20533537
+    relationship: supplies_mass_mapping
+  repositories:
+  - https://github.com/rickyjreyes/geometry_of_resonance
+  - https://github.com/rickyjreyes/wct-sympy
+  - https://github.com/rickyjreyes/wct-lean
+  formal_declarations:
+  - koide_sqrt_sum_pos
+  - koide_denominator_positive
+  - koide_numerator_positive
+  - koide_well_defined
+  - koide_positive
+  evidence:
+  - evidence_id: EVID-KOIDE-LEAN-DOMAIN
+    type: LEAN_THEOREM
+    source: https://github.com/rickyjreyes/wct-lean/blob/main/THEOREMS.md#koide-wctleankoidelean
+    status: SUPPORTING
+    independent: false
+    description: Lean establishes positivity and well-definedness of the Koide expression
+      on the positive-mass domain; it does not derive Q = 2/3.
+  - evidence_id: EVID-KOIDE-SYMPY
+    type: SYMBOLIC_CHECK
+    source: https://github.com/rickyjreyes/wct-sympy/blob/main/scripts/check_koide.py
+    status: CONDITIONAL
+    independent: false
+    description: Author-generated numerical and symbolic checks evaluate the relation
+      but do not resolve whether the target value is derived rather than selected
+      or fitted.
+  empirical_status: PHENOMENOLOGICAL
+  independent_replication: NONE
+  derivation_classification: UNRESOLVED
+  continuous_free_parameters: NOT_YET_REGISTERED
+  discrete_choices: NOT_YET_REGISTERED
+  normalization_dependence: NOT_YET_REGISTERED
+  state_selection_rule: NOT_YET_REGISTERED
+  unsuccessful_candidate_count: NOT_YET_REGISTERED
+  selected_state_unique: UNKNOWN
+  falsifiers:
+  - A preregistered parameter-free derivation fails to return Q = 2/3 for the declared
+    state-selection rule.
+  - The result changes materially under admissible normalization or unreported discrete
+    model choices.
+  - The target value is found to be imposed as an input rather than produced by the
+    dynamics or geometry.
   unresolved_obligations:
   - Determine whether Q = 2/3 is an output or an imposed constraint.
   - Record which model choices are fixed before evaluating the ratio.
@@ -152,13 +362,66 @@ claims:
   - E73
   - E76
   assumptions: []
-  papers: []
-  evidence: []
+  papers:
+  - publication_id: p-vs-np-curvature-bounded-wave-computation
+    title: 'P vs NP in Curvature-Bounded Wave Computation: A Model-Relative P_WCC
+      != NP_WCC Separation'
+    local_url: https://rickyjreyes.github.io/publications/p-vs-np-curvature-bounded-wave-computation.html
+    doi: 10.5281/zenodo.17743607
+    relationship: introduces
+  - publication_id: discrete-wave-constrained-computation
+    title: 'Discrete Wave-Constrained Computation and Classical Complexity: Turing
+      Equivalence for P and NP'
+    local_url: https://rickyjreyes.github.io/publications/discrete-wave-constrained-computation.html
+    doi: 10.5281/zenodo.17732642
+    relationship: qualifies
+  - publication_id: classical-p-vs-np-ill-posed
+    title: The Classical P vs NP Problem Is Mathematically and Physically Ill-Posed
+    local_url: https://rickyjreyes.github.io/publications/classical-p-vs-np-ill-posed.html
+    doi: 10.5281/zenodo.17783074
+    relationship: critiques
+  - publication_id: wavelock-curvature-locked-one-way-function
+    title: 'WaveLock: A Curvature-Locked One-Way Function Based on Nonlinear PDE Evolution'
+    local_url: https://rickyjreyes.github.io/publications/wavelock-curvature-locked-one-way-function.html
+    doi: 10.5281/zenodo.19122146
+    relationship: applies
+  repositories:
+  - https://github.com/rickyjreyes/geometry_of_resonance
+  - https://github.com/rickyjreyes/Wavelock
+  - https://github.com/rickyjreyes/wct-sympy
+  evidence:
+  - evidence_id: EVID-COMP-SYMPY
+    type: SYMBOLIC_CHECK
+    source: https://rickyjreyes.github.io/sympy/#M5
+    status: CONDITIONAL
+    independent: false
+    description: The registry checks dimensional and counting relations but leaves
+      encoding, precision, update-cost, and equivalence assumptions open.
+  - evidence_id: EVID-COMP-WAVELOCK
+    type: SIMULATION
+    source: https://github.com/rickyjreyes/Wavelock
+    status: CONDITIONAL
+    independent: false
+    description: WaveLock is an author-generated cryptographic research prototype
+      with unresolved security proof obligations; it is not evidence for unrestricted
+      classical P versus NP.
+  empirical_status: MODEL_RELATIVE
+  independent_replication: NONE
+  qualification: All separation and equivalence statements are internal to explicitly
+    defined computational models and must not be reported as an unrestricted solution
+    to classical P versus NP.
+  falsifiers:
+  - A polynomial-overhead simulation invalidates the claimed model-relative separation
+    under the same encoding, precision, and resource assumptions.
+  - The declared curvature-resource restriction cannot be implemented or measured
+    without exponential hidden overhead.
   unresolved_obligations:
   - Specify the encoding, precision model, update cost, and finite curvature-resource
     bound.
   - Separate physical-resource claims from classical complexity-class equivalence
     claims.
+  - Provide theorem-level simulation relations between the WCC model and a standard
+    computational model.
 objects:
 - canonical_id: M1
   aliases: []
@@ -7699,7 +7962,7 @@ objects:
 provenance:
   registry_version: 2.0.0
   source_commits:
-    wct-sympy: 53c1dcd59de56b9368f855c9f96f9277fdcb38e1
+    wct-sympy: 57e474827a310497693cf737aa43cbd199ec630c
     geometry_of_resonance: null
     wct-lean: null
   generator: scripts/compile_registry.py

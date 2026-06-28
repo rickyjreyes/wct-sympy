@@ -1,15 +1,9 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-06-28T02:35:41+00:00",
+  "generated_at": "2026-06-28T06:51:07+00:00",
   "valid": true,
   "errors": [],
-  "warnings": [
-    "CLM-CURVATURE-MASS: no source-paper mapping yet",
-    "CLM-FINITE-BAND-SELECTION: no source-paper mapping yet",
-    "CLM-DIMENSIONALITY: no source-paper mapping yet",
-    "CLM-KOIDE: no source-paper mapping yet",
-    "CLM-CURVATURE-COMPUTATION: no source-paper mapping yet"
-  ],
+  "warnings": [],
   "counts": {
     "PASS": 59,
     "CONDITIONAL": 27,
