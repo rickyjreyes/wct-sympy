@@ -1,4 +1,4 @@
-version: 1
+version: 2
 lean_repository: rickyjreyes/wct-lean
 lean_library_root: WCTLean
 policy:
@@ -14,6 +14,60 @@ mappings:
     lean_source: WCTLean/Dimension.lean
     lean_declarations:
       - hbar_div_c_mul_k_is_mass
+
+  - sympy_id: E1A
+    registry: full
+    sympy_claim: "kappa^2 + tau^2 is an inverse-length-squared density"
+    relationship: dimensional_support
+    lean_status: proved
+    lean_source: WCTLean/Curvature.lean
+    lean_declarations:
+      - kappa_sq_dim
+      - tau_sq_dim
+
+  - sympy_id: E1B
+    registry: full
+    sympy_claim: "sqrt(kappa^2 + tau^2) is an inverse-length spectral rate"
+    relationship: dimensional_support
+    lean_status: proved
+    lean_source: WCTLean/Curvature.lean
+    lean_declarations:
+      - sqrt_inverse_length_squared
+      - sqrt_kappa_sq_dim
+
+  - sympy_id: E2
+    registry: full
+    sympy_claim: "A positive weighted average has a nonzero denominator and preserves the encoded dimension"
+    relationship: formalizes_same_claim
+    lean_status: proved
+    lean_source: WCTLean/ResolvedAudit.lean
+    lean_declarations:
+      - densityWeightedAverage_denominator_ne_zero
+      - weightedSum_dim
+      - weighted_average_preserves_dimension
+
+  - sympy_id: E3
+    registry: full
+    sympy_claim: "Nonnegative weights make the finite locking mismatch nonnegative and exact locking makes it zero"
+    relationship: algebraic_support
+    lean_status: proved
+    lean_source: WCTLean/ResolvedAudit.lean
+    lean_declarations:
+      - lockingMismatch_nonnegative
+      - lockingMismatch_zero
+    caveat: "Finite algebraic support; this is not an integral theorem on general curves."
+
+  - sympy_id: E5
+    registry: full
+    sympy_claim: "Exact loop closure and a positive constant weight establish the effective-wavenumber chain"
+    relationship: formalizes_same_claim
+    lean_status: proved
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - effectiveWavenumber_eq_loopAverage
+      - constantWeightedAverage_eq_loopAverage
+      - resolved_e5_effectiveWavenumber_chain
+    caveat: "Lean proves the algebraic implication under supplied closure and weighting hypotheses; it does not prove dynamic attainment of exact lock."
 
   - sympy_id: E6
     registry: full
@@ -37,15 +91,127 @@ mappings:
       - weighted_average_preserves_dimension
     caveat: "Lean proves dimensions only."
 
-  - sympy_id: E2
+  - sympy_id: E9
     registry: full
-    sympy_claim: "A weighted average preserves the dimension of the averaged scalar"
+    sympy_claim: "A supplied polar factorization yields the phase-current identity and zero residual is equivalent to the continuity equation"
+    relationship: algebraic_support
+    lean_status: proved
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - polarCurrentProduct_im
+      - phaseCurrent_of_polar_factorization
+      - conservationResidual_zero_iff
+    caveat: "Full functional differentiation of psi = sqrt(u) exp(i theta) remains outside this finite algebraic formalization."
+
+  - sympy_id: E13
+    registry: full
+    sympy_claim: "The one-mode band-pass operator has the registered polynomial symbol"
+    relationship: supporting_lemma_only
+    lean_status: proved
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - bandpass_oneMode_symbol
+    caveat: "This is not the full generalized Euler-Lagrange or nonlinear pattern-selection theorem."
+
+  - sympy_id: E14
+    registry: full
+    sympy_claim: "The band-pass functional has kernel-checked positivity support and the registered one-mode symbol"
+    relationship: supporting_lemma_only
+    lean_status: proved
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - bandpass_oneMode_symbol
+      - square_nonnegative
+      - positive_quadratic_energy_nonnegative
+    caveat: "These declarations support positivity and the one-mode symbol, not Lyapunov descent of the full functional."
+
+  - sympy_id: E17
+    registry: full
+    sympy_claim: "The historical scalar denominator has an explicit zero and therefore requires repair"
+    relationship: counterexample_repair
+    lean_status: proved
+    lean_source: WCTLean/ResolvedAudit.lean
+    lean_declarations:
+      - resolved_e17_counterexample
+    caveat: "The counterexample proves failure of the historical scalar denominator; the complete modulus-squared complex operator remains a separate formalization target."
+
+  - sympy_id: E18
+    registry: full
+    sympy_claim: "Nonnegative coefficients give nonnegative energy and an exact negative squared-norm rate implies monotone descent"
+    relationship: supporting_lemma_only
+    lean_status: proved
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - resolved_e18_energy_nonnegative
+      - resolved_e18_gradientFlow_descent
+    caveat: "The functional chain rule for the complete curvature energy is an explicit hypothesis, not a proved PDE theorem."
+
+  - sympy_id: E58
+    registry: full
+    sympy_claim: "Positive spectral offset gives a positive Green denominator and the bound G(k) <= 1/r"
     relationship: formalizes_same_claim
     lean_status: proved
-    lean_source: WCTLean/Dimension.lean
+    lean_source: WCTLean/DerivedAudit.lean
     lean_declarations:
-      - weightedSum_dim
-      - weighted_average_preserves_dimension
+      - bandGreenDenominator_pos
+      - bandGreenDenominator_ge_offset
+      - bandGreenKernel_pos
+      - bandGreenKernel_le_inverseOffset
+      - bandGreenKernel_at_shell
+
+  - sympy_id: E78
+    registry: full
+    sympy_claim: "Fourier/Fisher-information bound family"
+    relationship: adjacent_todo_only
+    lean_status: stated_todo
+    lean_source: WCTLean/Fourier.lean
+    lean_declarations:
+      - cos_orthogonality_TODO
+    caveat: "The declaration records a proposition and is not a proof."
+
+  - sympy_id: CM9
+    registry: full
+    sympy_claim: "The photon and baryon second-order oscillator forms are equivalent to their first-order acceleration systems"
+    relationship: formalizes_same_claim
+    lean_status: proved
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - photonSecondOrder_iff_firstOrder
+      - baryonSecondOrder_iff_firstOrder
+    caveat: "The coefficient convention is fixed by the supplied definitions."
+
+  - sympy_id: CM12
+    registry: full
+    sympy_claim: "Dimensionless power spectrum observable"
+    relationship: definition_only
+    lean_status: definition
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - dimensionlessPowerSpectrum
+    caveat: "Kernel acceptance of a definition is not a cosmological derivation."
+
+  - sympy_id: CM13
+    registry: full
+    sympy_claim: "Peak-power and peak-scale ratios"
+    relationship: definition_only
+    lean_status: definition
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - peakPowerRatio21
+      - peakPowerRatio31
+      - peakScaleRatio21
+      - peakScaleRatio31
+    caveat: "Kernel acceptance of these definitions is not a fit to cosmological data."
+
+  - sympy_id: CM16
+    registry: full
+    sympy_claim: "Horizon wavenumber from a supplied radius"
+    relationship: definition_only
+    lean_status: definition
+    lean_source: WCTLean/DerivedAudit.lean
+    lean_declarations:
+      - horizonWavenumber
+    caveat: "The horizon integral and cosmological dynamics are not formalized here."
 
   - sympy_id: CURV1
     registry: legacy
@@ -67,26 +233,6 @@ mappings:
       - kappa_sq_dim
       - tau_sq_dim
 
-  - sympy_id: E1A
-    registry: full
-    sympy_claim: "kappa^2 + tau^2 is an inverse-length-squared density"
-    relationship: dimensional_support
-    lean_status: proved
-    lean_source: WCTLean/Curvature.lean
-    lean_declarations:
-      - kappa_sq_dim
-      - tau_sq_dim
-
-  - sympy_id: E1B
-    registry: full
-    sympy_claim: "sqrt(kappa^2 + tau^2) is an inverse-length spectral rate"
-    relationship: dimensional_support
-    lean_status: proved
-    lean_source: WCTLean/Curvature.lean
-    lean_declarations:
-      - sqrt_inverse_length_squared
-      - sqrt_kappa_sq_dim
-
   - sympy_id: K1
     registry: legacy
     sympy_claim: "The charged-lepton Koide expression is numerically near 2/3"
@@ -98,24 +244,3 @@ mappings:
       - koide_well_defined
       - koide_positive
     caveat: "Lean does not prove the numerical equality K = 2/3."
-
-  - sympy_id: E14
-    registry: full
-    sympy_claim: "The band-pass functional is a Lyapunov candidate under its stated sign convention"
-    relationship: supporting_lemma_only
-    lean_status: proved
-    lean_source: WCTLean/Energy.lean
-    lean_declarations:
-      - square_nonnegative
-      - positive_quadratic_energy_nonnegative
-    caveat: "These Lean lemmas prove positivity blocks, not Lyapunov descent of the full functional."
-
-  - sympy_id: E78
-    registry: full
-    sympy_claim: "Fourier/Fisher-information bound family"
-    relationship: adjacent_todo_only
-    lean_status: stated_todo
-    lean_source: WCTLean/Fourier.lean
-    lean_declarations:
-      - cos_orthogonality_TODO
-    caveat: "The declaration records a proposition and is not a proof."
