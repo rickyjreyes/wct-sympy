@@ -14,11 +14,17 @@ def test_sympy_pass_is_not_lean_proof_policy():
     assert "kernel-checked" in policy["lean_proved_means"]
 
 
-def test_todo_is_not_counted_as_proved():
+def test_todo_and_definitions_are_not_counted_as_proved():
     _, mappings = load_lean_map()
     report = lean_coverage_summary(mappings)
     assert report["todo_mapping_count"] >= 1
-    assert report["proved_mapping_count"] + report["todo_mapping_count"] == report["mapping_count"]
+    assert report["definition_mapping_count"] >= 1
+    assert (
+        report["proved_mapping_count"]
+        + report["definition_mapping_count"]
+        + report["todo_mapping_count"]
+        == report["mapping_count"]
+    )
 
 
 def test_numeric_koide_claim_has_domain_only_caveat():
@@ -26,3 +32,11 @@ def test_numeric_koide_claim_has_domain_only_caveat():
     koide = next(item for item in mappings if item.sympy_id == "K1")
     assert koide.relationship == "domain_safety_only"
     assert "does not prove" in koide.caveat.lower()
+
+
+def test_cosmology_definitions_are_not_reported_as_proofs():
+    _, mappings = load_lean_map()
+    by_id = {item.sympy_id: item for item in mappings}
+    for object_id in ("CM12", "CM13", "CM16"):
+        assert by_id[object_id].lean_status == "definition"
+        assert by_id[object_id].relationship == "definition_only"
