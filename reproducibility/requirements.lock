@@ -1,0 +1,7 @@
+# Exact Python environment for the WCT-2026.1 symbolic audit.
+numpy==2.3.5
+scipy==1.17.0
+sympy==1.14.0
+PyYAML==6.0.3
+pytest==9.0.2
+matplotlib==3.10.8
