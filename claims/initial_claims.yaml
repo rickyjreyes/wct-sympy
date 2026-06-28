@@ -1,0 +1,62 @@
+version: 1
+claims:
+  CLM-CURVATURE-MASS:
+    title: Curvature-derived mass
+    status: CONDITIONAL
+    equations: [E1B, E2, E5, E6, E7, E19, E49]
+    assumptions:
+      - ASM-COMPATIBLE-ORIENTATION
+      - ASM-EXACT-INTEGRATED-LOCKING
+      - ASM-CONSTANT-POSITIVE-WEIGHT
+    papers: []
+    evidence: []
+    unresolved_obligations:
+      - Establish that the dynamically selected curvature scale determines physical mass rather than merely supplying a dimensionally valid mapping.
+      - Close or calibrate the model-dependent proportionality in E19.
+  CLM-FINITE-BAND-SELECTION:
+    title: Finite-band pattern selection
+    status: CONDITIONAL
+    equations: [M3, E12, E13, E14, E15, E16, E57, E58, E59, E61, E62, E64]
+    assumptions:
+      - ASM-POSITIVE-SPECTRAL-OFFSET
+    papers: []
+    evidence: []
+    unresolved_obligations:
+      - Distinguish linear spectral selection from nonlinear global pattern selection.
+      - Connect the selected shell to calibrated experimental observables.
+  CLM-DIMENSIONALITY:
+    title: Spatial-dimensionality stability criterion
+    status: CONDITIONAL
+    equations: [M4, E24, E65, E67, E69, E70]
+    assumptions:
+      - ASM-STANDARD-SOBOLEV-DOMAIN
+      - ASM-H2-CONFINEMENT-ROUTE
+    papers: []
+    evidence: []
+    unresolved_obligations:
+      - Prove that the H2 regularity route is necessary for every admissible stable WCT confinement mechanism, or retain explicitly conditional wording.
+  CLM-KOIDE:
+    title: Koide mass relation from curvature-harmonic structure
+    status: OPEN
+    equations: []
+    assumptions: []
+    papers: []
+    evidence: []
+    unresolved_obligations:
+      - Determine whether Q = 2/3 is an output or an imposed constraint.
+      - Record which model choices are fixed before evaluating the ratio.
+      - Count available continuous and discrete choices.
+      - Determine whether the selected harmonic state is unique.
+      - Count unsuccessful candidate triplets.
+      - Determine dependence on normalization and state selection.
+      - Classify the result as a scale-free phenomenological derivation, fitted relation, or dynamical prediction.
+  CLM-CURVATURE-COMPUTATION:
+    title: Curvature-bounded computation
+    status: CONDITIONAL
+    equations: [M5, E36, E37, E38, E39, E40, E41, E71, E72, E73, E76]
+    assumptions: []
+    papers: []
+    evidence: []
+    unresolved_obligations:
+      - Specify the encoding, precision model, update cost, and finite curvature-resource bound.
+      - Separate physical-resource claims from classical complexity-class equivalence claims.

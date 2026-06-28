@@ -1,121 +1,30 @@
-version: 1
+version: 2
 lean_repository: rickyjreyes/wct-lean
 lean_library_root: WCTLean
 policy:
-  sympy_pass_means: "The registered symbolic, dimensional, numerical, or counterexample check passed."
-  lean_proved_means: "The named Lean declaration is kernel-checked in wct-lean."
-  prohibition: "A SymPy PASS must never be reported as a Lean proof."
+  sympy_pass_means: The registered symbolic, dimensional, numerical, or counterexample check passed.
+  lean_proved_means: The named Lean declaration is kernel-checked in wct-lean.
+  prohibition: A SymPy PASS must never be reported as a Lean proof.
 mappings:
-  - sympy_id: D1_10
-    registry: legacy
-    sympy_claim: "(hbar / c) * k_eff has mass dimension"
-    relationship: formalizes_same_claim
-    lean_status: proved
-    lean_source: WCTLean/Dimension.lean
-    lean_declarations:
-      - hbar_div_c_mul_k_is_mass
-
-  - sympy_id: E6
-    registry: full
-    sympy_claim: "m = (hbar / c) <sigma>_w is dimensionally a mass"
-    relationship: dimensional_support
-    lean_status: proved
-    lean_source: WCTLean/Dimension.lean
-    lean_declarations:
-      - hbar_div_c_mul_k_is_mass
-      - weighted_average_preserves_dimension
-    caveat: "Lean proves the dimensional closure, not the physical identification of mass with curvature."
-
-  - sympy_id: E7
-    registry: full
-    sympy_claim: "The solenoidal curvature average gives the same mass dimension"
-    relationship: dimensional_support
-    lean_status: proved
-    lean_source: WCTLean/Dimension.lean
-    lean_declarations:
-      - hbar_div_c_mul_k_is_mass
-      - weighted_average_preserves_dimension
-    caveat: "Lean proves dimensions only."
-
-  - sympy_id: E2
-    registry: full
-    sympy_claim: "A weighted average preserves the dimension of the averaged scalar"
-    relationship: formalizes_same_claim
-    lean_status: proved
-    lean_source: WCTLean/Dimension.lean
-    lean_declarations:
-      - weightedSum_dim
-      - weighted_average_preserves_dimension
-
-  - sympy_id: CURV1
-    registry: legacy
-    sympy_claim: "sqrt(kappa^2 + tau^2) has inverse-length dimension"
-    relationship: dimensional_support
-    lean_status: proved
-    lean_source: WCTLean/Curvature.lean
-    lean_declarations:
-      - sqrt_inverse_length_squared
-      - sqrt_kappa_sq_dim
-
-  - sympy_id: CURV2
-    registry: legacy
-    sympy_claim: "kappa^2 + tau^2 has inverse-length-squared dimension"
-    relationship: dimensional_support
-    lean_status: proved
-    lean_source: WCTLean/Curvature.lean
-    lean_declarations:
-      - kappa_sq_dim
-      - tau_sq_dim
-
-  - sympy_id: E1A
-    registry: full
-    sympy_claim: "kappa^2 + tau^2 is an inverse-length-squared density"
-    relationship: dimensional_support
-    lean_status: proved
-    lean_source: WCTLean/Curvature.lean
-    lean_declarations:
-      - kappa_sq_dim
-      - tau_sq_dim
-
-  - sympy_id: E1B
-    registry: full
-    sympy_claim: "sqrt(kappa^2 + tau^2) is an inverse-length spectral rate"
-    relationship: dimensional_support
-    lean_status: proved
-    lean_source: WCTLean/Curvature.lean
-    lean_declarations:
-      - sqrt_inverse_length_squared
-      - sqrt_kappa_sq_dim
-
-  - sympy_id: K1
-    registry: legacy
-    sympy_claim: "The charged-lepton Koide expression is numerically near 2/3"
-    relationship: domain_safety_only
-    lean_status: proved
-    lean_source: WCTLean/Koide.lean
-    lean_declarations:
-      - koide_denominator_positive
-      - koide_well_defined
-      - koide_positive
-    caveat: "Lean does not prove the numerical equality K = 2/3."
-
-  - sympy_id: E14
-    registry: full
-    sympy_claim: "The band-pass functional is a Lyapunov candidate under its stated sign convention"
-    relationship: supporting_lemma_only
-    lean_status: proved
-    lean_source: WCTLean/Energy.lean
-    lean_declarations:
-      - square_nonnegative
-      - positive_quadratic_energy_nonnegative
-    caveat: "These Lean lemmas prove positivity blocks, not Lyapunov descent of the full functional."
-
-  - sympy_id: E78
-    registry: full
-    sympy_claim: "Fourier/Fisher-information bound family"
-    relationship: adjacent_todo_only
-    lean_status: stated_todo
-    lean_source: WCTLean/Fourier.lean
-    lean_declarations:
-      - cos_orthogonality_TODO
-    caveat: "The declaration records a proposition and is not a proof."
+  - {sympy_id: D1_10, registry: legacy, sympy_claim: mass dimension closure, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Dimension.lean, lean_declarations: [hbar_div_c_mul_k_is_mass]}
+  - {sympy_id: E1A, registry: full, sympy_claim: inverse-length-squared curvature density, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Curvature.lean, lean_declarations: [kappa_sq_dim, tau_sq_dim]}
+  - {sympy_id: E1B, registry: full, sympy_claim: inverse-length curvature spectral rate, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Curvature.lean, lean_declarations: [sqrt_inverse_length_squared, sqrt_kappa_sq_dim]}
+  - {sympy_id: E2, registry: full, sympy_claim: weighted average denominator and dimension support, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/ResolvedAudit.lean, lean_declarations: [densityWeightedAverage_denominator_ne_zero, weightedSum_dim, weighted_average_preserves_dimension]}
+  - {sympy_id: E3, registry: full, sympy_claim: finite locking mismatch nonnegativity, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/ResolvedAudit.lean, lean_declarations: [lockingMismatch_nonnegative, lockingMismatch_zero], caveat: Finite algebraic support; this is not an integral theorem on general curves.}
+  - {sympy_id: E5, registry: full, sympy_claim: effective-wavenumber chain under supplied closure and weighting hypotheses, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [effectiveWavenumber_eq_loopAverage, constantWeightedAverage_eq_loopAverage, resolved_e5_effectiveWavenumber_chain], caveat: Does not prove dynamic attainment of exact lock.}
+  - {sympy_id: E6, registry: full, sympy_claim: mass-curvature dimensional closure, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Dimension.lean, lean_declarations: [hbar_div_c_mul_k_is_mass, weighted_average_preserves_dimension], caveat: Dimensions only; not the physical identification.}
+  - {sympy_id: E7, registry: full, sympy_claim: solenoidal mass relation dimensional closure, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Dimension.lean, lean_declarations: [hbar_div_c_mul_k_is_mass, weighted_average_preserves_dimension], caveat: Dimensions only.}
+  - {sympy_id: E9, registry: full, sympy_claim: phase-current and continuity residual algebra, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [polarCurrentProduct_im, phaseCurrent_of_polar_factorization, conservationResidual_zero_iff], caveat: Full function-space polar differentiation remains open.}
+  - {sympy_id: E13, registry: full, sympy_claim: one-mode band-pass symbol, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [bandpass_oneMode_symbol], caveat: Not the full nonlinear pattern-selection theorem.}
+  - {sympy_id: E14, registry: full, sympy_claim: band-pass positivity and one-mode support, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [bandpass_oneMode_symbol, square_nonnegative, positive_quadratic_energy_nonnegative], caveat: Not full Lyapunov descent.}
+  - {sympy_id: E17, registry: full, sympy_claim: historical scalar denominator counterexample, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/ResolvedAudit.lean, lean_declarations: [resolved_e17_counterexample], caveat: The repaired complex operator remains a separate target.}
+  - {sympy_id: E18, registry: full, sympy_claim: energy nonnegativity and supplied-rate descent, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [resolved_e18_energy_nonnegative, resolved_e18_gradientFlow_descent], caveat: The complete functional chain rule remains an explicit hypothesis.}
+  - {sympy_id: E58, registry: full, sympy_claim: positive and bounded band Green kernel, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [bandGreenDenominator_pos, bandGreenDenominator_ge_offset, bandGreenKernel_pos, bandGreenKernel_le_inverseOffset, bandGreenKernel_at_shell]}
+  - {sympy_id: E78, registry: full, sympy_claim: Fourier and Fisher-information bound family, relationship: adjacent_todo_only, lean_status: stated_todo, lean_source: WCTLean/Fourier.lean, lean_declarations: [cos_orthogonality_TODO], caveat: The declaration records a proposition and is not a proof.}
+  - {sympy_id: CM9, registry: full, sympy_claim: first-order and second-order oscillator equivalence, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [photonSecondOrder_iff_firstOrder, baryonSecondOrder_iff_firstOrder]}
+  - {sympy_id: CM12, registry: full, sympy_claim: dimensionless power-spectrum observable, relationship: definition_only, lean_status: definition, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [dimensionlessPowerSpectrum], caveat: A definition is not a cosmological derivation.}
+  - {sympy_id: CM13, registry: full, sympy_claim: peak-power and peak-scale ratios, relationship: definition_only, lean_status: definition, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [peakPowerRatio21, peakPowerRatio31, peakScaleRatio21, peakScaleRatio31], caveat: Definitions are not a fit to cosmological data.}
+  - {sympy_id: CM16, registry: full, sympy_claim: horizon wavenumber from a supplied radius, relationship: definition_only, lean_status: definition, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [horizonWavenumber], caveat: The horizon integral and dynamics remain open.}
+  - {sympy_id: CURV1, registry: legacy, sympy_claim: inverse-length curvature magnitude, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Curvature.lean, lean_declarations: [sqrt_inverse_length_squared, sqrt_kappa_sq_dim]}
+  - {sympy_id: CURV2, registry: legacy, sympy_claim: inverse-length-squared curvature density, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Curvature.lean, lean_declarations: [kappa_sq_dim, tau_sq_dim]}
+  - {sympy_id: K1, registry: legacy, sympy_claim: Koide expression domain safety, relationship: domain_safety_only, lean_status: proved, lean_source: WCTLean/Koide.lean, lean_declarations: [koide_denominator_positive, koide_well_defined, koide_positive], caveat: Lean does not prove the numerical equality K = 2/3.}

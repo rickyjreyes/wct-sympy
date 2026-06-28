@@ -1,0 +1,48 @@
+version: 1
+assumptions:
+  ASM-COMPATIBLE-ORIENTATION:
+    name: Compatible loop orientation
+    kind: mathematical
+    statement: The winding orientation and the curvature orientation use the same sign convention.
+    introduced_by: E5
+  ASM-EXACT-INTEGRATED-LOCKING:
+    name: Exact integrated phase-curvature locking
+    kind: modeling
+    statement: The integrated phase winding equals the integrated curvature contribution without a residual mismatch term.
+    introduced_by: E5
+  ASM-CONSTANT-POSITIVE-WEIGHT:
+    name: Constant positive loop weight
+    kind: mathematical
+    statement: The loop weight is positive and constant, so weighted and unweighted loop averages coincide.
+    introduced_by: E5
+  ASM-POSITIVE-SPECTRAL-OFFSET:
+    name: Positive spectral offset
+    kind: mathematical
+    statement: The Green-kernel denominator contains a strictly positive offset, preventing a pole on the declared domain.
+    introduced_by: E58
+  ASM-STANDARD-SOBOLEV-DOMAIN:
+    name: Standard Sobolev domain hypotheses
+    kind: mathematical
+    statement: The spatial domain satisfies the regularity and extension hypotheses required by the stated Sobolev embedding.
+    introduced_by: M4
+  ASM-H2-CONFINEMENT-ROUTE:
+    name: H2 confinement route
+    kind: modeling
+    statement: The declared confinement and stability argument requires control through the H2-to-L-infinity regularity route.
+    introduced_by: E70
+object_links:
+  E5:
+    - ASM-COMPATIBLE-ORIENTATION
+    - ASM-EXACT-INTEGRATED-LOCKING
+    - ASM-CONSTANT-POSITIVE-WEIGHT
+  E58:
+    - ASM-POSITIVE-SPECTRAL-OFFSET
+  M4:
+    - ASM-STANDARD-SOBOLEV-DOMAIN
+  E24:
+    - ASM-STANDARD-SOBOLEV-DOMAIN
+  E67:
+    - ASM-STANDARD-SOBOLEV-DOMAIN
+  E70:
+    - ASM-STANDARD-SOBOLEV-DOMAIN
+    - ASM-H2-CONFINEMENT-ROUTE

@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,3 +25,42 @@ jobs:
       - run: pytest -q
       - run: python scripts/check_all.py
       - run: python scripts/check_full_coverage.py
+      - run: python scripts/check_full_coverage.py --strict-theory
+      - run: python scripts/check_lean_coverage.py
+      - name: Compile and validate effective registry
+        run: python scripts/compile_registry.py
+      - name: Upload compiled registry and validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-registry-python-${{ matrix.python-version }}
+          path: |
+            compiled-registry.json
+            compiled-registry.yaml
+            validation-report.json
+
+  publish-registry:
+    if: github.event_name == 'push'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Compile effective registry
+        run: python scripts/compile_registry.py
+      - name: Commit generated registry artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "4189826+github-actions[bot]@users.noreply.github.com"
+          git add compiled-registry.json compiled-registry.yaml validation-report.json
+          if git diff --cached --quiet; then
+            echo "Compiled registry is current."
+            exit 0
+          fi
+          git commit -m "Generate compiled effective registry"
+          git push
