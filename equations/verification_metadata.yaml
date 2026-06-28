@@ -1,5 +1,27 @@
 version: 1
 objects:
+  E1A:
+    verification_kind: DIMENSIONAL_CHECK
+    scope: INTERNAL_CONSISTENCY
+    meaning: The curvature-rate density has inverse-length-squared dimension.
+    empirical_status: NOT_APPLICABLE
+  E1B:
+    verification_kind: DIMENSIONAL_CHECK
+    scope: INTERNAL_CONSISTENCY
+    meaning: The curvature spectral rate has inverse-length dimension.
+    empirical_status: NOT_APPLICABLE
+  E2:
+    verification_kind: ALGEBRAIC_IDENTITY
+    scope: STANDARD_MATHEMATICS
+    meaning: The positive weighted-average construction has a nonzero denominator and preserves the encoded dimension of the averaged quantity.
+    empirical_status: NOT_APPLICABLE
+  M4:
+    verification_kind: FORMAL_THEOREM
+    scope: STANDARD_MATHEMATICS
+    meaning: The standard Sobolev embedding threshold H2 to L-infinity holds under the declared domain hypotheses for integer spatial dimension n less than or equal to 3.
+    limitations:
+      - This standard embedding theorem is not by itself a complete nonlinear WCT stability theorem.
+    empirical_status: NOT_APPLICABLE
   E5:
     verification_kind: SYMBOLIC_DERIVATION
     scope: MODEL_CONDITIONAL
@@ -41,6 +63,13 @@ objects:
     scope: MODEL_CONDITIONAL
     meaning: Exact negative gradient flow gives monotone energy descent when the registered nonnegativity assumptions hold.
     empirical_status: NOT_TESTED
+  E24:
+    verification_kind: FORMAL_THEOREM
+    scope: STANDARD_MATHEMATICS
+    meaning: The standard H2-to-L-infinity Sobolev embedding threshold is verified under the declared domain hypotheses.
+    limitations:
+      - The theorem supplies a regularity route and does not characterize every possible confinement mechanism.
+    empirical_status: NOT_APPLICABLE
   E30:
     verification_kind: ALGEBRAIC_IDENTITY
     scope: STANDARD_MATHEMATICS
@@ -51,6 +80,13 @@ objects:
     scope: MODEL_CONDITIONAL
     meaning: A strictly positive spectral offset bounds the declared Green kernel and removes the registered pole.
     empirical_status: NOT_TESTED
+  E67:
+    verification_kind: FORMAL_THEOREM
+    scope: STANDARD_MATHEMATICS
+    meaning: The general H2-to-L-infinity embedding route fails above three spatial dimensions under the declared Sobolev framework.
+    limitations:
+      - Failure of this regularity route does not exclude every conceivable higher-dimensional confinement mechanism.
+    empirical_status: NOT_APPLICABLE
   E70:
     verification_kind: CONSISTENCY_CHECK
     scope: MODEL_CONDITIONAL
@@ -59,6 +95,13 @@ objects:
       - This is not a biconditional characterization of every stable WCT solution.
       - Failure of the H2 embedding route above three dimensions is not by itself a universal impossibility theorem.
     empirical_status: NOT_TESTED
+  CLE9:
+    verification_kind: DIMENSIONAL_CHECK
+    scope: INTERNAL_CONSISTENCY
+    meaning: The registered electron-radius expression has the dimensions and numerical scale of the reduced Compton wavelength.
+    limitations:
+      - Reproducing a known length scale does not establish an independent WCT derivation of electron structure.
+    empirical_status: NOT_APPLICABLE
   EZ:
     verification_kind: ALGEBRAIC_IDENTITY
     scope: STANDARD_MATHEMATICS
