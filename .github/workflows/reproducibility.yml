@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: rickyjreyes/geometry_of_resonance
-          ref: 16b3ea45a04d18e333b66c61ba9ebcf296d5289e
+          ref: 5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a
           path: geometry_of_resonance
       - uses: actions/setup-python@v5
         with:
@@ -45,6 +45,7 @@ jobs:
         working-directory: wct-sympy
         run: make reproduce GEOMETRY_DIR=../geometry_of_resonance
       - name: Upload regenerated registry and reproducibility report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: symbolic-registry-${{ github.sha }}
