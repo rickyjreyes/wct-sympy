@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "registry_id": "wct-effective-registry",
-  "generated_at": "2026-06-28T09:32:19+00:00",
+  "generated_at": "2026-06-30T09:59:03+00:00",
   "status_policy": {
     "PASS": "The assigned check succeeds under its declared assumptions.",
     "CONDITIONAL": "Additional mathematical, model, regularity, or empirical assumptions remain required.",
@@ -514,12 +514,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "finiteLockingAction",
+          "finiteLockingAction_nonnegative",
+          "finiteLockingAction_zero"
+        ],
+        "source": "WCTLean/Models/Locking.lean",
+        "limitations": [
+          "Finite algebraic model; no curve-integral variational existence theorem is claimed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -574,12 +580,21 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "complex_normSq_nonnegative",
+          "complexRegularizerDenominator_positive",
+          "complexRegularizerDenominator_ne_zero",
+          "complexRegularizerDenominator_at_zero",
+          "complexRegularizedReciprocal_at_zero",
+          "thetaComplex_zero_state"
+        ],
+        "source": "WCTLean/Models/ComplexCurvature.lean",
+        "limitations": [
+          "Local algebraic denominator safety; not a full PDE well-posedness theorem."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -634,12 +649,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "finiteBandPenalty_nonpositive",
+          "finiteBandPenalty_at_shell",
+          "finiteBandPenalty_strict_off_shell"
+        ],
+        "source": "WCTLean/Models/BandPass.lean",
+        "limitations": [
+          "Fourier-symbol algebra only; nonlinear pattern selection remains open."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -698,12 +719,18 @@
         "ASM-STANDARD-SOBOLEV-DOMAIN"
       ],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "h2SubcriticalDimension",
+          "h2Subcritical_iff_le_three",
+          "SobolevCurvatureContract"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Lean proves the integer equivalence n less than 4 iff n at most 3; the Sobolev embedding and curvature bound remain explicit contract fields."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -760,12 +787,21 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "averagedUpdate",
+          "averagedUpdate_fixed_of_average_fixed",
+          "averagedUpdate_norm_le",
+          "InNormBound",
+          "averagedUpdate_preserves_normBound",
+          "BandLimitedInvariantSet"
+        ],
+        "source": "WCTLean/Models/CompactDynamics.lean",
+        "limitations": [
+          "Finite-dimensional bounded-dynamics support only; no complexity-class equivalence is claimed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -820,12 +856,19 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "definition_only",
+        "declaration_type": "definition_only",
+        "declarations": [
+          "unifiedShellTerm",
+          "unifiedLinearSymbol",
+          "unifiedRealVectorField",
+          "UnifiedCoefficients"
+        ],
+        "source": "WCTLean/Models/UnifiedOperator.lean",
+        "limitations": [
+          "This is a typed operator skeleton, not a derivation of the full nonlinear UWCT equation."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -880,12 +923,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "thetaComplex",
+          "thetaComplex_canonical_formula",
+          "thetaComplex_denominator_ne_zero"
+        ],
+        "source": "WCTLean/Models/ComplexCurvature.lean",
+        "limitations": [
+          "The local operator form and positive-epsilon denominator are proved; uniqueness of the nonlinear closure and PDE well-posedness remain open."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -940,12 +989,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "unifiedShellTerm_nonpositive",
+          "unifiedShellTerm_zero_on_shell"
+        ],
+        "source": "WCTLean/Models/UnifiedOperator.lean",
+        "limitations": [
+          "Theorems cover the represented shell term, not the complete master dynamics."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -1254,10 +1308,12 @@
         "relationship": "formalizes_same_claim",
         "declaration_type": "formalizes_same_claim",
         "declarations": [
+          "finiteLockingAction_nonnegative",
+          "finiteLockingAction_zero",
           "lockingMismatch_nonnegative",
           "lockingMismatch_zero"
         ],
-        "source": "WCTLean/ResolvedAudit.lean",
+        "source": "WCTLean/Models/Locking.lean",
         "limitations": [
           "Finite algebraic support; this is not an integral theorem on general curves."
         ]
@@ -1315,12 +1371,19 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "alphaLock",
+          "alphaLock_closure",
+          "PointwiseLocked",
+          "pointwiseLocked_weighted"
+        ],
+        "source": "WCTLean/Models/Locking.lean",
+        "limitations": [
+          "The denominator is assumed nonzero and no stationary curve solution is constructed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -1588,12 +1651,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "pointwiseLocked_weighted",
+          "correctedWeightedLockIdentity"
+        ],
+        "source": "WCTLean/Models/Locking.lean",
+        "limitations": [
+          "Finite counting-measure analogue; general curve integration is not formalized."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -1717,12 +1785,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "RadialShellQuantized",
+          "radialShellQuantized_add",
+          "radialShellQuantized_iff_windingQuantized"
+        ],
+        "source": "WCTLean/Models/PhaseFlux.lean",
+        "limitations": [
+          "Exact integer-law closure only; no dynamical shell-selection theorem is claimed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -1777,12 +1851,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "WindingQuantized",
+          "windingQuantized_add",
+          "radialShellQuantized_iff_windingQuantized"
+        ],
+        "source": "WCTLean/Models/PhaseFlux.lean",
+        "limitations": [
+          "Exact integer-law closure only; no field-defect existence theorem is claimed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -1837,12 +1917,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "swiftHohenbergLinearSymbol_le_mu",
+          "swiftHohenbergLinearSymbol_at_shell",
+          "quarticGrowthSymbol_completedSquare"
+        ],
+        "source": "WCTLean/Models/BandPass.lean",
+        "limitations": [
+          "Symbol-level result; no nonlinear PDE selection theorem."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -2157,11 +2243,16 @@
         "relationship": "supporting_lemma_only",
         "declaration_type": "supporting_lemma_only",
         "declarations": [
+          "complexRegularizerDenominator_positive",
+          "complexRegularizerDenominator_ne_zero",
+          "complexRegularizerDenominator_at_zero",
+          "complexRegularizedReciprocal_at_zero",
+          "thetaComplex_zero_state",
           "resolved_e17_counterexample"
         ],
-        "source": "WCTLean/ResolvedAudit.lean",
+        "source": "WCTLean/Models/ComplexCurvature.lean",
         "limitations": [
-          "The repaired complex operator remains a separate target."
+          "The corrected local complex denominator is proved safe for positive epsilon; full operator regularity and epsilon-to-zero control remain open."
         ]
       },
       "empirical_validation": {
@@ -2345,12 +2436,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cavityQuadratic",
+          "cavityQuadratic_nonnegative"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
+        "limitations": [
+          "Scalar quadratic-sector positivity; not the full higher-order Euler-Lagrange equation."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -2589,12 +2685,18 @@
         "ASM-STANDARD-SOBOLEV-DOMAIN"
       ],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "h2SubcriticalDimension",
+          "h2Subcritical_iff_le_three",
+          "SobolevCurvatureContract"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Lean proves n less than 4 iff n at most 3; the Sobolev embedding and curvature bound are contract fields, not proved analysis."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -2651,12 +2753,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "definition_only",
+        "declaration_type": "definition_only",
+        "declarations": [
+          "criticalSobolevExponent"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Typed definition only."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -2711,12 +2817,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "analytic_contract_only",
+        "declaration_type": "analytic_contract_only",
+        "declarations": [
+          "SobolevCurvatureContract"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Contract exposes the required theorem and does not prove it."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -2771,12 +2881,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "definition_only",
+        "declaration_type": "definition_only",
+        "declarations": [
+          "FiniteConfinementEnergy"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Predicate definition only; existence of a confined state is not proved."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -2831,12 +2945,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "alphaDropValue",
+          "alphaDrop_lt_one"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
+        "limitations": [
+          "Scalar implication under the encoded beta hypothesis."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -2891,12 +3010,19 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "entropyPrunedUpperBound",
+          "entropyPrunedUpperBound_nonnegative",
+          "entropyPrunedUpperBound_le_modeCount",
+          "entropyPrunedUpperBound_antitone"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
+        "limitations": [
+          "Scalar bound under nonnegative mode-count assumptions; the entropy drop is not derived from the full PDE."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -3131,12 +3257,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "exp_entropy_le_support"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
+        "limitations": [
+          "Order-theoretic consequence of the supplied entropy bound."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -3311,12 +3441,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "averagedUpdate",
+          "averagedUpdate_fixed_of_average_fixed",
+          "averagedUpdate_norm_le"
+        ],
+        "source": "WCTLean/Models/CompactDynamics.lean",
+        "limitations": [
+          "Concrete finite-dimensional special case; narrower than the full neighborhood-dependent WCC update."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -3851,11 +3987,14 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "effectiveQualityFactor",
+          "effectiveQualityFactor_positive"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
         "limitations": []
       },
       "empirical_validation": {
@@ -3971,11 +4110,14 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "powerBalanceResidual",
+          "stationaryPowerBalance_iff"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
         "limitations": []
       },
       "empirical_validation": {
@@ -4091,12 +4233,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "effectiveMassSqFromGap",
+          "effectiveMassSqFromGap_eq"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
+        "limitations": [
+          "Definitional identity; does not derive a physical mass gap."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -4211,12 +4358,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "curvatureGradientCommutator",
+          "curvatureGradientCommutator_eq"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
+        "limitations": [
+          "Scalar component under a nonzero-denominator hypothesis."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -4331,11 +4483,14 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "curvaturePressureDensity",
+          "curvaturePressureDensity_nonnegative"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
         "limitations": []
       },
       "empirical_validation": {
@@ -4571,12 +4726,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "finiteBandPenalty_at_shell"
+        ],
+        "source": "WCTLean/Models/BandPass.lean",
+        "limitations": [
+          "Scalar Fourier-shell identity only."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -4704,12 +4863,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "maskProjection",
+          "maskProjection_idempotent"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
+        "limitations": [
+          "Coordinate-mask model; not a complete Hilbert-space Fourier projection theorem."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -4824,12 +4988,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "swiftHohenbergLinearSymbol_at_shell",
+          "selectedShell_positive_at_onset"
+        ],
+        "source": "WCTLean/Models/BandPass.lean",
+        "limitations": [
+          "Linear symbol statement only."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -4884,11 +5053,14 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "spectralEnergyFraction",
+          "spectralEnergyFraction_mem_unitInterval"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
         "limitations": []
       },
       "empirical_validation": {
@@ -5004,12 +5176,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "selectedWavenumberSq",
+          "selectedWavelength",
+          "selectedWavelength_positive"
+        ],
+        "source": "WCTLean/Models/BandPass.lean",
+        "limitations": [
+          "Positivity and formula typing only; no measured wavelength prediction."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -5064,12 +5242,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "definition_only",
+        "declaration_type": "definition_only",
+        "declarations": [
+          "criticalSobolevExponent"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Typed definition only."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -5124,12 +5306,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "analytic_contract_only",
+        "declaration_type": "analytic_contract_only",
+        "declarations": [
+          "GagliardoNirenbergBound"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Proposition encoding the required inequality; no proof of the analytic estimate."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -5188,12 +5374,17 @@
         "ASM-STANDARD-SOBOLEV-DOMAIN"
       ],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "h2Subcritical_iff_le_three",
+          "SobolevCurvatureContract"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Arithmetic equivalence is proved; embedding is an explicit contract assumption."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -5250,12 +5441,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "analytic_contract_only",
+        "declaration_type": "analytic_contract_only",
+        "declarations": [
+          "LocalEnergyBound"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Proposition definition only; the localized estimate is not proved."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -5310,12 +5505,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "analytic_contract_only",
+        "declaration_type": "analytic_contract_only",
+        "declarations": [
+          "SobolevCurvatureContract"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "Contract only; no analytic boundedness proof."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -5376,12 +5575,17 @@
         "ASM-H2-CONFINEMENT-ROUTE"
       ],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "DimensionalStabilityCriterion",
+          "dimensional_stability_implies_le_three"
+        ],
+        "source": "WCTLean/Contracts/Analytic.lean",
+        "limitations": [
+          "The criterion includes the dimensional conclusion as a hypothesis; this is not an independent stability theorem."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -6043,12 +6247,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "DEFINITION",
+        "relationship": "definition_only",
+        "declaration_type": "definition_only",
+        "declarations": [
+          "spectralCoherenceLength",
+          "gradientCoherenceLength"
+        ],
+        "source": "WCTLean/Models/AlgebraicChecks.lean",
+        "limitations": [
+          "Definitions only; equivalence between the two coherence measures is not proved."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6765,12 +6974,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "ghostMode",
+          "abs_ghostMode_le"
+        ],
+        "source": "WCTLean/Models/GhostModes.lean",
+        "limitations": [
+          "The global amplitude bound is proved; no empirical fit or physical-origin theorem is claimed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -6825,12 +7039,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "logField",
+          "exp_logField_eq"
+        ],
+        "source": "WCTLean/Models/LogFlow.lean",
+        "limitations": [
+          "Restricted to positive real field values."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6885,12 +7104,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "logCurvatureResidual",
+          "coleHopf_residual_factorization",
+          "diffusionResidual_zero_iff_logCurvatureResidual_zero"
+        ],
+        "source": "WCTLean/Models/LogFlow.lean",
+        "limitations": [
+          "Temporal and Laplacian chain rules are explicit hypotheses; function-space regularity remains open."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6945,12 +7170,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "diffusionResidual",
+          "coleHopf_residual_factorization",
+          "diffusionResidual_zero_iff_logCurvatureResidual_zero"
+        ],
+        "source": "WCTLean/Models/LogFlow.lean",
+        "limitations": [
+          "The algebraic bridge is proved under displayed hypotheses; PDE existence and regularity are not."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -7005,12 +7236,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "FilamentLocalizationCondition",
+          "filamentLocalizationMismatch",
+          "filamentLocalizationCondition_iff_mismatch_zero"
+        ],
+        "source": "WCTLean/Models/LogFlow.lean",
+        "limitations": [
+          "Scalar equivalence only; no filament-existence or localization theorem is claimed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -9177,7 +9414,7 @@
   "provenance": {
     "registry_version": "2.0.0",
     "source_commits": {
-      "wct-sympy": "581511d43cb6bd81d5672a506b644ab8e2822918",
+      "wct-sympy": "e74228c78427c8af948d87235693933dc97e7626",
       "geometry_of_resonance": null,
       "wct-lean": null
     },
