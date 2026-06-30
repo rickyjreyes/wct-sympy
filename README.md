@@ -50,25 +50,6 @@ The registry contains **142 stable equation objects**:
 
 A zero `FAIL` count means no known contradiction remains in the current encoded statements. It does **not** prove the 27 conditional or 30 open obligations.
 
-## Newly closed executable checks
-
-`scripts/check_closed_results.py` and `tests/test_closed_results.py` now verify:
-
-- distributivity of the winding-corrected conditional mass expression;
-- exact-lock compatibility as zero winding mismatch;
-- the pure-gauge result for a single smooth scalar phase when mixed derivatives commute;
-- the logarithmic-frequency/discrete-scale identity;
-- stationarity and negative curvature of the selected finite-`k` shell.
-
-Run the focused check with:
-
-```bash
-python scripts/check_closed_results.py
-pytest -q tests/test_closed_results.py
-```
-
-These are algebraic and spectral checks only. They do not solve existence or stability of the exact WCT confined mode, establish a universal physical mass law, derive a non-Abelian gauge theory, quantize WCT, or complete gravitational backreaction.
-
 ## Derivation batch 1
 
 The first explicit derivation pass promotes eight equation objects to `PASS`:
@@ -180,7 +161,6 @@ python scripts/check_all.py
 python scripts/check_full_coverage.py
 python scripts/check_full_coverage.py --strict-theory
 python scripts/check_lean_coverage.py
-python scripts/check_closed_results.py
 ```
 
 The CI matrix runs the full audit on Python 3.10, 3.11, and 3.12.
