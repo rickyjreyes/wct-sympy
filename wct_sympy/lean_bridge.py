@@ -23,6 +23,7 @@ _ALLOWED_RELATIONSHIPS = {
     "formalizes_same_claim",
     "dimensional_support",
     "definition_only",
+    "analytic_contract_only",
     "domain_safety_only",
     "supporting_lemma_only",
     "adjacent_todo_only",
@@ -109,8 +110,13 @@ def validate_lean_map(metadata: dict[str, Any], mappings: list[LeanMapping]) -> 
             raise ValueError(f"{item.sympy_id}: not present in legacy registry")
         if item.lean_status == "stated_todo" and item.relationship != "adjacent_todo_only":
             raise ValueError(f"{item.sympy_id}: TODO declaration cannot be represented as a proof")
-        if item.lean_status == "definition" and item.relationship != "definition_only":
-            raise ValueError(f"{item.sympy_id}: definition status requires definition_only")
+        if item.lean_status == "definition" and item.relationship not in {
+            "definition_only",
+            "analytic_contract_only",
+        }:
+            raise ValueError(
+                f"{item.sympy_id}: definition status requires definition_only or analytic_contract_only"
+            )
 
 
 def lean_coverage_summary(mappings: list[LeanMapping]) -> dict[str, Any]:
