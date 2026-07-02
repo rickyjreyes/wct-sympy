@@ -1,0 +1,65 @@
+title: "[Question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask about a symbolic audit, equation encoding, assumptions, dimensions, residual, or executable PASS/FAIL result. Include a minimal reproducible expression whenever possible.
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options:
+        - Installation or environment
+        - Dimensional analysis
+        - Curvature and mass consistency
+        - Koide residual or domain safety
+        - Symbolic simplification
+        - Test or verdict behavior
+        - Output schema or integration
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: Exact reference
+      description: File, function, test, equation, claim identifier, commit, or artifact.
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: State the exact symbolic or software question.
+    validations:
+      required: true
+  - type: textarea
+    id: expression
+    attributes:
+      label: Minimal symbolic example
+      description: Include the SymPy expression, declared symbols, units, assumptions, and expected simplification or verdict.
+      render: python
+    validations:
+      required: false
+  - type: textarea
+    id: command
+    attributes:
+      label: Environment and command
+      description: Include Python and SymPy versions, commit SHA, and exact command.
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed and expected result
+      description: Include the actual output or traceback and the expected result, with the reason for that expectation.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Scope check
+      options:
+        - label: I understand that a symbolic PASS validates the encoded relation and assumptions, not the full physical theory.
+          required: true
