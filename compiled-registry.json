@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "registry_id": "wct-effective-registry",
-  "generated_at": "2026-06-30T09:59:03+00:00",
+  "generated_at": "2026-07-02T21:27:36+00:00",
   "status_policy": {
     "PASS": "The assigned check succeeds under its declared assumptions.",
     "CONDITIONAL": "Additional mathematical, model, regularity, or empirical assumptions remain required.",
@@ -9414,7 +9414,7 @@
   "provenance": {
     "registry_version": "2.0.0",
     "source_commits": {
-      "wct-sympy": "e74228c78427c8af948d87235693933dc97e7626",
+      "wct-sympy": "1f6265dc1165028d5120cb0a90b81f6578be6665",
       "geometry_of_resonance": null,
       "wct-lean": null
     },
