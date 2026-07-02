@@ -1,0 +1,57 @@
+title: "[Audit Proposal] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a new symbolic audit, invariant, regression test, schema field, or cross-repository validation. Define the encoded claim and expected failure modes before implementation.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Dimensional closure
+        - Algebraic identity or residual
+        - Domain and singularity safety
+        - Assumption tracking
+        - Numerical-symbolic consistency
+        - Cross-repository claim validation
+        - Machine-readable output
+        - Documentation or usability
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: target
+    attributes:
+      label: Claim or risk to audit
+      description: Identify the equation, assumption, failure mode, or dependency the audit should test.
+    validations:
+      required: true
+  - type: textarea
+    id: encoding
+    attributes:
+      label: Proposed symbolic encoding
+      description: Define symbols, units, domains, assumptions, normalization, and the expression or invariant.
+    validations:
+      required: true
+  - type: textarea
+    id: verdict
+    attributes:
+      label: PASS, FAIL, and INCOMPLETE criteria
+      description: State the exact machine-evaluable gate and how undecidable or missing-input cases should be represented.
+    validations:
+      required: true
+  - type: textarea
+    id: fixtures
+    attributes:
+      label: Positive and negative fixtures
+      description: Include at least one case expected to pass and one mutation or counterexample expected to fail.
+    validations:
+      required: true
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Required outputs
+      description: Specify JSON, tables, residuals, provenance, units, dependencies, and links to affected claims or tests.
+    validations:
+      required: false
