@@ -1,0 +1,63 @@
+title: "[Symbolic Audit Result] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share a reproduced audit, new symbolic check, discrepancy, negative result, or independent implementation. Include executable artifacts and distinguish encoded validity from physical interpretation.
+  - type: dropdown
+    id: result_type
+    attributes:
+      label: Result type
+      options:
+        - Existing audit reproduced
+        - Existing audit failed to reproduce
+        - New symbolic audit
+        - Independent implementation
+        - Counterexample or mutation test
+        - Cross-language or cross-tool comparison
+        - Output or visualization tool
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Audit or claim tested
+      description: Name the test, equation, claim identifier, file, or artifact.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and exact command
+      description: Include OS, Python and SymPy versions, commit SHA, dependencies, and command.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: assumptions
+    attributes:
+      label: Symbols, domains, units, and assumptions
+      description: List every assumption needed for the symbolic result.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Machine result
+      description: Report PASS, FAIL, or INCOMPLETE, the reduced expression or residual, and any tolerance.
+    validations:
+      required: true
+  - type: textarea
+    id: artifacts
+    attributes:
+      label: Auditable artifacts
+      description: Link code, tests, logs, JSON outputs, fixtures, lockfiles, or archived releases.
+    validations:
+      required: true
+  - type: textarea
+    id: meaning
+    attributes:
+      label: What this establishes and does not establish
+      description: State the narrow consequence for the encoded equation and any remaining mathematical or physical gap.
+    validations:
+      required: true
