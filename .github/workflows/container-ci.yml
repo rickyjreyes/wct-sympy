@@ -1,0 +1,46 @@
+name: SymPy container reproducibility
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Dockerfile"
+      - ".dockerignore"
+      - "requirements.txt"
+      - "wct_sympy/**"
+      - "equations/**"
+      - "interoperability/**"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/container-ci.yml"
+  pull_request:
+    paths:
+      - "Dockerfile"
+      - ".dockerignore"
+      - "requirements.txt"
+      - "wct_sympy/**"
+      - "equations/**"
+      - "interoperability/**"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/container-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sympy-container-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  container-audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build symbolic audit image
+        run: docker build --tag wct-sympy-ci .
+      - name: Verify non-root runtime
+        run: test "$(docker run --rm --entrypoint id wct-sympy-ci -u)" != "0"
+      - name: Run complete symbolic audit
+        run: docker run --rm wct-sympy-ci
