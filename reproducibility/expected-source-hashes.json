@@ -8,7 +8,7 @@
     "equations/derived_overrides.yaml": "2acfc5a465d95bc879a468da9d9f7e00cbe4b03e",
     "equations/full_registry.yaml": "2dd18da8a10a842ff27fb0176a545da12e64d008",
     "equations/verification_metadata.yaml": "a53c1b61fb4e7b4bd59dcb74657ab53de87c9428",
-    "interoperability/lean_map.yaml": "a6eb0dd09cfd2f27d255d9dc8b62c6158454de10",
+    "interoperability/lean_map.yaml": "b1d2f38f0ed1e7f6e9e7493268562e232930b7d8",
     "reproducibility/requirements.lock": "9b7a1377ecf01320300e6f1aed4e978bcf571925",
     "scripts/compile_registry.py": "e4c5f4d023b36fcd378a5e17e9de8e7e6874b4a3",
     "scripts/verify_reproducibility.py": "11c37844f175009827db610857761ff2f6118d27"
