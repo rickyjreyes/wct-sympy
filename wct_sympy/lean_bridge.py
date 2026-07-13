@@ -23,6 +23,7 @@ _ALLOWED_RELATIONSHIPS = {
     "formalizes_same_claim",
     "dimensional_support",
     "definition_only",
+    "analytic_contract_only",
     "domain_safety_only",
     "supporting_lemma_only",
     "adjacent_todo_only",
