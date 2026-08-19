@@ -5,17 +5,18 @@
     "Makefile": "afb5281196e621609cdb0059d19b31f46d4863a7",
     "claims/initial_claims.yaml": "0fa8eb41a389a94d060ce41e86545b8736da6654",
     "equations/assumptions.yaml": "08f6fbb2202aab12cde57580cd9eee720966712b",
-    "equations/derived_overrides.yaml": "f4b9112be3d6c897b81ef000146d4864f1d6f667",
+    "equations/derived_overrides.yaml": "39ba87cc5c3f1f9998d51b166cd16ab1f10fd973",
     "equations/full_registry.yaml": "2dd18da8a10a842ff27fb0176a545da12e64d008",
     "equations/verification_metadata.yaml": "100f54773e29c6b7ae8dcfc5926bae2500580c16",
     "interoperability/lean_map.yaml": "b1d2f38f0ed1e7f6e9e7493268562e232930b7d8",
     "reproducibility/requirements.lock": "9b7a1377ecf01320300e6f1aed4e978bcf571925",
-    "scripts/compile_registry.py": "b35be0a1c3e1a50ae1ffb0bc767f7d0385d0a6d7",
+    "scripts/compile_registry.py": "59d2931de4d1b50592ecf69ace9d8e367bb065ca",
     "scripts/verify_reproducibility.py": "0a3870c9be87a61f5d74ba3ab4046b90e3d96d66",
-    "wct_sympy/full_checks.py": "c90207c58e406f199bde6c2c8a1b8d4298174f49",
+    "wct_sympy/full_checks.py": "7b741a77c547818a260a9b575a54fd9d92690e27",
     "wct_sympy/full_checks_derived.py": "563fa48c8df054837c6bee644413a56c9fcc5e9a",
     "wct_sympy/full_checks_derived_two.py": "7a59c232c327edceaf2e6f91445dbb0414729b87",
     "wct_sympy/full_checks_derived_three.py": "5ba92808a490b6634ece687cb730b4db4082b6fa",
+    "wct_sympy/full_checks_derived_four.py": "551a6497c0641ce6ad2201ca652a06c6cfb0b5a2",
     "wct_sympy/full_checks_constraints.py": "74b51a9ca974c9810f7ced7a6069b90594f84d36"
   }
 }
