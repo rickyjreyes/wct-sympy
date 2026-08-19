@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "registry_id": "wct-effective-registry",
-  "generated_at": "2026-08-19T23:15:35+00:00",
+  "generated_at": "2026-08-19T23:26:27+00:00",
   "status_policy": {
     "PASS": "The assigned check succeeds under its declared assumptions.",
     "CONDITIONAL": "Additional mathematical, model, regularity, or empirical assumptions remain required.",
@@ -2552,20 +2552,22 @@
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "CONDITIONAL",
-        "changed": false,
-        "changed_by": null,
-        "source_file": "equations/full_registry.yaml"
+        "changed": true,
+        "changed_by": "derived_overrides.yaml:check_effective_metric_reality_constraint",
+        "source_file": "equations/derived_overrides.yaml"
       },
       "verification": {
         "outcome": "CONDITIONAL",
-        "kind": "UNRESOLVED",
+        "kind": "CONSISTENCY_CHECK",
         "scope": "MODEL_CONDITIONAL",
         "checker": [
-          "classify_conditional"
+          "check_effective_metric_reality_constraint"
         ],
         "baseline_checker": "classify_conditional",
-        "meaning": "The assigned executable classification is reported under its declared assumptions.",
-        "limitations": []
+        "meaning": "For genuinely complex psi, the raw derivative outer product conjugate(d_mu psi)d_nu psi is Hermitian but not generally a real symmetric metric correction; taking its real symmetric part removes this obstruction.",
+        "limitations": [
+          "The corrected real-symmetric tensor still requires dimensional normalization, nondegeneracy, and Lorentzian-signature conditions."
+        ]
       },
       "assumptions": [],
       "formalization": {
@@ -2577,7 +2579,7 @@
         "limitations": []
       },
       "empirical_validation": {
-        "status": "NOT_TESTED",
+        "status": "NOT_APPLICABLE",
         "evidence_ids": [],
         "independent_replication": "NONE"
       },
@@ -2598,7 +2600,10 @@
           "repository": "wct-sympy",
           "path": "equations/full_registry.yaml"
         },
-        "derived_override": null
+        "derived_override": {
+          "repository": "wct-sympy",
+          "path": "equations/derived_overrides.yaml"
+        }
       }
     },
     {
@@ -5447,20 +5452,22 @@
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "CONDITIONAL",
-        "changed": false,
-        "changed_by": null,
-        "source_file": "equations/full_registry.yaml"
+        "changed": true,
+        "changed_by": "derived_overrides.yaml:check_localized_energy_concentration_constraint",
+        "source_file": "equations/derived_overrides.yaml"
       },
       "verification": {
         "outcome": "CONDITIONAL",
-        "kind": "UNRESOLVED",
-        "scope": "MODEL_CONDITIONAL",
+        "kind": "CONSISTENCY_CHECK",
+        "scope": "STANDARD_MATHEMATICS",
         "checker": [
-          "classify_conditional"
+          "check_localized_energy_concentration_constraint"
         ],
         "baseline_checker": "classify_conditional",
-        "meaning": "The assigned executable classification is reported under its declared assumptions.",
-        "limitations": []
+        "meaning": "The printed R^(n-2) localized-energy estimate cannot hold with an R-independent constant for arbitrary H1 fields in n=3 because a concentrating rescaling keeps the local gradient energy fixed while the proposed right side tends to zero.",
+        "limitations": [
+          "E68 may still hold on a restricted scaling class or under additional domain, normalization, Morrey-type, or nonconcentration hypotheses; those assumptions must be stated explicitly."
+        ]
       },
       "assumptions": [],
       "formalization": {
@@ -5476,7 +5483,7 @@
         ]
       },
       "empirical_validation": {
-        "status": "NOT_TESTED",
+        "status": "NOT_APPLICABLE",
         "evidence_ids": [],
         "independent_replication": "NONE"
       },
@@ -5497,7 +5504,10 @@
           "repository": "wct-sympy",
           "path": "equations/full_registry.yaml"
         },
-        "derived_override": null
+        "derived_override": {
+          "repository": "wct-sympy",
+          "path": "equations/derived_overrides.yaml"
+        }
       }
     },
     {
@@ -9456,7 +9466,7 @@
   "provenance": {
     "registry_version": "2.0.0",
     "source_commits": {
-      "wct-sympy": "0a5a5eb9eec5e772c0995fd6d6d2c7d54d659d8a",
+      "wct-sympy": "fc1ea6f9ceafe1c7cb745a0bedb352d6a9ddebf8",
       "geometry_of_resonance": "5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a",
       "wct-lean": null
     },
