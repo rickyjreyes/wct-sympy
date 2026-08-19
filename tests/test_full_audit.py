@@ -18,13 +18,12 @@ def test_corrected_regularizer_is_strictly_positive():
     assert item.evidence["is_positive"] is True
 
 
-def test_corrected_alpha_drop_is_feasible_and_count_claims_are_conditional():
+def test_corrected_alpha_drop_is_feasible_and_count_claims_are_derived():
     results = by_id()
     assert results["E28"].status == AuditStatus.PASS
     assert results["E28"].value["alpha_minus_one"].is_negative
-    assert results["E32"].status == AuditStatus.PASS
-    for equation_id in ("E41", "E72"):
-        assert results[equation_id].status == AuditStatus.CONDITIONAL
+    for equation_id in ("E32", "E41", "E72"):
+        assert results[equation_id].status == AuditStatus.PASS
 
 
 def test_entropy_support_direction_is_corrected():
@@ -50,8 +49,8 @@ def test_resolved_registry_has_no_known_failures():
     report = summary(run_full_audit())
     assert report["status_counts"].get("FAIL", 0) == 0
     assert report["status_counts"] == {
-        "CONDITIONAL": 21,
+        "CONDITIONAL": 19,
         "DEFINITION": 26,
         "OPEN": 30,
-        "PASS": 65,
+        "PASS": 67,
     }
