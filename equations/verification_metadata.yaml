@@ -83,7 +83,7 @@ objects:
       - The audit proves the implication from a uniform margin; it does not prove that a particular WCT pruning dynamics supplies that margin.
     empirical_status: NOT_APPLICABLE
   E50:
-    verification_kind: INEQUALITY_CHECK
+    verification_kind: ALGEBRAIC_IDENTITY
     scope: STANDARD_MATHEMATICS
     meaning: A positive lower bound on the phase-gradient magnitude gives a pointwise integrand bound and, for an L2 field, a finite phase-coherence functional.
     limitations:
