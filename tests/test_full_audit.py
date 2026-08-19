@@ -49,8 +49,8 @@ def test_resolved_registry_has_no_known_failures():
     report = summary(run_full_audit())
     assert report["status_counts"].get("FAIL", 0) == 0
     assert report["status_counts"] == {
-        "CONDITIONAL": 19,
+        "CONDITIONAL": 18,
         "DEFINITION": 26,
         "OPEN": 30,
-        "PASS": 67,
+        "PASS": 68,
     }
