@@ -48,7 +48,16 @@ def test_e50_positive_phase_gradient_floor_bounds_coherence():
     assert item.value["upper_minus_integrand"].is_nonnegative
 
 
+def test_e41_and_e72_follow_from_discrete_retention_count_bounds():
+    results = by_id()
+    for equation_id in ("E41", "E72"):
+        item = results[equation_id]
+        assert item.status == AuditStatus.PASS
+        assert item.residual == 0.0
+        assert item.value["upper_minus_realized"].is_nonnegative
+
+
 def test_third_derivation_batch_increases_pass_count():
     results = list(run_full_audit())
-    assert sum(item.status == AuditStatus.PASS for item in results) == 65
+    assert sum(item.status == AuditStatus.PASS for item in results) == 67
     assert len(results) == 142
