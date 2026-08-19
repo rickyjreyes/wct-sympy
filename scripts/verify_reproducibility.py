@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_COUNTS = {"PASS": 63, "CONDITIONAL": 23, "DEFINITION": 26, "OPEN": 30, "FAIL": 0}
+EXPECTED_COUNTS = {"PASS": 65, "CONDITIONAL": 21, "DEFINITION": 26, "OPEN": 30, "FAIL": 0}
 
 
 def git_blob_sha1(path: Path) -> str:

@@ -1,6 +1,6 @@
 schema_version: 2.0.0
 registry_id: wct-effective-registry
-generated_at: '2026-08-19T22:42:42+00:00'
+generated_at: '2026-08-19T23:02:02+00:00'
 status_policy:
   PASS: The assigned check succeeds under its declared assumptions.
   CONDITIONAL: Additional mathematical, model, regularity, or empirical assumptions
@@ -14,8 +14,8 @@ status_precedence:
 - equations/full_registry.yaml
 - canonical equation narrative
 counts:
-  PASS: 63
-  CONDITIONAL: 23
+  PASS: 65
+  CONDITIONAL: 21
   DEFINITION: 26
   OPEN: 30
   FAIL: 0
@@ -2758,20 +2758,23 @@ objects:
     and $\beta(n)$ bounds in E28 hold uniformly with sufficient margin.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_subexponential_exploration_margin_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
+    outcome: PASS
     kind: SYMBOLIC_DERIVATION
-    scope: MODEL_CONDITIONAL
+    scope: STANDARD_MATHEMATICS
     checker:
-    - check_alpha_drop_count_bound
+    - check_subexponential_exploration_margin_derived
     baseline_checker: check_alpha_drop_count_bound
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: A uniform positive tail margin in the corrected alpha-drop formula implies
+      alpha(n) is eventually bounded by 1-delta and therefore has limsup strictly
+      below one.
+    limitations:
+    - The audit proves the implication from a uniform margin; it does not prove that
+      a particular WCT pruning dynamics supplies that margin.
   assumptions: &id042 []
   formalization:
     status: OPEN
@@ -2781,7 +2784,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -2798,7 +2801,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E33
   aliases: []
   name: Corrected support-entropy relation
@@ -3709,20 +3714,22 @@ objects:
     regularization or lower bound'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_phase_coherence_lower_gradient_bound_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: UNRESOLVED
-    scope: MODEL_CONDITIONAL
+    outcome: PASS
+    kind: ALGEBRAIC_IDENTITY
+    scope: STANDARD_MATHEMATICS
     checker:
-    - classify_conditional
+    - check_phase_coherence_lower_gradient_bound_derived
     baseline_checker: classify_conditional
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: A positive lower bound on the phase-gradient magnitude gives a pointwise
+      integrand bound and, for an L2 field, a finite phase-coherence functional.
+    limitations:
+    - The audit does not establish that the required positive phase-gradient floor
+      holds dynamically.
   assumptions: &id060 []
   formalization:
     status: OPEN
@@ -3732,7 +3739,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -3749,7 +3756,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E51
   aliases: []
   name: Curvature-gradient commutator
@@ -8136,7 +8145,7 @@ objects:
 provenance:
   registry_version: 2.0.0
   source_commits:
-    wct-sympy: 28b3a377bc8138851d9e79f852361e9b11764bb1
+    wct-sympy: 8fcd85b6f55a47cb48ff4181a8c11defaac7fdb8
     geometry_of_resonance: 5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a
     wct-lean: null
   generator: scripts/compile_registry.py

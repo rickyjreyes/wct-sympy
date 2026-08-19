@@ -39,8 +39,8 @@ def test_compiler_applies_effective_overrides_and_preserves_baseline() -> None:
     assert report["valid"], report["errors"]
     assert artifact["total"] == 142
     assert artifact["counts"] == {
-        "PASS": 63,
-        "CONDITIONAL": 23,
+        "PASS": 65,
+        "CONDITIONAL": 21,
         "DEFINITION": 26,
         "OPEN": 30,
         "FAIL": 0,
@@ -60,6 +60,8 @@ def test_compiler_applies_effective_overrides_and_preserves_baseline() -> None:
     assert by_id["CLE5"]["status"]["effective"] == "PASS"
     assert by_id["CLE8"]["status"]["effective"] == "PASS"
     assert by_id["TOP3"]["status"]["effective"] == "PASS"
+    assert by_id["E32"]["status"]["effective"] == "PASS"
+    assert by_id["E50"]["status"]["effective"] == "PASS"
     assert by_id["E70"]["status"]["effective"] == "CONDITIONAL"
 
 
