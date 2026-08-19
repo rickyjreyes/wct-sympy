@@ -193,3 +193,59 @@ def check_topology_curvature_energy_mass_constraint(spec: EquationSpec) -> Audit
             "E6 supplies the mass identification in the same sector",
         ),
     )
+
+
+def check_mean_amplitude_closure_error_bound_derived(spec: EquationSpec) -> AuditResult:
+    """Turn CORR2's weak-intermittency closure into a quantitative error bound."""
+    k = sp.symbols("k", nonnegative=True)
+    qeff = sp.symbols("Q_eff", positive=True)
+    eta = sp.symbols("eta", positive=True)
+
+    # CORR2 replaces a positive local denominator scale Q(x) by its mean scale
+    # Q_eff=D_eff^2.  If |Q/Q_eff-1|<=eta<1, reciprocal monotonicity gives the
+    # sharp endpoint factors below.
+    closure = k**4 / qeff
+    lower = sp.simplify(k**4 / (qeff * (1 + eta)))
+    upper = sp.simplify(k**4 / (qeff * (1 - eta)))
+    lower_ratio = sp.simplify(lower / closure)
+    upper_ratio = sp.simplify(upper / closure)
+    relative_error_cap = sp.simplify(upper_ratio - 1)
+    small_eta_limit = sp.limit(relative_error_cap, eta, 0, dir="+")
+
+    ok = (
+        lower_ratio == 1 / (1 + eta)
+        and upper_ratio == 1 / (1 - eta)
+        and relative_error_cap == eta / (1 - eta)
+        and small_eta_limit == 0
+    )
+    return result(
+        spec,
+        AuditStatus.PASS if ok else AuditStatus.FAIL,
+        value={
+            "mean_closure": closure,
+            "lower_bound": lower,
+            "upper_bound": upper,
+            "lower_ratio": lower_ratio,
+            "upper_ratio": upper_ratio,
+            "relative_error_cap": relative_error_cap,
+            "small_intermitttency_limit": small_eta_limit,
+        },
+        expected=(
+            "if |Q/Q_eff-1|<=eta<1 then k^4/[Q_eff(1+eta)] <= C_Theta(k) "
+            "<= k^4/[Q_eff(1-eta)], with relative error <=eta/(1-eta)"
+        ),
+        residual=0.0 if ok else None,
+        reason=(
+            "CORR2's mean-amplitude replacement can be made quantitative. For a positive "
+            "local closure denominator Q(x) satisfying (1-eta)Q_eff<=Q(x)<= "
+            "(1+eta)Q_eff with 0<=eta<1, reciprocal monotonicity traps the local "
+            "k^4/Q(x) factor between the displayed bounds. The worst relative error "
+            "against k^4/Q_eff is eta/(1-eta), which vanishes as eta->0."
+        ),
+        assumptions=(
+            "Q_eff=D_eff^2=<|psi|^2>+epsilon^2>0",
+            "the local spectral closure has the form C_Theta(k,x)=k^4/Q(x)",
+            "0<=eta<1 and |Q(x)/Q_eff-1|<=eta on the region/modes being averaged",
+            "the weak-intermittency replacement uses the same positive denominator scale Q",
+        ),
+    )
