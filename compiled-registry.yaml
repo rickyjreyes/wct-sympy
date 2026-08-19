@@ -1,6 +1,6 @@
 schema_version: 2.0.0
 registry_id: wct-effective-registry
-generated_at: '2026-08-19T23:02:02+00:00'
+generated_at: '2026-08-19T23:10:37+00:00'
 status_policy:
   PASS: The assigned check succeeds under its declared assumptions.
   CONDITIONAL: Additional mathematical, model, regularity, or empirical assumptions
@@ -14,8 +14,8 @@ status_precedence:
 - equations/full_registry.yaml
 - canonical equation narrative
 counts:
-  PASS: 65
-  CONDITIONAL: 21
+  PASS: 67
+  CONDITIONAL: 19
   DEFINITION: 26
   OPEN: 30
   FAIL: 0
@@ -3232,20 +3232,24 @@ objects:
     counting bound; an injective coding or combinatorial argument is required.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_alpha_drop_counting_bound_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
+    outcome: PASS
     kind: SYMBOLIC_DERIVATION
     scope: MODEL_CONDITIONAL
     checker:
-    - check_alpha_drop_count_bound
+    - check_alpha_drop_counting_bound_derived
     baseline_checker: check_alpha_drop_count_bound
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: Actual per-step discrete count-retention bounds and the declared multiplicative
+      correction factor iterate to the registered 2^(alpha(n)n) curvature-bounded
+      configuration count.
+    limitations:
+    - The derivation assumes that the physical retained fractions are valid bounds
+      on a finite discrete encoding; it does not derive that encoding from the underlying
+      field dynamics.
   assumptions: &id051 []
   formalization:
     status: OPEN
@@ -3255,7 +3259,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -3272,7 +3276,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E42
   aliases: []
   name: Theta-information relation
@@ -4904,20 +4910,24 @@ objects:
     the physical pruning process to discrete configurations is required.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_alpha_drop_counting_bound_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
+    outcome: PASS
     kind: SYMBOLIC_DERIVATION
     scope: MODEL_CONDITIONAL
     checker:
-    - check_alpha_drop_count_bound
+    - check_alpha_drop_counting_bound_derived
     baseline_checker: check_alpha_drop_count_bound
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: Actual per-step discrete count-retention bounds and the declared multiplicative
+      correction factor iterate to the registered 2^(alpha(n)n) effective search-space
+      bound.
+    limitations:
+    - The derivation proves the counting implication once a finite discrete physical
+      encoding and count-level retained fractions are supplied; it does not establish
+      those physical premises.
   assumptions: &id082 []
   formalization:
     status: OPEN
@@ -4927,7 +4937,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -4944,7 +4954,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E73
   aliases: []
   name: Polynomial verification
@@ -8145,7 +8157,7 @@ objects:
 provenance:
   registry_version: 2.0.0
   source_commits:
-    wct-sympy: 8fcd85b6f55a47cb48ff4181a8c11defaac7fdb8
+    wct-sympy: 394a0b2062325b4f7720512cf10c06147ad8f9f8
     geometry_of_resonance: 5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a
     wct-lean: null
   generator: scripts/compile_registry.py

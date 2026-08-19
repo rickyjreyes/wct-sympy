@@ -1,12 +1,12 @@
 {
   "schema_version": "2.0.0",
-  "generated_at": "2026-08-19T23:02:02+00:00",
+  "generated_at": "2026-08-19T23:10:37+00:00",
   "valid": true,
   "errors": [],
   "warnings": [],
   "counts": {
-    "PASS": 65,
-    "CONDITIONAL": 21,
+    "PASS": 67,
+    "CONDITIONAL": 19,
     "DEFINITION": 26,
     "OPEN": 30,
     "FAIL": 0
