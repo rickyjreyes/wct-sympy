@@ -29,6 +29,10 @@ from .full_checks_derived_three import (
     check_subexponential_exploration_margin_derived,
     check_topology_curvature_energy_mass_constraint,
 )
+from .full_checks_constraints import (
+    check_effective_metric_reality_constraint,
+    check_localized_energy_concentration_constraint,
+)
 
 CHECKERS = {
     name: obj
