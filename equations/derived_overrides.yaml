@@ -4,6 +4,7 @@
 - [E9, check_phase_flux_from_polar_field, PASS]
 - [E13, check_bandpass_gradient_flow, PASS]
 - [E14, check_bandpass_gradient_flow, PASS]
+- [E15, check_modal_growth_bound_derived, PASS]
 - [E18, check_lyapunov_gradient_flow, PASS]
 - [E58, check_green_kernel_bounded, PASS]
 - [CM9, check_cm9_first_order_equivalence, PASS]
