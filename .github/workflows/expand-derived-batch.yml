@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - agent/promote-e15-derived
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
