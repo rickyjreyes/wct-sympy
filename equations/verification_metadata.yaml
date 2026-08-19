@@ -75,6 +75,20 @@ objects:
     scope: STANDARD_MATHEMATICS
     meaning: The normalized spectral Shannon entropy satisfies its standard finite-support bounds.
     empirical_status: NOT_APPLICABLE
+  E32:
+    verification_kind: SYMBOLIC_DERIVATION
+    scope: STANDARD_MATHEMATICS
+    meaning: A uniform positive tail margin in the corrected alpha-drop formula implies alpha(n) is eventually bounded by 1-delta and therefore has limsup strictly below one.
+    limitations:
+      - The audit proves the implication from a uniform margin; it does not prove that a particular WCT pruning dynamics supplies that margin.
+    empirical_status: NOT_APPLICABLE
+  E50:
+    verification_kind: INEQUALITY_CHECK
+    scope: STANDARD_MATHEMATICS
+    meaning: A positive lower bound on the phase-gradient magnitude gives a pointwise integrand bound and, for an L2 field, a finite phase-coherence functional.
+    limitations:
+      - The audit does not establish that the required positive phase-gradient floor holds dynamically.
+    empirical_status: NOT_APPLICABLE
   E58:
     verification_kind: LIMIT_CHECK
     scope: MODEL_CONDITIONAL
