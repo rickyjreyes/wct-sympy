@@ -16,7 +16,12 @@ from .full_checks_derived import (
     check_lyapunov_gradient_flow,
     check_phase_flux_from_polar_field,
 )
-from .full_checks_derived_two import check_modal_growth_bound_derived
+from .full_checks_derived_two import (
+    check_flat_product_torus_laplacian_derived,
+    check_modal_growth_bound_derived,
+    check_topology_gradient_flow_descent_derived,
+    check_torus_lowest_mode_selection_derived,
+)
 
 CHECKERS = {
     name: obj
