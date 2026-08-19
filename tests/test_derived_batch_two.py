@@ -72,7 +72,17 @@ def test_top7_planar_reduction_is_mass_squared_not_linear_mass_energy():
     assert item.value["d_mass_over_energy_d_kappa"] != 0
 
 
-def test_third_derivation_batch_increases_pass_count():
+def test_corr2_mean_amplitude_closure_has_quantified_error_band():
+    item = by_id()["CORR2"]
+    assert item.status == AuditStatus.PASS
+    assert item.residual == 0.0
+    assert str(item.value["lower_ratio"]) == "1/(eta + 1)"
+    assert str(item.value["upper_ratio"]) == "-1/(eta - 1)"
+    assert str(item.value["relative_error_cap"]) == "-eta/(eta - 1)"
+    assert item.value["small_intermitttency_limit"] == 0
+
+
+def test_fourth_derivation_batch_increases_pass_count():
     results = list(run_full_audit())
-    assert sum(item.status == AuditStatus.PASS for item in results) == 67
+    assert sum(item.status == AuditStatus.PASS for item in results) == 68
     assert len(results) == 142
