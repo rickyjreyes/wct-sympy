@@ -79,7 +79,7 @@ def test_corr2_mean_amplitude_closure_has_quantified_error_band():
     assert str(item.value["lower_ratio"]) == "1/(eta + 1)"
     assert str(item.value["upper_ratio"]) == "-1/(eta - 1)"
     assert str(item.value["relative_error_cap"]) == "-eta/(eta - 1)"
-    assert item.value["small_intermitttency_limit"] == 0
+    assert item.value["small_intermittency_limit"] == 0
 
 
 def test_fourth_derivation_batch_increases_pass_count():
