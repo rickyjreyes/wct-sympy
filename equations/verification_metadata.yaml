@@ -82,6 +82,13 @@ objects:
     limitations:
       - The audit proves the implication from a uniform margin; it does not prove that a particular WCT pruning dynamics supplies that margin.
     empirical_status: NOT_APPLICABLE
+  E41:
+    verification_kind: SYMBOLIC_DERIVATION
+    scope: MODEL_CONDITIONAL
+    meaning: Actual per-step discrete count-retention bounds and the declared multiplicative correction factor iterate to the registered 2^(alpha(n)n) curvature-bounded configuration count.
+    limitations:
+      - The derivation assumes that the physical retained fractions are valid bounds on a finite discrete encoding; it does not derive that encoding from the underlying field dynamics.
+    empirical_status: NOT_APPLICABLE
   E50:
     verification_kind: ALGEBRAIC_IDENTITY
     scope: STANDARD_MATHEMATICS
@@ -109,6 +116,13 @@ objects:
       - This is not a biconditional characterization of every stable WCT solution.
       - Failure of the H2 embedding route above three dimensions is not by itself a universal impossibility theorem.
     empirical_status: NOT_TESTED
+  E72:
+    verification_kind: SYMBOLIC_DERIVATION
+    scope: MODEL_CONDITIONAL
+    meaning: Actual per-step discrete count-retention bounds and the declared multiplicative correction factor iterate to the registered 2^(alpha(n)n) effective search-space bound.
+    limitations:
+      - The derivation proves the counting implication once a finite discrete physical encoding and count-level retained fractions are supplied; it does not establish those physical premises.
+    empirical_status: NOT_APPLICABLE
   CLE9:
     verification_kind: DIMENSIONAL_CHECK
     scope: INTERNAL_CONSISTENCY
