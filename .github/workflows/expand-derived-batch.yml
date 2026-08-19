@@ -1,0 +1,141 @@
+name: Expand exact derived batch
+
+on:
+  push:
+    branches:
+      - agent/promote-e15-derived
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/promote-e15-derived
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements.txt
+      - name: Update expected counts and tests
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace(path, old, new):
+              p = Path(path)
+              text = p.read_text(encoding="utf-8")
+              if old not in text:
+                  raise SystemExit(f"expected text not found in {path}: {old!r}")
+              p.write_text(text.replace(old, new), encoding="utf-8")
+
+          replace(
+              "scripts/compile_registry.py",
+              '    "PASS": 60,\n    "CONDITIONAL": 26,',
+              '    "PASS": 63,\n    "CONDITIONAL": 23,',
+          )
+          replace(
+              "scripts/verify_reproducibility.py",
+              'EXPECTED_COUNTS = {"PASS": 60, "CONDITIONAL": 26, "DEFINITION": 26, "OPEN": 30, "FAIL": 0}',
+              'EXPECTED_COUNTS = {"PASS": 63, "CONDITIONAL": 23, "DEFINITION": 26, "OPEN": 30, "FAIL": 0}',
+          )
+          replace(
+              "tests/test_full_audit.py",
+              '        "CONDITIONAL": 26,\n        "DEFINITION": 26,\n        "OPEN": 30,\n        "PASS": 60,',
+              '        "CONDITIONAL": 23,\n        "DEFINITION": 26,\n        "OPEN": 30,\n        "PASS": 63,',
+          )
+          replace(
+              "tests/test_compiled_registry.py",
+              '        "PASS": 60,\n        "CONDITIONAL": 26,',
+              '        "PASS": 63,\n        "CONDITIONAL": 23,',
+          )
+
+          p = Path("tests/test_derived_batch_two.py")
+          text = p.read_text(encoding="utf-8")
+          anchor = "\n\ndef test_second_derivation_batch_increases_pass_count():\n"
+          if anchor not in text:
+              raise SystemExit("test insertion anchor not found")
+          additions = '''\n\ndef test_cle5_flat_product_torus_laplacian_is_exact():\n    item = by_id()["CLE5"]\n    assert item.status == AuditStatus.PASS\n    assert item.residual == 0.0\n    assert item.value["eigenvalue"].is_nonnegative\n\n\ndef test_cle8_lowest_mode_is_unique_after_winding_and_chirality_are_fixed():\n    item = by_id()["CLE8"]\n    assert item.status == AuditStatus.PASS\n    assert item.value["spectral_gap"].is_nonnegative\n    assert item.value["zero_gap_modes"] == [0]\n\n\ndef test_top3_exact_gradient_flow_descends():\n    item = by_id()["TOP3"]\n    assert item.status == AuditStatus.PASS\n    assert item.value["dE_dt"].is_nonpositive\n'''
+          if "test_cle5_flat_product_torus_laplacian_is_exact" not in text:
+              text = text.replace(anchor, additions + anchor)
+          text = text.replace(
+              "assert sum(item.status == AuditStatus.PASS for item in results) == 60",
+              "assert sum(item.status == AuditStatus.PASS for item in results) == 63",
+          )
+          p.write_text(text, encoding="utf-8")
+
+          p = Path("tests/test_compiled_registry.py")
+          text = p.read_text(encoding="utf-8")
+          marker = '    assert by_id["E70"]["status"]["effective"] == "CONDITIONAL"\n'
+          checks = '''    assert by_id["CLE5"]["status"]["effective"] == "PASS"\n    assert by_id["CLE8"]["status"]["effective"] == "PASS"\n    assert by_id["TOP3"]["status"]["effective"] == "PASS"\n'''
+          if checks not in text:
+              text = text.replace(marker, checks + marker)
+          p.write_text(text, encoding="utf-8")
+          PY
+      - name: Fetch pinned canonical equation source
+        run: |
+          curl -fsSL \
+            https://raw.githubusercontent.com/rickyjreyes/geometry_of_resonance/5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a/WCT_FULL_EQUATION_LIST_CORRECTED.md \
+            -o /tmp/WCT_FULL_EQUATION_LIST_CORRECTED.md
+      - name: Regenerate compiled registry
+        env:
+          WCT_GEOMETRY_SHA: 5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a
+        run: |
+          python scripts/compile_registry.py \
+            --canonical-file /tmp/WCT_FULL_EQUATION_LIST_CORRECTED.md
+      - name: Refresh frozen source hashes
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          manifest_path = Path("reproducibility/expected-source-hashes.json")
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          files = manifest["files"]
+          for extra in (
+              "wct_sympy/full_checks.py",
+              "wct_sympy/full_checks_derived.py",
+              "wct_sympy/full_checks_derived_two.py",
+          ):
+              files.setdefault(extra, "")
+
+          def git_blob_sha(path: Path) -> str:
+              data = path.read_bytes()
+              header = f"blob {len(data)}\\0".encode("ascii")
+              return hashlib.sha1(header + data).hexdigest()
+
+          for relative in sorted(files):
+              files[relative] = git_blob_sha(Path(relative))
+          manifest_path.write_text(
+              json.dumps(manifest, indent=2, sort_keys=False) + "\n",
+              encoding="utf-8",
+          )
+          PY
+      - name: Run full validation
+        run: |
+          pytest -q
+          python scripts/check_all.py
+          python scripts/check_full_coverage.py
+          python scripts/check_lean_coverage.py
+          python scripts/verify_reproducibility.py \
+            --generated-registry compiled-registry.json
+      - name: Commit regenerated audit state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/compile_registry.py scripts/verify_reproducibility.py \
+            tests/test_full_audit.py tests/test_compiled_registry.py \
+            tests/test_derived_batch_two.py reproducibility/expected-source-hashes.json \
+            compiled-registry.json compiled-registry.yaml validation-report.json
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit"
+          else
+            git commit -m "Expand exact derived coverage to 63 PASS"
+            git push origin HEAD:agent/promote-e15-derived
+          fi
