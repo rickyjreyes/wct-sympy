@@ -70,6 +70,13 @@ objects:
     limitations:
       - This fixes the coefficient only after the two sectors are identified; it does not derive the spectral law Delta_k proportional to averaged curvature squared.
     empirical_status: NOT_TESTED
+  E22:
+    verification_kind: CONSISTENCY_CHECK
+    scope: MODEL_CONDITIONAL
+    meaning: For genuinely complex psi, the raw derivative outer product conjugate(d_mu psi)d_nu psi is Hermitian but not generally a real symmetric metric correction; taking its real symmetric part removes this obstruction.
+    limitations:
+      - The corrected real-symmetric tensor still requires dimensional normalization, nondegeneracy, and Lorentzian-signature conditions.
+    empirical_status: NOT_APPLICABLE
   E24:
     verification_kind: FORMAL_THEOREM
     scope: STANDARD_MATHEMATICS
@@ -114,6 +121,13 @@ objects:
     meaning: The general H2-to-L-infinity embedding route fails above three spatial dimensions under the declared Sobolev framework.
     limitations:
       - Failure of this regularity route does not exclude every conceivable higher-dimensional confinement mechanism.
+    empirical_status: NOT_APPLICABLE
+  E68:
+    verification_kind: CONSISTENCY_CHECK
+    scope: STANDARD_MATHEMATICS
+    meaning: The printed R^(n-2) localized-energy estimate cannot hold with an R-independent constant for arbitrary H1 fields in n=3 because a concentrating rescaling keeps the local gradient energy fixed while the proposed right side tends to zero.
+    limitations:
+      - E68 may still hold on a restricted scaling class or under additional domain, normalization, Morrey-type, or nonconcentration hypotheses; those assumptions must be stated explicitly.
     empirical_status: NOT_APPLICABLE
   E70:
     verification_kind: CONSISTENCY_CHECK
