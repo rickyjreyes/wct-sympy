@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "registry_id": "wct-effective-registry",
-  "generated_at": "2026-08-19T23:10:37+00:00",
+  "generated_at": "2026-08-19T23:15:35+00:00",
   "status_policy": {
     "PASS": "The assigned check succeeds under its declared assumptions.",
     "CONDITIONAL": "Additional mathematical, model, regularity, or empirical assumptions remain required.",
@@ -2362,20 +2362,22 @@
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "CONDITIONAL",
-        "changed": false,
-        "changed_by": null,
-        "source_file": "equations/full_registry.yaml"
+        "changed": true,
+        "changed_by": "derived_overrides.yaml:check_gap_mass_consistency_constraint",
+        "source_file": "equations/derived_overrides.yaml"
       },
       "verification": {
         "outcome": "CONDITIONAL",
-        "kind": "DIMENSIONAL_CHECK",
+        "kind": "CONSISTENCY_CHECK",
         "scope": "MODEL_CONDITIONAL",
         "checker": [
-          "check_gap_curvature_dimensions"
+          "check_gap_mass_consistency_constraint"
         ],
         "baseline_checker": "check_gap_curvature_dimensions",
-        "meaning": "The assigned executable classification is reported under its declared assumptions.",
-        "limitations": []
+        "meaning": "If the E19 curvature-gap sector is identified with the E6/E49 mass sector, exact consistency forces the dimensionless proportionality coefficient C_gap to equal one.",
+        "limitations": [
+          "This fixes the coefficient only after the two sectors are identified; it does not derive the spectral law Delta_k proportional to averaged curvature squared."
+        ]
       },
       "assumptions": [],
       "formalization": {
@@ -2387,7 +2389,7 @@
         "limitations": []
       },
       "empirical_validation": {
-        "status": "NOT_APPLICABLE",
+        "status": "NOT_TESTED",
         "evidence_ids": [],
         "independent_replication": "NONE"
       },
@@ -2408,7 +2410,10 @@
           "repository": "wct-sympy",
           "path": "equations/full_registry.yaml"
         },
-        "derived_override": null
+        "derived_override": {
+          "repository": "wct-sympy",
+          "path": "equations/derived_overrides.yaml"
+        }
       }
     },
     {
@@ -8913,20 +8918,22 @@
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "CONDITIONAL",
-        "changed": false,
-        "changed_by": null,
-        "source_file": "equations/full_registry.yaml"
+        "changed": true,
+        "changed_by": "derived_overrides.yaml:check_topology_curvature_energy_mass_constraint",
+        "source_file": "equations/derived_overrides.yaml"
       },
       "verification": {
         "outcome": "CONDITIONAL",
-        "kind": "UNRESOLVED",
+        "kind": "CONSISTENCY_CHECK",
         "scope": "MODEL_CONDITIONAL",
         "checker": [
-          "classify_conditional"
+          "check_topology_curvature_energy_mass_constraint"
         ],
         "baseline_checker": "classify_conditional",
-        "meaning": "The assigned executable classification is reported under its declared assumptions.",
-        "limitations": []
+        "meaning": "In the torsion-free constant-curvature planar reduction of E6, mass squared is linear in the TOP7 curvature-energy density while mass itself scales with its square root.",
+        "limitations": [
+          "This does not rule out a different linear mass-energy relation in a more restricted topology class, but it shows that the proposed universal linear proxy is not a consequence of E6 in the simplest constant-curvature sector."
+        ]
       },
       "assumptions": [],
       "formalization": {
@@ -8959,7 +8966,10 @@
           "repository": "wct-sympy",
           "path": "equations/full_registry.yaml"
         },
-        "derived_override": null
+        "derived_override": {
+          "repository": "wct-sympy",
+          "path": "equations/derived_overrides.yaml"
+        }
       }
     },
     {
@@ -9446,7 +9456,7 @@
   "provenance": {
     "registry_version": "2.0.0",
     "source_commits": {
-      "wct-sympy": "394a0b2062325b4f7720512cf10c06147ad8f9f8",
+      "wct-sympy": "0a5a5eb9eec5e772c0995fd6d6d2c7d54d659d8a",
       "geometry_of_resonance": "5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a",
       "wct-lean": null
     },
