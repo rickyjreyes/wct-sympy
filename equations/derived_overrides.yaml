@@ -24,3 +24,4 @@
 - [CM18, classify_definition, DEFINITION]
 - [TOP3, check_topology_gradient_flow_descent_derived, PASS]
 - [TOP7, check_topology_curvature_energy_mass_constraint, CONDITIONAL]
+- [CORR2, check_mean_amplitude_closure_error_bound_derived, PASS]
