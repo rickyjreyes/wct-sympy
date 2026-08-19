@@ -1,6 +1,6 @@
 schema_version: 2.0.0
 registry_id: wct-effective-registry
-generated_at: '2026-08-19T20:56:49+00:00'
+generated_at: '2026-08-19T22:42:42+00:00'
 status_policy:
   PASS: The assigned check succeeds under its declared assumptions.
   CONDITIONAL: Additional mathematical, model, regularity, or empirical assumptions
@@ -14,8 +14,8 @@ status_precedence:
 - equations/full_registry.yaml
 - canonical equation narrative
 counts:
-  PASS: 60
-  CONDITIONAL: 26
+  PASS: 63
+  CONDITIONAL: 23
   DEFINITION: 26
   OPEN: 30
   FAIL: 0
@@ -5672,16 +5672,16 @@ objects:
     approximation,'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_flat_product_torus_laplacian_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: UNRESOLVED
-    scope: MODEL_CONDITIONAL
+    outcome: PASS
+    kind: ALGEBRAIC_IDENTITY
+    scope: INTERNAL_CONSISTENCY
     checker:
-    - classify_conditional
+    - check_flat_product_torus_laplacian_derived
     baseline_checker: classify_conditional
     meaning: The assigned executable classification is reported under its declared
       assumptions.
@@ -5695,7 +5695,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -5712,7 +5712,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: CLE6
   aliases: []
   name: Separation ansatz
@@ -5830,16 +5832,16 @@ objects:
     and boundary-selection principles.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_torus_lowest_mode_selection_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: SYMBOLIC_DERIVATION
-    scope: MODEL_CONDITIONAL
+    outcome: PASS
+    kind: ALGEBRAIC_IDENTITY
+    scope: INTERNAL_CONSISTENCY
     checker:
-    - check_torus_eigenmode_selection
+    - check_torus_lowest_mode_selection_derived
     baseline_checker: check_torus_eigenmode_selection
     meaning: The assigned executable classification is reported under its declared
       assumptions.
@@ -5853,7 +5855,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -5870,7 +5872,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: CLE9
   aliases: []
   name: Electron radius from curvature
@@ -7465,16 +7469,16 @@ objects:
     flow,'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_topology_gradient_flow_descent_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: UNRESOLVED
+    outcome: PASS
+    kind: VARIATIONAL_DERIVATION
     scope: MODEL_CONDITIONAL
     checker:
-    - classify_conditional
+    - check_topology_gradient_flow_descent_derived
     baseline_checker: classify_conditional
     meaning: The assigned executable classification is reported under its declared
       assumptions.
@@ -7505,7 +7509,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: TOP4
   aliases: []
   name: Emergent-topology criterion
@@ -8130,7 +8136,7 @@ objects:
 provenance:
   registry_version: 2.0.0
   source_commits:
-    wct-sympy: e6f1ab41eb694b567513eacdd4da8ea6c920093a
-    geometry_of_resonance: null
+    wct-sympy: 28b3a377bc8138851d9e79f852361e9b11764bb1
+    geometry_of_resonance: 5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a
     wct-lean: null
   generator: scripts/compile_registry.py
