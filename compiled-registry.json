@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "registry_id": "wct-effective-registry",
-  "generated_at": "2026-08-19T23:26:27+00:00",
+  "generated_at": "2026-08-19T23:54:50+00:00",
   "status_policy": {
     "PASS": "The assigned check succeeds under its declared assumptions.",
     "CONDITIONAL": "Additional mathematical, model, regularity, or empirical assumptions remain required.",
@@ -15,8 +15,8 @@
     "canonical equation narrative"
   ],
   "counts": {
-    "PASS": 67,
-    "CONDITIONAL": 19,
+    "PASS": 68,
+    "CONDITIONAL": 18,
     "DEFINITION": 26,
     "OPEN": 30,
     "FAIL": 0
@@ -9172,17 +9172,17 @@
       "definition": "Current effective status: ⚠️ CONDITIONAL Under a weak-intermittency mean-amplitude approximation,",
       "status": {
         "baseline": "CONDITIONAL",
-        "effective": "CONDITIONAL",
-        "changed": false,
-        "changed_by": null,
-        "source_file": "equations/full_registry.yaml"
+        "effective": "PASS",
+        "changed": true,
+        "changed_by": "derived_overrides.yaml:check_mean_amplitude_closure_error_bound_v2",
+        "source_file": "equations/derived_overrides.yaml"
       },
       "verification": {
-        "outcome": "CONDITIONAL",
-        "kind": "UNRESOLVED",
+        "outcome": "PASS",
+        "kind": "SYMBOLIC_DERIVATION",
         "scope": "MODEL_CONDITIONAL",
         "checker": [
-          "classify_conditional"
+          "check_mean_amplitude_closure_error_bound_v2"
         ],
         "baseline_checker": "classify_conditional",
         "meaning": "The assigned executable classification is reported under its declared assumptions.",
@@ -9219,7 +9219,10 @@
           "repository": "wct-sympy",
           "path": "equations/full_registry.yaml"
         },
-        "derived_override": null
+        "derived_override": {
+          "repository": "wct-sympy",
+          "path": "equations/derived_overrides.yaml"
+        }
       }
     },
     {
@@ -9466,7 +9469,7 @@
   "provenance": {
     "registry_version": "2.0.0",
     "source_commits": {
-      "wct-sympy": "fc1ea6f9ceafe1c7cb745a0bedb352d6a9ddebf8",
+      "wct-sympy": "87ffcfaca0d720e8c65f55faa1fa32893b33bdff",
       "geometry_of_resonance": "5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a",
       "wct-lean": null
     },
