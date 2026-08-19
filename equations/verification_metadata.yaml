@@ -63,6 +63,13 @@ objects:
     scope: MODEL_CONDITIONAL
     meaning: Exact negative gradient flow gives monotone energy descent when the registered nonnegativity assumptions hold.
     empirical_status: NOT_TESTED
+  E19:
+    verification_kind: CONSISTENCY_CHECK
+    scope: MODEL_CONDITIONAL
+    meaning: If the E19 curvature-gap sector is identified with the E6/E49 mass sector, exact consistency forces the dimensionless proportionality coefficient C_gap to equal one.
+    limitations:
+      - This fixes the coefficient only after the two sectors are identified; it does not derive the spectral law Delta_k proportional to averaged curvature squared.
+    empirical_status: NOT_TESTED
   E24:
     verification_kind: FORMAL_THEOREM
     scope: STANDARD_MATHEMATICS
@@ -165,3 +172,10 @@ objects:
     scope: DEFINITIONAL
     meaning: The object defines a closure set for bookkeeping and is not a derivation of cosmology.
     empirical_status: NOT_APPLICABLE
+  TOP7:
+    verification_kind: CONSISTENCY_CHECK
+    scope: MODEL_CONDITIONAL
+    meaning: In the torsion-free constant-curvature planar reduction of E6, mass squared is linear in the TOP7 curvature-energy density while mass itself scales with its square root.
+    limitations:
+      - This does not rule out a different linear mass-energy relation in a more restricted topology class, but it shows that the proposed universal linear proxy is not a consequence of E6 in the simplest constant-curvature sector.
+    empirical_status: NOT_TESTED
