@@ -57,6 +57,21 @@ def test_e41_and_e72_follow_from_discrete_retention_count_bounds():
         assert item.value["upper_minus_realized"].is_nonnegative
 
 
+def test_e19_gap_coefficient_is_fixed_if_mass_sectors_are_identified():
+    item = by_id()["E19"]
+    assert item.status == AuditStatus.CONDITIONAL
+    assert item.residual == 0.0
+    assert item.value["mass_squared_ratio"].name == "C_gap"
+    assert item.value["consistency_coefficient"] == [1]
+
+
+def test_top7_planar_reduction_is_mass_squared_not_linear_mass_energy():
+    item = by_id()["TOP7"]
+    assert item.status == AuditStatus.CONDITIONAL
+    assert item.residual == 0.0
+    assert item.value["d_mass_over_energy_d_kappa"] != 0
+
+
 def test_third_derivation_batch_increases_pass_count():
     results = list(run_full_audit())
     assert sum(item.status == AuditStatus.PASS for item in results) == 67
