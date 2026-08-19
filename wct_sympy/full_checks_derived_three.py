@@ -1,8 +1,8 @@
 """Third explicit derivation batch for canonical WCT audit entries.
 
 The checks in this module close only the displayed implications under explicit
-uniform-margin or denominator hypotheses.  They do not add empirical or PDE
-claims beyond those assumptions.
+uniform-margin, denominator, or discrete counting hypotheses. They do not add
+empirical or PDE claims beyond those assumptions.
 """
 
 from .full_checks_core import *  # noqa: F401,F403
@@ -37,9 +37,9 @@ def check_subexponential_exploration_margin_derived(spec: EquationSpec) -> Audit
         expected="uniform delta>0 margin implies alpha(n)<=1-delta eventually, hence limsup alpha<1",
         residual=0.0 if ok else None,
         reason=(
-            "Let A(n)=(1/n) sum_t log2 rho_t(n).  If there are delta>0 and N "
+            "Let A(n)=(1/n) sum_t log2 rho_t(n). If there are delta>0 and N "
             "such that beta(n)<=-A(n)-delta for every n>=N, write the inequality "
-            "as beta(n)=-A(n)-delta-s(n) with s(n)>=0.  Then the corrected E28 "
+            "as beta(n)=-A(n)-delta-s(n) with s(n)>=0. Then the corrected E28 "
             "formula gives alpha(n)=1-delta-s(n)<=1-delta<1 on the whole tail. "
             "Therefore limsup alpha(n)<=1-delta<1, which is exactly E32."
         ),
@@ -90,5 +90,62 @@ def check_phase_coherence_lower_gradient_bound_derived(spec: EquationSpec) -> Au
             "psi is square-integrable on the integration region",
             "|grad theta|>=delta>0 almost everywhere on that region",
             "the phase-gradient magnitude is measurable",
+        ),
+    )
+
+
+def check_alpha_drop_counting_bound_derived(spec: EquationSpec) -> AuditResult:
+    """Derive E41/E72 from explicit count-retention fractions and a correction factor."""
+    n = sp.symbols("n", positive=True, integer=True)
+    beta = sp.symbols("beta", real=True)
+
+    # rho_i=1/(1+s_i), s_i>=0, enforces 0<rho_i<=1 in a finite representative chain.
+    retention_slacks = sp.symbols("r0:3", nonnegative=True)
+    retained = tuple(1 / (1 + s) for s in retention_slacks)
+    retention_product = sp.prod(retained)
+    log_retention_sum = sp.Add(*(sp.log(rho, 2) for rho in retained))
+    alpha = 1 + log_retention_sum / n + beta
+
+    # Base 2^n configuration count, multiplicative correction 2^(beta*n),
+    # and successive retained fractions.
+    iterative_upper = sp.exp(sp.log(2) * n * (1 + beta)) * retention_product
+    alpha_upper = sp.exp(sp.log(2) * alpha * n)
+    exponent_residual = sp.simplify(alpha_upper / iterative_upper - 1)
+
+    # Parameterize arbitrary slack in the initial, stepwise, and correction bounds.
+    count_slacks = sp.symbols("q0:5", nonnegative=True)
+    realized_count = iterative_upper / sp.prod(1 + q for q in count_slacks)
+    count_gap = sp.factor(iterative_upper - realized_count)
+
+    ok = exponent_residual == 0 and count_gap.is_nonnegative is True
+
+    return result(
+        spec,
+        AuditStatus.PASS if ok else AuditStatus.FAIL,
+        value={
+            "retained_fractions": retained,
+            "retention_product": retention_product,
+            "alpha": alpha,
+            "iterated_count_upper": iterative_upper,
+            "alpha_count_upper": alpha_upper,
+            "upper_minus_realized": count_gap,
+        },
+        expected="count<=2^n prod_t rho_t 2^(beta n)=2^(alpha(n)n)",
+        residual=0.0 if ok else None,
+        reason=(
+            "If the E28 retained fractions are actual discrete count-retention bounds, "
+            "M_(t+1)<=rho_t M_t with 0<rho_t<=1, induction gives "
+            "M_m<=M_0 prod_t rho_t. With M_0<=2^n and a multiplicative correction "
+            "bounded by 2^(beta(n)n), the effective count is at most "
+            "2^(n(1+beta)) prod_t rho_t. The E28 definition of alpha makes this "
+            "quantity exactly 2^(alpha(n)n). The symbolic representative verifies "
+            "both the exponent identity and nonnegative slack in the count bound."
+        ),
+        assumptions=(
+            "the physical pruning state has a finite discrete encoding with initial count M_0<=2^n",
+            "each declared rho_t(n) is an actual count-retention bound M_(t+1)<=rho_t M_t",
+            "0<rho_t(n)<=1 for every pruning step",
+            "the multiplicative correction/exploration factor is at most 2^(beta(n)n)",
+            "alpha(n) uses the same rho_t(n) and beta(n) as E28",
         ),
     )
