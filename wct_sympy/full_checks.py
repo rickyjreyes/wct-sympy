@@ -25,6 +25,7 @@ from .full_checks_derived_two import (
 from .full_checks_derived_three import (
     check_alpha_drop_counting_bound_derived,
     check_gap_mass_consistency_constraint,
+    check_mean_amplitude_closure_error_bound_derived,
     check_phase_coherence_lower_gradient_bound_derived,
     check_subexponential_exploration_margin_derived,
     check_topology_curvature_energy_mass_constraint,
