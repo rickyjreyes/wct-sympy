@@ -23,6 +23,7 @@ from .full_checks_derived_two import (
     check_torus_lowest_mode_selection_derived,
 )
 from .full_checks_derived_three import (
+    check_alpha_drop_counting_bound_derived,
     check_phase_coherence_lower_gradient_bound_derived,
     check_subexponential_exploration_margin_derived,
 )
