@@ -33,7 +33,22 @@ def test_top3_exact_gradient_flow_descends():
     assert item.value["dE_dt"].is_nonpositive
 
 
-def test_second_derivation_batch_increases_pass_count():
+def test_e32_uniform_margin_implies_subexponential_tail():
+    item = by_id()["E32"]
+    assert item.status == AuditStatus.PASS
+    assert item.residual == 0.0
+    assert item.value["gap_to_upper"].is_nonnegative
+
+
+def test_e50_positive_phase_gradient_floor_bounds_coherence():
+    item = by_id()["E50"]
+    assert item.status == AuditStatus.PASS
+    assert item.residual == 0.0
+    assert item.value["coherence_integrand"].is_nonnegative
+    assert item.value["upper_minus_integrand"].is_nonnegative
+
+
+def test_third_derivation_batch_increases_pass_count():
     results = list(run_full_audit())
-    assert sum(item.status == AuditStatus.PASS for item in results) == 63
+    assert sum(item.status == AuditStatus.PASS for item in results) == 65
     assert len(results) == 142
