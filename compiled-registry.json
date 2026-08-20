@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "registry_id": "wct-effective-registry",
-  "generated_at": "2026-08-20T05:54:30+00:00",
+  "generated_at": "2026-08-20T05:55:56+00:00",
   "status_policy": {
     "PASS": "The assigned check succeeds under its declared assumptions.",
     "CONDITIONAL": "Additional mathematical, model, regularity, or empirical assumptions remain required.",
@@ -2098,7 +2098,7 @@
       "object_type": "equation",
       "family": "B. Phase-flux and finite-band selection",
       "formula": "\\frac{d}{dt}|\\widehat A_k|^2 \\le 2\\lambda_{\\rm grow}(k)|\\widehat A_k|^2 -c|\\widehat A_k|^4, \\qquad c>0.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL The quartic modal estimate requires a model-specific nonlinear projection bound.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -3209,7 +3209,7 @@
       "object_type": "equation",
       "family": "E. Alpha-drop, entropy reduction, and pruning",
       "formula": "\\limsup_{n\\to\\infty}\\alpha(n)<1.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL This follows only if the retained-fraction and $\\beta(n)$ bounds in E28 hold uniformly with sufficient margin.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -3780,7 +3780,7 @@
       "object_type": "equation",
       "family": "F. WCC, channel capacity, and complexity",
       "formula": "|C_{\\rm curv}(n)| \\le 2^{\\alpha(n)n}, \\qquad \\alpha(n)<1.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL E28 alone does not prove this counting bound; an injective coding or combinatorial argument is required.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -4345,7 +4345,7 @@
       "object_type": "equation",
       "family": "G. Cavity, effective mass, and phase structure",
       "formula": "\\mathcal C[\\psi] = \\int_\\Omega \\frac{|\\psi|^2}{|\\nabla\\theta|}\\,dx.\n\n|\\nabla\\theta|\\ge\\delta>0",
-      "definition": "Current effective status: ⚠️ CONDITIONAL The definition requires a regularization or lower bound",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -5765,7 +5765,7 @@
       "object_type": "equation",
       "family": "J. Computational resource bounds",
       "formula": "|S_{\\rm eff}(n)| \\le 2^{\\alpha(n)n}.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL A counting theorem linking the physical pruning process to discrete configurations is required.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -6691,7 +6691,7 @@
       "object_type": "equation",
       "family": "Curvature-locking equations",
       "formula": "\\Delta\\psi \\approx \\frac1{R^2}\\partial_\\theta^2\\psi + \\frac1{r^2}\\partial_\\phi^2\\psi.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL Under a flat product or thin-torus approximation,",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -6879,7 +6879,7 @@
       "object_type": "equation",
       "family": "Curvature-locking equations",
       "formula": "\\psi(\\theta,\\phi)=Ae^{i\\phi}",
-      "definition": "Current effective status: ⚠️ CONDITIONAL is one admissible winding-one mode. Uniqueness requires additional lowest-mode, chirality, normalization, phase, and boundary-selection principles.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -8769,7 +8769,7 @@
       "object_type": "equation",
       "family": "Topology and spectral emergence",
       "formula": "\\partial_t\\gamma = -\\frac{\\delta\\mathcal E_{\\rm loop}}{\\delta\\gamma}.\n\n\\frac{d\\mathcal E_{\\rm loop}}{dt} = - \\left\\| \\frac{\\delta\\mathcal E_{\\rm loop}}{\\delta\\gamma} \\right\\|^2 \\le0.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL For a differentiable gradient flow,",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -9268,7 +9268,7 @@
       "object_type": "equation",
       "family": "Canonical correction layer",
       "formula": "D_{\\rm eff}^2 := \\langle|\\psi|^2\\rangle+\\varepsilon^2,\n\nC_\\Theta(k) \\approx \\frac{k^4}{D_{\\rm eff}^2}.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL Under a weak-intermittency mean-amplitude approximation,",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -9574,7 +9574,7 @@
   "provenance": {
     "registry_version": "2.0.0",
     "source_commits": {
-      "wct-sympy": "8f0731b72f49e9c5a73f4f7501ab569f5ca7ed73",
+      "wct-sympy": "7058f15b3166a165389c70cae489b86171134c32",
       "geometry_of_resonance": null,
       "wct-lean": null
     },
