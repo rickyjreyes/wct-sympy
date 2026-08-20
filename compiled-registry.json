@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "registry_id": "wct-effective-registry",
-  "generated_at": "2026-08-20T05:50:17+00:00",
+  "generated_at": "2026-08-20T05:55:56+00:00",
   "status_policy": {
     "PASS": "The assigned check succeeds under its declared assumptions.",
     "CONDITIONAL": "Additional mathematical, model, regularity, or empirical assumptions remain required.",
@@ -2098,7 +2098,7 @@
       "object_type": "equation",
       "family": "B. Phase-flux and finite-band selection",
       "formula": "\\frac{d}{dt}|\\widehat A_k|^2 \\le 2\\lambda_{\\rm grow}(k)|\\widehat A_k|^2 -c|\\widehat A_k|^4, \\qquad c>0.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL The quartic modal estimate requires a model-specific nonlinear projection bound.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -2182,12 +2182,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "linearModePower",
+          "linearModePower_nonnegative",
+          "linearModePower_selects_larger_growth"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Linearized supplied-growth theorem only; nonlinear global mode selection is not proved."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -2381,12 +2387,19 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "gapCurvatureFrequency",
+          "effectiveMassSquaredFromGap",
+          "gapCurvature_massSquared_chain",
+          "gapCurvature_unitCoefficient_recovers_massLawSquared"
+        ],
+        "source": "WCTLean/Models/DerivedConstraints.lean",
+        "limitations": [
+          "Exact cross-equation consequence under the supplied gap law; the physical spectral-gap law remains conditional."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -2571,12 +2584,19 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "complexMetricDerivativeEntry",
+          "complexMetricDerivativeEntry_hermitian",
+          "complexMetricDerivativeEntry_not_symmetric_example",
+          "complexMetricDerivativeEntry_realPart_symmetric"
+        ],
+        "source": "WCTLean/Models/DerivedConstraints.lean",
+        "limitations": [
+          "Symmetry diagnostics only; dimensional normalization, nondegeneracy, and Lorentzian signature remain unresolved."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -3189,7 +3209,7 @@
       "object_type": "equation",
       "family": "E. Alpha-drop, entropy reduction, and pruning",
       "formula": "\\limsup_{n\\to\\infty}\\alpha(n)<1.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL This follows only if the retained-fraction and $\\beta(n)$ bounds in E28 hold uniformly with sufficient margin.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -3212,12 +3232,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "alphaDropFromAverage",
+          "alphaDrop_uniform_margin_bound",
+          "alphaDrop_uniform_margin_lt_one"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Pointwise uniform-margin core of the limsup statement; eventual-tail application requires the displayed uniform hypothesis."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -3525,12 +3551,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "energyBandlimit",
+          "energyBandlimit_nonnegative"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Scalar sign theorem only; the physical coefficient and cutoff model are not derived."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -3585,12 +3616,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "channelCapacityUpperBound",
+          "channelCapacityUpperBound_nonnegative"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Scalar structure only; no full computational-capacity theorem is claimed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -3744,7 +3780,7 @@
       "object_type": "equation",
       "family": "F. WCC, channel capacity, and complexity",
       "formula": "|C_{\\rm curv}(n)| \\le 2^{\\alpha(n)n}, \\qquad \\alpha(n)<1.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL E28 alone does not prove this counting bound; an injective coding or combinatorial argument is required.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -3767,12 +3803,21 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "retentionProduct",
+          "retentionProduct_zero",
+          "retentionProduct_succ",
+          "iterated_count_retention_bound",
+          "alphaFromRetentionLogSum",
+          "alphaFromRetentionLogSum_exponent_identity"
+        ],
+        "source": "WCTLean/Models/DerivedConstraints.lean",
+        "limitations": [
+          "Finite nonnegative count-retention theorem; physical encoding and retention hypotheses remain model assumptions."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -4300,7 +4345,7 @@
       "object_type": "equation",
       "family": "G. Cavity, effective mass, and phase structure",
       "formula": "\\mathcal C[\\psi] = \\int_\\Omega \\frac{|\\psi|^2}{|\\nabla\\theta|}\\,dx.\n\n|\\nabla\\theta|\\ge\\delta>0",
-      "definition": "Current effective status: ⚠️ CONDITIONAL The definition requires a regularization or lower bound",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -4323,12 +4368,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "phaseCoherenceIntegrand",
+          "phaseCoherenceIntegrand_bound"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Pointwise bound; continuum finiteness also uses the stated L2 density integrability assumption."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -5715,7 +5765,7 @@
       "object_type": "equation",
       "family": "J. Computational resource bounds",
       "formula": "|S_{\\rm eff}(n)| \\le 2^{\\alpha(n)n}.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL A counting theorem linking the physical pruning process to discrete configurations is required.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -5738,12 +5788,19 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "retentionProduct",
+          "iterated_count_retention_bound",
+          "alphaFromRetentionLogSum",
+          "alphaFromRetentionLogSum_exponent_identity"
+        ],
+        "source": "WCTLean/Models/DerivedConstraints.lean",
+        "limitations": [
+          "Finite counting theorem only; no independent complexity-class result is claimed."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6590,12 +6647,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "scalarCurvatureQuotient",
+          "curvatureLock_iff_lockedEigenEquation"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Scalar algebraic equivalence only; no toroidal solution existence theorem."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6629,7 +6691,7 @@
       "object_type": "equation",
       "family": "Curvature-locking equations",
       "formula": "\\Delta\\psi \\approx \\frac1{R^2}\\partial_\\theta^2\\psi + \\frac1{r^2}\\partial_\\phi^2\\psi.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL Under a flat product or thin-torus approximation,",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -6650,12 +6712,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "flatProductTorusEigenvalue",
+          "flatProductTorusEigenvalue_nonnegative"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Flat-product torus model only; curvature corrections are not included."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6812,7 +6879,7 @@
       "object_type": "equation",
       "family": "Curvature-locking equations",
       "formula": "\\psi(\\theta,\\phi)=Ae^{i\\phi}",
-      "definition": "Current effective status: ⚠️ CONDITIONAL is one admissible winding-one mode. Uniqueness requires additional lowest-mode, chirality, normalization, phase, and boundary-selection principles.",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -6833,12 +6900,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "flatProductTorus_fixedWinding_one_minimal",
+          "flatProductTorus_fixedWinding_one_eq_iff"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Requires the stated n=+1 winding selection and flat-product spectrum."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6898,12 +6970,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "curvatureRadius",
+          "curvatureRadius_mul_curvature"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Exact reciprocal identity under nonzero curvature; physical radius identification remains model-specific."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6958,12 +7035,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "scalarCurvatureQuotient",
+          "curvatureScalarSq_iff_lockedEigenEquation"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Scalar algebraic equivalence only; no confined-state existence theorem."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -7952,12 +8034,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "curvatureDampingEnvelope",
+          "curvatureDampingEnvelope_positive",
+          "curvatureDampingEnvelope_zero"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Envelope properties only; cosmological parameter calibration remains separate."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -8681,7 +8769,7 @@
       "object_type": "equation",
       "family": "Topology and spectral emergence",
       "formula": "\\partial_t\\gamma = -\\frac{\\delta\\mathcal E_{\\rm loop}}{\\delta\\gamma}.\n\n\\frac{d\\mathcal E_{\\rm loop}}{dt} = - \\left\\| \\frac{\\delta\\mathcal E_{\\rm loop}}{\\delta\\gamma} \\right\\|^2 \\le0.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL For a differentiable gradient flow,",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -8702,12 +8790,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "finiteGradientFlowEnergyRate",
+          "finiteGradientFlowEnergyRate_nonpositive"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Finite-dimensional algebraic core; continuum differentiability and well-posedness are separate hypotheses."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -8947,12 +9040,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "constantCurvatureEnergyDensity",
+          "planarConstantCurvatureMass",
+          "planarConstantCurvatureMass_squared"
+        ],
+        "source": "WCTLean/Models/DerivedConstraints.lean",
+        "limitations": [
+          "Diagnostic consequence of the supplied mass law; not a universal mass-energy theorem."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -9169,7 +9268,7 @@
       "object_type": "equation",
       "family": "Canonical correction layer",
       "formula": "D_{\\rm eff}^2 := \\langle|\\psi|^2\\rangle+\\varepsilon^2,\n\nC_\\Theta(k) \\approx \\frac{k^4}{D_{\\rm eff}^2}.",
-      "definition": "Current effective status: ⚠️ CONDITIONAL Under a weak-intermittency mean-amplitude approximation,",
+      "definition": "Current effective status: ✅ PASS Baseline status: ⚠️ CONDITIONAL",
       "status": {
         "baseline": "CONDITIONAL",
         "effective": "PASS",
@@ -9190,12 +9289,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "formalizes_same_claim",
+        "declaration_type": "formalizes_same_claim",
+        "declarations": [
+          "meanAmplitudeReciprocalFactor",
+          "meanAmplitudeReciprocalFactor_band",
+          "meanAmplitudeReciprocal_upperError_exact"
+        ],
+        "source": "WCTLean/Models/CoverageExpansion.lean",
+        "limitations": [
+          "Formalizes the error enclosure under a uniform relative-denominator fluctuation bound; it does not prove that physical solutions satisfy that bound."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -9469,7 +9574,7 @@
   "provenance": {
     "registry_version": "2.0.0",
     "source_commits": {
-      "wct-sympy": "b1a8ae70da070128b47d2b952d18c27efefaddfa",
+      "wct-sympy": "7058f15b3166a165389c70cae489b86171134c32",
       "geometry_of_resonance": null,
       "wct-lean": null
     },

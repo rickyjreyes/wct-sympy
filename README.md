@@ -41,14 +41,16 @@ The registry contains **142 stable equation objects**:
 
 | Status | Count | Meaning |
 |---|---:|---|
-| `PASS` | **59** | The encoded implication follows under its declared assumptions. |
+| `PASS` | **68** | The encoded implication follows under its declared assumptions. |
 | `FAIL` | **0** | No current encoded statement is contradicted by its assigned checker. |
-| `CONDITIONAL` | **27** | Additional mathematical or model assumptions remain required. |
+| `CONDITIONAL` | **18** | Additional mathematical or model assumptions remain required. |
 | `DEFINITION` | **26** | The object is a definition or ansatz rather than a theorem. |
 | `OPEN` | **30** | Analysis, formal proof, calibrated simulation, or experiment remains unresolved. |
 | **Total** | **142** | Complete registry coverage. |
 
-A zero `FAIL` count means no known contradiction remains in the current encoded statements. It does **not** prove the 27 conditional or 30 open obligations.
+A zero `FAIL` count means no known contradiction remains in the current encoded statements. It does **not** prove the 18 conditional or 30 open obligations.
+
+Lean equation-specific formal coverage is **80 / 142** canonical IDs. This includes theorem support, definitions, analytic contracts, counterexamples, and explicit constraints; it is not a count of 80 physically proved claims.
 
 ## Derivation batch 1
 
