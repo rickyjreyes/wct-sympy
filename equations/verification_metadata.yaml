@@ -63,6 +63,20 @@ objects:
     scope: MODEL_CONDITIONAL
     meaning: Exact negative gradient flow gives monotone energy descent when the registered nonnegativity assumptions hold.
     empirical_status: NOT_TESTED
+  E19:
+    verification_kind: CONSISTENCY_CHECK
+    scope: MODEL_CONDITIONAL
+    meaning: If the E19 curvature-gap sector is identified with the E6/E49 mass sector, exact consistency forces the dimensionless proportionality coefficient C_gap to equal one.
+    limitations:
+      - This fixes the coefficient only after the two sectors are identified; it does not derive the spectral law Delta_k proportional to averaged curvature squared.
+    empirical_status: NOT_TESTED
+  E22:
+    verification_kind: CONSISTENCY_CHECK
+    scope: MODEL_CONDITIONAL
+    meaning: For genuinely complex psi, the raw derivative outer product conjugate(d_mu psi)d_nu psi is Hermitian but not generally a real symmetric metric correction; taking its real symmetric part removes this obstruction.
+    limitations:
+      - The corrected real-symmetric tensor still requires dimensional normalization, nondegeneracy, and Lorentzian-signature conditions.
+    empirical_status: NOT_APPLICABLE
   E24:
     verification_kind: FORMAL_THEOREM
     scope: STANDARD_MATHEMATICS
@@ -74,6 +88,27 @@ objects:
     verification_kind: ALGEBRAIC_IDENTITY
     scope: STANDARD_MATHEMATICS
     meaning: The normalized spectral Shannon entropy satisfies its standard finite-support bounds.
+    empirical_status: NOT_APPLICABLE
+  E32:
+    verification_kind: SYMBOLIC_DERIVATION
+    scope: STANDARD_MATHEMATICS
+    meaning: A uniform positive tail margin in the corrected alpha-drop formula implies alpha(n) is eventually bounded by 1-delta and therefore has limsup strictly below one.
+    limitations:
+      - The audit proves the implication from a uniform margin; it does not prove that a particular WCT pruning dynamics supplies that margin.
+    empirical_status: NOT_APPLICABLE
+  E41:
+    verification_kind: SYMBOLIC_DERIVATION
+    scope: MODEL_CONDITIONAL
+    meaning: Actual per-step discrete count-retention bounds and the declared multiplicative correction factor iterate to the registered 2^(alpha(n)n) curvature-bounded configuration count.
+    limitations:
+      - The derivation assumes that the physical retained fractions are valid bounds on a finite discrete encoding; it does not derive that encoding from the underlying field dynamics.
+    empirical_status: NOT_APPLICABLE
+  E50:
+    verification_kind: ALGEBRAIC_IDENTITY
+    scope: STANDARD_MATHEMATICS
+    meaning: A positive lower bound on the phase-gradient magnitude gives a pointwise integrand bound and, for an L2 field, a finite phase-coherence functional.
+    limitations:
+      - The audit does not establish that the required positive phase-gradient floor holds dynamically.
     empirical_status: NOT_APPLICABLE
   E58:
     verification_kind: LIMIT_CHECK
@@ -87,6 +122,13 @@ objects:
     limitations:
       - Failure of this regularity route does not exclude every conceivable higher-dimensional confinement mechanism.
     empirical_status: NOT_APPLICABLE
+  E68:
+    verification_kind: CONSISTENCY_CHECK
+    scope: STANDARD_MATHEMATICS
+    meaning: The printed R^(n-2) localized-energy estimate cannot hold with an R-independent constant for arbitrary H1 fields in n=3 because a concentrating rescaling keeps the local gradient energy fixed while the proposed right side tends to zero.
+    limitations:
+      - E68 may still hold on a restricted scaling class or under additional domain, normalization, Morrey-type, or nonconcentration hypotheses; those assumptions must be stated explicitly.
+    empirical_status: NOT_APPLICABLE
   E70:
     verification_kind: CONSISTENCY_CHECK
     scope: MODEL_CONDITIONAL
@@ -95,6 +137,13 @@ objects:
       - This is not a biconditional characterization of every stable WCT solution.
       - Failure of the H2 embedding route above three dimensions is not by itself a universal impossibility theorem.
     empirical_status: NOT_TESTED
+  E72:
+    verification_kind: SYMBOLIC_DERIVATION
+    scope: MODEL_CONDITIONAL
+    meaning: Actual per-step discrete count-retention bounds and the declared multiplicative correction factor iterate to the registered 2^(alpha(n)n) effective search-space bound.
+    limitations:
+      - The derivation proves the counting implication once a finite discrete physical encoding and count-level retained fractions are supplied; it does not establish those physical premises.
+    empirical_status: NOT_APPLICABLE
   CLE9:
     verification_kind: DIMENSIONAL_CHECK
     scope: INTERNAL_CONSISTENCY
@@ -137,3 +186,10 @@ objects:
     scope: DEFINITIONAL
     meaning: The object defines a closure set for bookkeeping and is not a derivation of cosmology.
     empirical_status: NOT_APPLICABLE
+  TOP7:
+    verification_kind: CONSISTENCY_CHECK
+    scope: MODEL_CONDITIONAL
+    meaning: In the torsion-free constant-curvature planar reduction of E6, mass squared is linear in the TOP7 curvature-energy density while mass itself scales with its square root.
+    limitations:
+      - This does not rule out a different linear mass-energy relation in a more restricted topology class, but it shows that the proposed universal linear proxy is not a consequence of E6 in the simplest constant-curvature sector.
+    empirical_status: NOT_TESTED

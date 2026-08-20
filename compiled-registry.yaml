@@ -1,6 +1,6 @@
 schema_version: 2.0.0
 registry_id: wct-effective-registry
-generated_at: '2026-07-10T02:53:09+00:00'
+generated_at: '2026-08-19T23:54:50+00:00'
 status_policy:
   PASS: The assigned check succeeds under its declared assumptions.
   CONDITIONAL: Additional mathematical, model, regularity, or empirical assumptions
@@ -14,8 +14,8 @@ status_precedence:
 - equations/full_registry.yaml
 - canonical equation narrative
 counts:
-  PASS: 59
-  CONDITIONAL: 27
+  PASS: 68
+  CONDITIONAL: 18
   DEFINITION: 26
   OPEN: 30
   FAIL: 0
@@ -1816,16 +1816,16 @@ objects:
     requires a model-specific nonlinear projection bound.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_modal_growth_bound_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: UNRESOLVED
-    scope: MODEL_CONDITIONAL
+    outcome: PASS
+    kind: ALGEBRAIC_IDENTITY
+    scope: INTERNAL_CONSISTENCY
     checker:
-    - classify_conditional
+    - check_modal_growth_bound_derived
     baseline_checker: classify_conditional
     meaning: The assigned executable classification is reported under its declared
       assumptions.
@@ -1839,7 +1839,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -1856,7 +1856,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E16
   aliases: []
   name: Linear spectral concentration
@@ -2045,19 +2047,22 @@ objects:
   status:
     baseline: CONDITIONAL
     effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    changed: true
+    changed_by: derived_overrides.yaml:check_gap_mass_consistency_constraint
+    source_file: equations/derived_overrides.yaml
   verification:
     outcome: CONDITIONAL
-    kind: DIMENSIONAL_CHECK
+    kind: CONSISTENCY_CHECK
     scope: MODEL_CONDITIONAL
     checker:
-    - check_gap_curvature_dimensions
+    - check_gap_mass_consistency_constraint
     baseline_checker: check_gap_curvature_dimensions
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: If the E19 curvature-gap sector is identified with the E6/E49 mass sector,
+      exact consistency forces the dimensionless proportionality coefficient C_gap
+      to equal one.
+    limitations:
+    - This fixes the coefficient only after the two sectors are identified; it does
+      not derive the spectral law Delta_k proportional to averaged curvature squared.
   assumptions: &id029 []
   formalization:
     status: OPEN
@@ -2067,7 +2072,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_APPLICABLE
+    status: NOT_TESTED
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -2084,7 +2089,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E20
   aliases: []
   name: Higher-order cavity quadratic sector
@@ -2210,19 +2217,22 @@ objects:
   status:
     baseline: CONDITIONAL
     effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    changed: true
+    changed_by: derived_overrides.yaml:check_effective_metric_reality_constraint
+    source_file: equations/derived_overrides.yaml
   verification:
     outcome: CONDITIONAL
-    kind: UNRESOLVED
+    kind: CONSISTENCY_CHECK
     scope: MODEL_CONDITIONAL
     checker:
-    - classify_conditional
+    - check_effective_metric_reality_constraint
     baseline_checker: classify_conditional
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: For genuinely complex psi, the raw derivative outer product conjugate(d_mu
+      psi)d_nu psi is Hermitian but not generally a real symmetric metric correction;
+      taking its real symmetric part removes this obstruction.
+    limitations:
+    - The corrected real-symmetric tensor still requires dimensional normalization,
+      nondegeneracy, and Lorentzian-signature conditions.
   assumptions: &id032 []
   formalization:
     status: OPEN
@@ -2232,7 +2242,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -2249,7 +2259,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E23
   aliases: []
   name: Enthalpic curvature relation
@@ -2756,20 +2768,23 @@ objects:
     and $\beta(n)$ bounds in E28 hold uniformly with sufficient margin.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_subexponential_exploration_margin_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
+    outcome: PASS
     kind: SYMBOLIC_DERIVATION
-    scope: MODEL_CONDITIONAL
+    scope: STANDARD_MATHEMATICS
     checker:
-    - check_alpha_drop_count_bound
+    - check_subexponential_exploration_margin_derived
     baseline_checker: check_alpha_drop_count_bound
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: A uniform positive tail margin in the corrected alpha-drop formula implies
+      alpha(n) is eventually bounded by 1-delta and therefore has limsup strictly
+      below one.
+    limitations:
+    - The audit proves the implication from a uniform margin; it does not prove that
+      a particular WCT pruning dynamics supplies that margin.
   assumptions: &id042 []
   formalization:
     status: OPEN
@@ -2779,7 +2794,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -2796,7 +2811,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E33
   aliases: []
   name: Corrected support-entropy relation
@@ -3225,20 +3242,24 @@ objects:
     counting bound; an injective coding or combinatorial argument is required.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_alpha_drop_counting_bound_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
+    outcome: PASS
     kind: SYMBOLIC_DERIVATION
     scope: MODEL_CONDITIONAL
     checker:
-    - check_alpha_drop_count_bound
+    - check_alpha_drop_counting_bound_derived
     baseline_checker: check_alpha_drop_count_bound
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: Actual per-step discrete count-retention bounds and the declared multiplicative
+      correction factor iterate to the registered 2^(alpha(n)n) curvature-bounded
+      configuration count.
+    limitations:
+    - The derivation assumes that the physical retained fractions are valid bounds
+      on a finite discrete encoding; it does not derive that encoding from the underlying
+      field dynamics.
   assumptions: &id051 []
   formalization:
     status: OPEN
@@ -3248,7 +3269,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -3265,7 +3286,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E42
   aliases: []
   name: Theta-information relation
@@ -3707,20 +3730,22 @@ objects:
     regularization or lower bound'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_phase_coherence_lower_gradient_bound_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: UNRESOLVED
-    scope: MODEL_CONDITIONAL
+    outcome: PASS
+    kind: ALGEBRAIC_IDENTITY
+    scope: STANDARD_MATHEMATICS
     checker:
-    - classify_conditional
+    - check_phase_coherence_lower_gradient_bound_derived
     baseline_checker: classify_conditional
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: A positive lower bound on the phase-gradient magnitude gives a pointwise
+      integrand bound and, for an L2 field, a finite phase-coherence functional.
+    limitations:
+    - The audit does not establish that the required positive phase-gradient floor
+      holds dynamically.
   assumptions: &id060 []
   formalization:
     status: OPEN
@@ -3730,7 +3755,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -3747,7 +3772,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E51
   aliases: []
   name: Curvature-gradient commutator
@@ -4675,19 +4702,23 @@ objects:
   status:
     baseline: CONDITIONAL
     effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    changed: true
+    changed_by: derived_overrides.yaml:check_localized_energy_concentration_constraint
+    source_file: equations/derived_overrides.yaml
   verification:
     outcome: CONDITIONAL
-    kind: UNRESOLVED
-    scope: MODEL_CONDITIONAL
+    kind: CONSISTENCY_CHECK
+    scope: STANDARD_MATHEMATICS
     checker:
-    - classify_conditional
+    - check_localized_energy_concentration_constraint
     baseline_checker: classify_conditional
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: The printed R^(n-2) localized-energy estimate cannot hold with an R-independent
+      constant for arbitrary H1 fields in n=3 because a concentrating rescaling keeps
+      the local gradient energy fixed while the proposed right side tends to zero.
+    limitations:
+    - E68 may still hold on a restricted scaling class or under additional domain,
+      normalization, Morrey-type, or nonconcentration hypotheses; those assumptions
+      must be stated explicitly.
   assumptions: &id078 []
   formalization:
     status: DEFINITION
@@ -4699,7 +4730,7 @@ objects:
     limitations:
     - Proposition definition only; the localized estimate is not proved.
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -4716,7 +4747,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E69
   aliases: []
   name: Corrected high-regularity curvature bound
@@ -4893,20 +4926,24 @@ objects:
     the physical pruning process to discrete configurations is required.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_alpha_drop_counting_bound_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
+    outcome: PASS
     kind: SYMBOLIC_DERIVATION
     scope: MODEL_CONDITIONAL
     checker:
-    - check_alpha_drop_count_bound
+    - check_alpha_drop_counting_bound_derived
     baseline_checker: check_alpha_drop_count_bound
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: Actual per-step discrete count-retention bounds and the declared multiplicative
+      correction factor iterate to the registered 2^(alpha(n)n) effective search-space
+      bound.
+    limitations:
+    - The derivation proves the counting implication once a finite discrete physical
+      encoding and count-level retained fractions are supplied; it does not establish
+      those physical premises.
   assumptions: &id082 []
   formalization:
     status: OPEN
@@ -4916,7 +4953,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -4933,7 +4970,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: E73
   aliases: []
   name: Polynomial verification
@@ -5670,16 +5709,16 @@ objects:
     approximation,'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_flat_product_torus_laplacian_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: UNRESOLVED
-    scope: MODEL_CONDITIONAL
+    outcome: PASS
+    kind: ALGEBRAIC_IDENTITY
+    scope: INTERNAL_CONSISTENCY
     checker:
-    - classify_conditional
+    - check_flat_product_torus_laplacian_derived
     baseline_checker: classify_conditional
     meaning: The assigned executable classification is reported under its declared
       assumptions.
@@ -5693,7 +5732,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -5710,7 +5749,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: CLE6
   aliases: []
   name: Separation ansatz
@@ -5828,16 +5869,16 @@ objects:
     and boundary-selection principles.'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_torus_lowest_mode_selection_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: SYMBOLIC_DERIVATION
-    scope: MODEL_CONDITIONAL
+    outcome: PASS
+    kind: ALGEBRAIC_IDENTITY
+    scope: INTERNAL_CONSISTENCY
     checker:
-    - check_torus_eigenmode_selection
+    - check_torus_lowest_mode_selection_derived
     baseline_checker: check_torus_eigenmode_selection
     meaning: The assigned executable classification is reported under its declared
       assumptions.
@@ -5851,7 +5892,7 @@ objects:
     source: null
     limitations: []
   empirical_validation:
-    status: NOT_TESTED
+    status: NOT_APPLICABLE
     evidence_ids: []
     independent_replication: NONE
   dependencies:
@@ -5868,7 +5909,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: CLE9
   aliases: []
   name: Electron radius from curvature
@@ -7463,16 +7506,16 @@ objects:
     flow,'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_topology_gradient_flow_descent_derived
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: UNRESOLVED
+    outcome: PASS
+    kind: VARIATIONAL_DERIVATION
     scope: MODEL_CONDITIONAL
     checker:
-    - classify_conditional
+    - check_topology_gradient_flow_descent_derived
     baseline_checker: classify_conditional
     meaning: The assigned executable classification is reported under its declared
       assumptions.
@@ -7503,7 +7546,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: TOP4
   aliases: []
   name: Emergent-topology criterion
@@ -7670,19 +7715,23 @@ objects:
   status:
     baseline: CONDITIONAL
     effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    changed: true
+    changed_by: derived_overrides.yaml:check_topology_curvature_energy_mass_constraint
+    source_file: equations/derived_overrides.yaml
   verification:
     outcome: CONDITIONAL
-    kind: UNRESOLVED
+    kind: CONSISTENCY_CHECK
     scope: MODEL_CONDITIONAL
     checker:
-    - classify_conditional
+    - check_topology_curvature_energy_mass_constraint
     baseline_checker: classify_conditional
-    meaning: The assigned executable classification is reported under its declared
-      assumptions.
-    limitations: []
+    meaning: In the torsion-free constant-curvature planar reduction of E6, mass squared
+      is linear in the TOP7 curvature-energy density while mass itself scales with
+      its square root.
+    limitations:
+    - This does not rule out a different linear mass-energy relation in a more restricted
+      topology class, but it shows that the proposed universal linear proxy is not
+      a consequence of E6 in the simplest constant-curvature sector.
   assumptions: &id134 []
   formalization:
     status: OPEN
@@ -7709,7 +7758,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: TOP8
   aliases: []
   name: Holonomy non-invariance
@@ -7878,16 +7929,16 @@ objects:
     mean-amplitude approximation,'
   status:
     baseline: CONDITIONAL
-    effective: CONDITIONAL
-    changed: false
-    changed_by: null
-    source_file: equations/full_registry.yaml
+    effective: PASS
+    changed: true
+    changed_by: derived_overrides.yaml:check_mean_amplitude_closure_error_bound_v2
+    source_file: equations/derived_overrides.yaml
   verification:
-    outcome: CONDITIONAL
-    kind: UNRESOLVED
+    outcome: PASS
+    kind: SYMBOLIC_DERIVATION
     scope: MODEL_CONDITIONAL
     checker:
-    - classify_conditional
+    - check_mean_amplitude_closure_error_bound_v2
     baseline_checker: classify_conditional
     meaning: The assigned executable classification is reported under its declared
       assumptions.
@@ -7918,7 +7969,9 @@ objects:
     symbolic_registry:
       repository: wct-sympy
       path: equations/full_registry.yaml
-    derived_override: null
+    derived_override:
+      repository: wct-sympy
+      path: equations/derived_overrides.yaml
 - canonical_id: CORR3
   aliases: []
   name: Spectral-weight notation
@@ -8128,7 +8181,7 @@ objects:
 provenance:
   registry_version: 2.0.0
   source_commits:
-    wct-sympy: 366c1de59928bdd8d9c1e8529ad57a8e6c358996
-    geometry_of_resonance: null
+    wct-sympy: 87ffcfaca0d720e8c65f55faa1fa32893b33bdff
+    geometry_of_resonance: 5d63e9eab923e9c2396c221eb7d4a1312a7a4a9a
     wct-lean: null
   generator: scripts/compile_registry.py
