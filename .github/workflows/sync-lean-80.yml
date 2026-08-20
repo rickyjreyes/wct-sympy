@@ -1,3 +1,4 @@
+# One-shot synchronization workflow for the merged 80-ID Lean coverage.
 name: Sync Lean 80 coverage
 
 on:
