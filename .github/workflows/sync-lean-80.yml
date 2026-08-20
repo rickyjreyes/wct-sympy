@@ -1,0 +1,105 @@
+name: Sync Lean 80 coverage
+
+on:
+  push:
+    branches:
+      - agent/sync-lean-80-public-status
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/sync-lean-80-public-status
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Add merged Lean coverage mappings and update README
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          path = Path('interoperability/lean_map.yaml')
+          doc = yaml.safe_load(path.read_text(encoding='utf-8'))
+          mappings = doc['mappings']
+          existing = {str(row.get('sympy_id')) for row in mappings}
+          additions = [
+            dict(sympy_id='E16', registry='full', sympy_claim='linearized modal power selection under supplied growth rates', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['linearModePower','linearModePower_nonnegative','linearModePower_selects_larger_growth'], caveat='Linearized supplied-growth theorem only; nonlinear global mode selection is not proved.'),
+            dict(sympy_id='E19', registry='full', sympy_claim='gap-curvature to effective-mass-squared consistency bridge', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/DerivedConstraints.lean', lean_declarations=['gapCurvatureFrequency','effectiveMassSquaredFromGap','gapCurvature_massSquared_chain','gapCurvature_unitCoefficient_recovers_massLawSquared'], caveat='Exact cross-equation consequence under the supplied gap law; the physical spectral-gap law remains conditional.'),
+            dict(sympy_id='E22', registry='full', sympy_claim='complex metric derivative entry is Hermitian and its real part is symmetric', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/DerivedConstraints.lean', lean_declarations=['complexMetricDerivativeEntry','complexMetricDerivativeEntry_hermitian','complexMetricDerivativeEntry_not_symmetric_example','complexMetricDerivativeEntry_realPart_symmetric'], caveat='Symmetry diagnostics only; dimensional normalization, nondegeneracy, and Lorentzian signature remain unresolved.'),
+            dict(sympy_id='E32', registry='full', sympy_claim='uniform alpha-drop margin implies a strict subunit tail', relationship='formalizes_same_claim', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['alphaDropFromAverage','alphaDrop_uniform_margin_bound','alphaDrop_uniform_margin_lt_one'], caveat='Pointwise uniform-margin core of the limsup statement; eventual-tail application requires the displayed uniform hypothesis.'),
+            dict(sympy_id='E37', registry='full', sympy_claim='energy-limited wavenumber scale is nonnegative under physical sign assumptions', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['energyBandlimit','energyBandlimit_nonnegative'], caveat='Scalar sign theorem only; the physical coefficient and cutoff model are not derived.'),
+            dict(sympy_id='E38', registry='full', sympy_claim='channel-capacity upper-bound expression is nonnegative under nonnegative factors', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['channelCapacityUpperBound','channelCapacityUpperBound_nonnegative'], caveat='Scalar structure only; no full computational-capacity theorem is claimed.'),
+            dict(sympy_id='E41', registry='full', sympy_claim='iterated discrete retention bounds multiply and reproduce the alpha exponent bookkeeping', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/DerivedConstraints.lean', lean_declarations=['retentionProduct','retentionProduct_zero','retentionProduct_succ','iterated_count_retention_bound','alphaFromRetentionLogSum','alphaFromRetentionLogSum_exponent_identity'], caveat='Finite nonnegative count-retention theorem; physical encoding and retention hypotheses remain model assumptions.'),
+            dict(sympy_id='E50', registry='full', sympy_claim='phase-coherence integrand is finite under a positive phase-gradient floor', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['phaseCoherenceIntegrand','phaseCoherenceIntegrand_bound'], caveat='Pointwise bound; continuum finiteness also uses the stated L2 density integrability assumption.'),
+            dict(sympy_id='E72', registry='full', sympy_claim='iterated discrete retention-count bound and alpha exponent bookkeeping', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/DerivedConstraints.lean', lean_declarations=['retentionProduct','iterated_count_retention_bound','alphaFromRetentionLogSum','alphaFromRetentionLogSum_exponent_identity'], caveat='Finite counting theorem only; no independent complexity-class result is claimed.'),
+            dict(sympy_id='CLE4', registry='full', sympy_claim='curvature quotient lock is equivalent to the locked eigen-equation away from field zeros', relationship='formalizes_same_claim', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['scalarCurvatureQuotient','curvatureLock_iff_lockedEigenEquation'], caveat='Scalar algebraic equivalence only; no toroidal solution existence theorem.'),
+            dict(sympy_id='CLE5', registry='full', sympy_claim='flat-product torus Fourier eigenvalue is nonnegative', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['flatProductTorusEigenvalue','flatProductTorusEigenvalue_nonnegative'], caveat='Flat-product torus model only; curvature corrections are not included.'),
+            dict(sympy_id='CLE8', registry='full', sympy_claim='fixed-winding flat-product torus mode m=0 is the unique lowest mode for nonzero major radius', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['flatProductTorus_fixedWinding_one_minimal','flatProductTorus_fixedWinding_one_eq_iff'], caveat='Requires the stated n=+1 winding selection and flat-product spectrum.'),
+            dict(sympy_id='CLE9', registry='full', sympy_claim='curvature radius is reciprocal to nonzero curvature', relationship='formalizes_same_claim', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['curvatureRadius','curvatureRadius_mul_curvature'], caveat='Exact reciprocal identity under nonzero curvature; physical radius identification remains model-specific.'),
+            dict(sympy_id='CLE10', registry='full', sympy_claim='squared curvature quotient lock is equivalent to the squared locked eigen-equation away from zeros', relationship='formalizes_same_claim', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['scalarCurvatureQuotient','curvatureScalarSq_iff_lockedEigenEquation'], caveat='Scalar algebraic equivalence only; no confined-state existence theorem.'),
+            dict(sympy_id='CM11', registry='full', sympy_claim='Gaussian curvature-damping envelope is positive and normalized at zero wavenumber', relationship='formalizes_same_claim', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['curvatureDampingEnvelope','curvatureDampingEnvelope_positive','curvatureDampingEnvelope_zero'], caveat='Envelope properties only; cosmological parameter calibration remains separate.'),
+            dict(sympy_id='TOP3', registry='full', sympy_claim='exact negative-gradient-flow energy rate is nonpositive', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['finiteGradientFlowEnergyRate','finiteGradientFlowEnergyRate_nonpositive'], caveat='Finite-dimensional algebraic core; continuum differentiability and well-posedness are separate hypotheses.'),
+            dict(sympy_id='TOP7', registry='full', sympy_claim='constant-curvature planar reduction gives mass squared linear in curvature-energy density', relationship='supporting_lemma_only', lean_status='proved', lean_source='WCTLean/Models/DerivedConstraints.lean', lean_declarations=['constantCurvatureEnergyDensity','planarConstantCurvatureMass','planarConstantCurvatureMass_squared'], caveat='Diagnostic consequence of the supplied mass law; not a universal mass-energy theorem.'),
+            dict(sympy_id='CORR2', registry='full', sympy_claim='weak-intermittency reciprocal denominator has a rigorous error band', relationship='formalizes_same_claim', lean_status='proved', lean_source='WCTLean/Models/CoverageExpansion.lean', lean_declarations=['meanAmplitudeReciprocalFactor','meanAmplitudeReciprocalFactor_band','meanAmplitudeReciprocal_upperError_exact'], caveat='Formalizes the error enclosure under a uniform relative-denominator fluctuation bound; it does not prove that physical solutions satisfy that bound.'),
+          ]
+          for row in additions:
+              if row['sympy_id'] not in existing:
+                  mappings.append(row)
+          doc['version'] = 5
+          path.write_text(yaml.safe_dump(doc, sort_keys=False, allow_unicode=True, width=100000), encoding='utf-8')
+
+          readme = Path('README.md')
+          text = readme.read_text(encoding='utf-8')
+          text = text.replace('| `PASS` | **59** |', '| `PASS` | **68** |')
+          text = text.replace('| `CONDITIONAL` | **27** |', '| `CONDITIONAL` | **18** |')
+          text = text.replace('It does **not** prove the 27 conditional or 30 open obligations.', 'It does **not** prove the 18 conditional or 30 open obligations.')
+          marker = 'A zero `FAIL` count means no known contradiction remains in the current encoded statements. It does **not** prove the 18 conditional or 30 open obligations.\n'
+          if 'Lean equation-specific formal coverage is **80 / 142**' not in text:
+              text = text.replace(marker, marker + '\nLean equation-specific formal coverage is **80 / 142** canonical IDs. This includes theorem support, definitions, analytic contracts, counterexamples, and explicit constraints; it is not a count of 80 physically proved claims.\n')
+          readme.write_text(text, encoding='utf-8')
+          PY
+      - name: Refresh reproducibility source hash
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          path = Path('interoperability/lean_map.yaml')
+          data = path.read_bytes()
+          digest = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+          target = Path('reproducibility/expected-source-hashes.json')
+          doc = json.loads(target.read_text(encoding='utf-8'))
+          doc['files']['interoperability/lean_map.yaml'] = digest
+          target.write_text(json.dumps(doc, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Fetch canonical source and regenerate compiled registry
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/rickyjreyes/geometry_of_resonance/main/WCT_FULL_EQUATION_LIST_CORRECTED.md -o /tmp/WCT_FULL_EQUATION_LIST_CORRECTED.md
+          python scripts/compile_registry.py --canonical-file /tmp/WCT_FULL_EQUATION_LIST_CORRECTED.md
+          python scripts/check_lean_coverage.py
+      - name: Validate audits and reproducibility
+        run: |
+          pytest -q
+          python scripts/check_all.py
+          python scripts/check_full_coverage.py
+          python scripts/check_full_coverage.py --strict-theory
+          python scripts/verify_reproducibility.py --generated-registry compiled-registry.json
+      - name: Commit synchronized bridge
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add interoperability/lean_map.yaml README.md reproducibility/expected-source-hashes.json compiled-registry.json compiled-registry.yaml validation-report.json tables/lean_coverage.json
+          if git diff --cached --quiet; then
+            echo 'No synchronized changes.'
+          else
+            git commit -m 'Synchronize merged Lean coverage at 80 IDs'
+            git push origin HEAD:agent/sync-lean-80-public-status
+          fi
