@@ -1,0 +1,1074 @@
+{
+  "lean_repository": "rickyjreyes/wct-lean",
+  "mappings": [
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "hbar_div_c_mul_k_is_mass"
+      ],
+      "lean_source": "WCTLean/Dimension.lean",
+      "lean_status": "proved",
+      "registry": "legacy",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "D1_10"
+    },
+    {
+      "caveat": "Finite algebraic model; no curve-integral variational existence theorem is claimed.",
+      "lean_declarations": [
+        "finiteLockingAction",
+        "finiteLockingAction_nonnegative",
+        "finiteLockingAction_zero"
+      ],
+      "lean_source": "WCTLean/Models/Locking.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "M1"
+    },
+    {
+      "caveat": "Local algebraic denominator safety; not a full PDE well-posedness theorem.",
+      "lean_declarations": [
+        "complex_normSq_nonnegative",
+        "complexRegularizerDenominator_positive",
+        "complexRegularizerDenominator_ne_zero",
+        "complexRegularizerDenominator_at_zero",
+        "complexRegularizedReciprocal_at_zero",
+        "thetaComplex_zero_state"
+      ],
+      "lean_source": "WCTLean/Models/ComplexCurvature.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "M2"
+    },
+    {
+      "caveat": "Fourier-symbol algebra only; nonlinear pattern selection remains open.",
+      "lean_declarations": [
+        "finiteBandPenalty_nonpositive",
+        "finiteBandPenalty_at_shell",
+        "finiteBandPenalty_strict_off_shell"
+      ],
+      "lean_source": "WCTLean/Models/BandPass.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "M3"
+    },
+    {
+      "caveat": "Lean proves the integer equivalence n less than 4 iff n at most 3; the Sobolev embedding and curvature bound remain explicit contract fields.",
+      "lean_declarations": [
+        "h2SubcriticalDimension",
+        "h2Subcritical_iff_le_three",
+        "SobolevCurvatureContract"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "M4"
+    },
+    {
+      "caveat": "Finite-dimensional bounded-dynamics support only; no complexity-class equivalence is claimed.",
+      "lean_declarations": [
+        "averagedUpdate",
+        "averagedUpdate_fixed_of_average_fixed",
+        "averagedUpdate_norm_le",
+        "InNormBound",
+        "averagedUpdate_preserves_normBound",
+        "BandLimitedInvariantSet"
+      ],
+      "lean_source": "WCTLean/Models/CompactDynamics.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "M5"
+    },
+    {
+      "caveat": "This is a typed operator skeleton, not a derivation of the full nonlinear UWCT equation.",
+      "lean_declarations": [
+        "unifiedShellTerm",
+        "unifiedLinearSymbol",
+        "unifiedRealVectorField",
+        "UnifiedCoefficients"
+      ],
+      "lean_source": "WCTLean/Models/UnifiedOperator.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "definition_only",
+      "sympy_id": "M6A"
+    },
+    {
+      "caveat": "The local operator form and positive-epsilon denominator are proved; uniqueness of the nonlinear closure and PDE well-posedness remain open.",
+      "lean_declarations": [
+        "thetaComplex",
+        "thetaComplex_canonical_formula",
+        "thetaComplex_denominator_ne_zero"
+      ],
+      "lean_source": "WCTLean/Models/ComplexCurvature.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "M6B"
+    },
+    {
+      "caveat": "Theorems cover the represented shell term, not the complete master dynamics.",
+      "lean_declarations": [
+        "unifiedShellTerm_nonpositive",
+        "unifiedShellTerm_zero_on_shell"
+      ],
+      "lean_source": "WCTLean/Models/UnifiedOperator.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "M7"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "kappa_sq_dim",
+        "tau_sq_dim"
+      ],
+      "lean_source": "WCTLean/Curvature.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "dimensional_support",
+      "sympy_id": "E1A"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "sqrt_inverse_length_squared",
+        "sqrt_kappa_sq_dim"
+      ],
+      "lean_source": "WCTLean/Curvature.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "dimensional_support",
+      "sympy_id": "E1B"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "densityWeightedAverage_denominator_ne_zero",
+        "weightedSum_dim",
+        "weighted_average_preserves_dimension"
+      ],
+      "lean_source": "WCTLean/ResolvedAudit.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E2"
+    },
+    {
+      "caveat": "Finite algebraic support; this is not an integral theorem on general curves.",
+      "lean_declarations": [
+        "finiteLockingAction_nonnegative",
+        "finiteLockingAction_zero",
+        "lockingMismatch_nonnegative",
+        "lockingMismatch_zero"
+      ],
+      "lean_source": "WCTLean/Models/Locking.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E3"
+    },
+    {
+      "caveat": "The denominator is assumed nonzero and no stationary curve solution is constructed.",
+      "lean_declarations": [
+        "alphaLock",
+        "alphaLock_closure",
+        "PointwiseLocked",
+        "pointwiseLocked_weighted"
+      ],
+      "lean_source": "WCTLean/Models/Locking.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E4"
+    },
+    {
+      "caveat": "Does not prove dynamic attainment of exact lock.",
+      "lean_declarations": [
+        "effectiveWavenumber_eq_loopAverage",
+        "constantWeightedAverage_eq_loopAverage",
+        "resolved_e5_effectiveWavenumber_chain"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E5"
+    },
+    {
+      "caveat": "Dimensions only; not the physical identification.",
+      "lean_declarations": [
+        "hbar_div_c_mul_k_is_mass",
+        "weighted_average_preserves_dimension"
+      ],
+      "lean_source": "WCTLean/Dimension.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "dimensional_support",
+      "sympy_id": "E6"
+    },
+    {
+      "caveat": "Dimensions only.",
+      "lean_declarations": [
+        "hbar_div_c_mul_k_is_mass",
+        "weighted_average_preserves_dimension"
+      ],
+      "lean_source": "WCTLean/Dimension.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "dimensional_support",
+      "sympy_id": "E7"
+    },
+    {
+      "caveat": "Finite counting-measure analogue; general curve integration is not formalized.",
+      "lean_declarations": [
+        "pointwiseLocked_weighted",
+        "correctedWeightedLockIdentity"
+      ],
+      "lean_source": "WCTLean/Models/Locking.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E8"
+    },
+    {
+      "caveat": "Full function-space polar differentiation remains open.",
+      "lean_declarations": [
+        "polarCurrentProduct_im",
+        "phaseCurrent_of_polar_factorization",
+        "conservationResidual_zero_iff"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E9"
+    },
+    {
+      "caveat": "Exact integer-law closure only; no dynamical shell-selection theorem is claimed.",
+      "lean_declarations": [
+        "RadialShellQuantized",
+        "radialShellQuantized_add",
+        "radialShellQuantized_iff_windingQuantized"
+      ],
+      "lean_source": "WCTLean/Models/PhaseFlux.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E10"
+    },
+    {
+      "caveat": "Exact integer-law closure only; no field-defect existence theorem is claimed.",
+      "lean_declarations": [
+        "WindingQuantized",
+        "windingQuantized_add",
+        "radialShellQuantized_iff_windingQuantized"
+      ],
+      "lean_source": "WCTLean/Models/PhaseFlux.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E11"
+    },
+    {
+      "caveat": "Symbol-level result; no nonlinear PDE selection theorem.",
+      "lean_declarations": [
+        "swiftHohenbergLinearSymbol_le_mu",
+        "swiftHohenbergLinearSymbol_at_shell",
+        "quarticGrowthSymbol_completedSquare"
+      ],
+      "lean_source": "WCTLean/Models/BandPass.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E12"
+    },
+    {
+      "caveat": "Not the full nonlinear pattern-selection theorem.",
+      "lean_declarations": [
+        "bandpass_oneMode_symbol"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E13"
+    },
+    {
+      "caveat": "Not full Lyapunov descent.",
+      "lean_declarations": [
+        "bandpass_oneMode_symbol",
+        "square_nonnegative",
+        "positive_quadratic_energy_nonnegative"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E14"
+    },
+    {
+      "caveat": "The corrected local complex denominator is proved safe for positive epsilon; full operator regularity and epsilon-to-zero control remain open.",
+      "lean_declarations": [
+        "complexRegularizerDenominator_positive",
+        "complexRegularizerDenominator_ne_zero",
+        "complexRegularizerDenominator_at_zero",
+        "complexRegularizedReciprocal_at_zero",
+        "thetaComplex_zero_state",
+        "resolved_e17_counterexample"
+      ],
+      "lean_source": "WCTLean/Models/ComplexCurvature.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E17"
+    },
+    {
+      "caveat": "The complete functional chain rule remains an explicit hypothesis.",
+      "lean_declarations": [
+        "resolved_e18_energy_nonnegative",
+        "resolved_e18_gradientFlow_descent"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E18"
+    },
+    {
+      "caveat": "Scalar quadratic-sector positivity; not the full higher-order Euler-Lagrange equation.",
+      "lean_declarations": [
+        "cavityQuadratic",
+        "cavityQuadratic_nonnegative"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E20"
+    },
+    {
+      "caveat": "Lean proves n less than 4 iff n at most 3; the Sobolev embedding and curvature bound are contract fields, not proved analysis.",
+      "lean_declarations": [
+        "h2SubcriticalDimension",
+        "h2Subcritical_iff_le_three",
+        "SobolevCurvatureContract"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E24"
+    },
+    {
+      "caveat": "Typed definition only.",
+      "lean_declarations": [
+        "criticalSobolevExponent"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "definition_only",
+      "sympy_id": "E25"
+    },
+    {
+      "caveat": "Contract exposes the required theorem and does not prove it.",
+      "lean_declarations": [
+        "SobolevCurvatureContract"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "analytic_contract_only",
+      "sympy_id": "E26"
+    },
+    {
+      "caveat": "Predicate definition only; existence of a confined state is not proved.",
+      "lean_declarations": [
+        "FiniteConfinementEnergy"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "definition_only",
+      "sympy_id": "E27"
+    },
+    {
+      "caveat": "Scalar implication under the encoded beta hypothesis.",
+      "lean_declarations": [
+        "alphaDropValue",
+        "alphaDrop_lt_one"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E28"
+    },
+    {
+      "caveat": "Scalar bound under nonnegative mode-count assumptions; the entropy drop is not derived from the full PDE.",
+      "lean_declarations": [
+        "entropyPrunedUpperBound",
+        "entropyPrunedUpperBound_nonnegative",
+        "entropyPrunedUpperBound_le_modeCount",
+        "entropyPrunedUpperBound_antitone"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E29"
+    },
+    {
+      "caveat": "Order-theoretic consequence of the supplied entropy bound.",
+      "lean_declarations": [
+        "exp_entropy_le_support"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E33"
+    },
+    {
+      "caveat": "Concrete finite-dimensional special case; narrower than the full neighborhood-dependent WCC update.",
+      "lean_declarations": [
+        "averagedUpdate",
+        "averagedUpdate_fixed_of_average_fixed",
+        "averagedUpdate_norm_le"
+      ],
+      "lean_source": "WCTLean/Models/CompactDynamics.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E36"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "effectiveQualityFactor",
+        "effectiveQualityFactor_positive"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E45"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "powerBalanceResidual",
+        "stationaryPowerBalance_iff"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E47"
+    },
+    {
+      "caveat": "Definitional identity; does not derive a physical mass gap.",
+      "lean_declarations": [
+        "effectiveMassSqFromGap",
+        "effectiveMassSqFromGap_eq"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E49"
+    },
+    {
+      "caveat": "Scalar component under a nonzero-denominator hypothesis.",
+      "lean_declarations": [
+        "curvatureGradientCommutator",
+        "curvatureGradientCommutator_eq"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E51"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "curvaturePressureDensity",
+        "curvaturePressureDensity_nonnegative"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E53"
+    },
+    {
+      "caveat": "Scalar Fourier-shell identity only.",
+      "lean_declarations": [
+        "finiteBandPenalty_at_shell"
+      ],
+      "lean_source": "WCTLean/Models/BandPass.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E57"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "bandGreenDenominator_pos",
+        "bandGreenDenominator_ge_offset",
+        "bandGreenKernel_pos",
+        "bandGreenKernel_le_inverseOffset",
+        "bandGreenKernel_at_shell"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E58"
+    },
+    {
+      "caveat": "Coordinate-mask model; not a complete Hilbert-space Fourier projection theorem.",
+      "lean_declarations": [
+        "maskProjection",
+        "maskProjection_idempotent"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E59"
+    },
+    {
+      "caveat": "Linear symbol statement only.",
+      "lean_declarations": [
+        "swiftHohenbergLinearSymbol_at_shell",
+        "selectedShell_positive_at_onset"
+      ],
+      "lean_source": "WCTLean/Models/BandPass.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E61"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "spectralEnergyFraction",
+        "spectralEnergyFraction_mem_unitInterval"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E62"
+    },
+    {
+      "caveat": "Positivity and formula typing only; no measured wavelength prediction.",
+      "lean_declarations": [
+        "selectedWavenumberSq",
+        "selectedWavelength",
+        "selectedWavelength_positive"
+      ],
+      "lean_source": "WCTLean/Models/BandPass.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E64"
+    },
+    {
+      "caveat": "Typed definition only.",
+      "lean_declarations": [
+        "criticalSobolevExponent"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "definition_only",
+      "sympy_id": "E65"
+    },
+    {
+      "caveat": "Proposition encoding the required inequality; no proof of the analytic estimate.",
+      "lean_declarations": [
+        "GagliardoNirenbergBound"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "analytic_contract_only",
+      "sympy_id": "E66"
+    },
+    {
+      "caveat": "Arithmetic equivalence is proved; embedding is an explicit contract assumption.",
+      "lean_declarations": [
+        "h2Subcritical_iff_le_three",
+        "SobolevCurvatureContract"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E67"
+    },
+    {
+      "caveat": "Proposition definition only; the localized estimate is not proved.",
+      "lean_declarations": [
+        "LocalEnergyBound"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "analytic_contract_only",
+      "sympy_id": "E68"
+    },
+    {
+      "caveat": "Contract only; no analytic boundedness proof.",
+      "lean_declarations": [
+        "SobolevCurvatureContract"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "analytic_contract_only",
+      "sympy_id": "E69"
+    },
+    {
+      "caveat": "The criterion includes the dimensional conclusion as a hypothesis; this is not an independent stability theorem.",
+      "lean_declarations": [
+        "DimensionalStabilityCriterion",
+        "dimensional_stability_implies_le_three"
+      ],
+      "lean_source": "WCTLean/Contracts/Analytic.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E70"
+    },
+    {
+      "caveat": "The declaration records a proposition and is not a proof.",
+      "lean_declarations": [
+        "cos_orthogonality_TODO"
+      ],
+      "lean_source": "WCTLean/Fourier.lean",
+      "lean_status": "stated_todo",
+      "registry": "full",
+      "relationship": "adjacent_todo_only",
+      "sympy_id": "E78"
+    },
+    {
+      "caveat": "Definitions only; equivalence between the two coherence measures is not proved.",
+      "lean_declarations": [
+        "spectralCoherenceLength",
+        "gradientCoherenceLength"
+      ],
+      "lean_source": "WCTLean/Models/AlgebraicChecks.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "definition_only",
+      "sympy_id": "E81"
+    },
+    {
+      "caveat": "The global amplitude bound is proved; no empirical fit or physical-origin theorem is claimed.",
+      "lean_declarations": [
+        "ghostMode",
+        "abs_ghostMode_le"
+      ],
+      "lean_source": "WCTLean/Models/GhostModes.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "G1"
+    },
+    {
+      "caveat": "Restricted to positive real field values.",
+      "lean_declarations": [
+        "logField",
+        "exp_logField_eq"
+      ],
+      "lean_source": "WCTLean/Models/LogFlow.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "EX"
+    },
+    {
+      "caveat": "Temporal and Laplacian chain rules are explicit hypotheses; function-space regularity remains open.",
+      "lean_declarations": [
+        "logCurvatureResidual",
+        "coleHopf_residual_factorization",
+        "diffusionResidual_zero_iff_logCurvatureResidual_zero"
+      ],
+      "lean_source": "WCTLean/Models/LogFlow.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "EY"
+    },
+    {
+      "caveat": "The algebraic bridge is proved under displayed hypotheses; PDE existence and regularity are not.",
+      "lean_declarations": [
+        "diffusionResidual",
+        "coleHopf_residual_factorization",
+        "diffusionResidual_zero_iff_logCurvatureResidual_zero"
+      ],
+      "lean_source": "WCTLean/Models/LogFlow.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "EZ"
+    },
+    {
+      "caveat": "Scalar equivalence only; no filament-existence or localization theorem is claimed.",
+      "lean_declarations": [
+        "FilamentLocalizationCondition",
+        "filamentLocalizationMismatch",
+        "filamentLocalizationCondition_iff_mismatch_zero"
+      ],
+      "lean_source": "WCTLean/Models/LogFlow.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "FA"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "photonSecondOrder_iff_firstOrder",
+        "baryonSecondOrder_iff_firstOrder"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "CM9"
+    },
+    {
+      "caveat": "A definition is not a cosmological derivation.",
+      "lean_declarations": [
+        "dimensionlessPowerSpectrum"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "definition_only",
+      "sympy_id": "CM12"
+    },
+    {
+      "caveat": "Definitions are not a fit to cosmological data.",
+      "lean_declarations": [
+        "peakPowerRatio21",
+        "peakPowerRatio31",
+        "peakScaleRatio21",
+        "peakScaleRatio31"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "definition_only",
+      "sympy_id": "CM13"
+    },
+    {
+      "caveat": "The horizon integral and dynamics remain open.",
+      "lean_declarations": [
+        "horizonWavenumber"
+      ],
+      "lean_source": "WCTLean/DerivedAudit.lean",
+      "lean_status": "definition",
+      "registry": "full",
+      "relationship": "definition_only",
+      "sympy_id": "CM16"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "sqrt_inverse_length_squared",
+        "sqrt_kappa_sq_dim"
+      ],
+      "lean_source": "WCTLean/Curvature.lean",
+      "lean_status": "proved",
+      "registry": "legacy",
+      "relationship": "dimensional_support",
+      "sympy_id": "CURV1"
+    },
+    {
+      "caveat": "",
+      "lean_declarations": [
+        "kappa_sq_dim",
+        "tau_sq_dim"
+      ],
+      "lean_source": "WCTLean/Curvature.lean",
+      "lean_status": "proved",
+      "registry": "legacy",
+      "relationship": "dimensional_support",
+      "sympy_id": "CURV2"
+    },
+    {
+      "caveat": "Lean does not prove the numerical equality K = 2/3.",
+      "lean_declarations": [
+        "koide_denominator_positive",
+        "koide_well_defined",
+        "koide_positive"
+      ],
+      "lean_source": "WCTLean/Koide.lean",
+      "lean_status": "proved",
+      "registry": "legacy",
+      "relationship": "domain_safety_only",
+      "sympy_id": "K1"
+    },
+    {
+      "caveat": "Linearized supplied-growth theorem only; nonlinear global mode selection is not proved.",
+      "lean_declarations": [
+        "linearModePower",
+        "linearModePower_nonnegative",
+        "linearModePower_selects_larger_growth"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E16"
+    },
+    {
+      "caveat": "Exact cross-equation consequence under the supplied gap law; the physical spectral-gap law remains conditional.",
+      "lean_declarations": [
+        "gapCurvatureFrequency",
+        "effectiveMassSquaredFromGap",
+        "gapCurvature_massSquared_chain",
+        "gapCurvature_unitCoefficient_recovers_massLawSquared"
+      ],
+      "lean_source": "WCTLean/Models/DerivedConstraints.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E19"
+    },
+    {
+      "caveat": "Symmetry diagnostics only; dimensional normalization, nondegeneracy, and Lorentzian signature remain unresolved.",
+      "lean_declarations": [
+        "complexMetricDerivativeEntry",
+        "complexMetricDerivativeEntry_hermitian",
+        "complexMetricDerivativeEntry_not_symmetric_example",
+        "complexMetricDerivativeEntry_realPart_symmetric"
+      ],
+      "lean_source": "WCTLean/Models/DerivedConstraints.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E22"
+    },
+    {
+      "caveat": "Pointwise uniform-margin core of the limsup statement; eventual-tail application requires the displayed uniform hypothesis.",
+      "lean_declarations": [
+        "alphaDropFromAverage",
+        "alphaDrop_uniform_margin_bound",
+        "alphaDrop_uniform_margin_lt_one"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "E32"
+    },
+    {
+      "caveat": "Scalar sign theorem only; the physical coefficient and cutoff model are not derived.",
+      "lean_declarations": [
+        "energyBandlimit",
+        "energyBandlimit_nonnegative"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E37"
+    },
+    {
+      "caveat": "Scalar structure only; no full computational-capacity theorem is claimed.",
+      "lean_declarations": [
+        "channelCapacityUpperBound",
+        "channelCapacityUpperBound_nonnegative"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E38"
+    },
+    {
+      "caveat": "Finite nonnegative count-retention theorem; physical encoding and retention hypotheses remain model assumptions.",
+      "lean_declarations": [
+        "retentionProduct",
+        "retentionProduct_zero",
+        "retentionProduct_succ",
+        "iterated_count_retention_bound",
+        "alphaFromRetentionLogSum",
+        "alphaFromRetentionLogSum_exponent_identity"
+      ],
+      "lean_source": "WCTLean/Models/DerivedConstraints.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E41"
+    },
+    {
+      "caveat": "Pointwise bound; continuum finiteness also uses the stated L2 density integrability assumption.",
+      "lean_declarations": [
+        "phaseCoherenceIntegrand",
+        "phaseCoherenceIntegrand_bound"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E50"
+    },
+    {
+      "caveat": "Finite counting theorem only; no independent complexity-class result is claimed.",
+      "lean_declarations": [
+        "retentionProduct",
+        "iterated_count_retention_bound",
+        "alphaFromRetentionLogSum",
+        "alphaFromRetentionLogSum_exponent_identity"
+      ],
+      "lean_source": "WCTLean/Models/DerivedConstraints.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E72"
+    },
+    {
+      "caveat": "Scalar algebraic equivalence only; no toroidal solution existence theorem.",
+      "lean_declarations": [
+        "scalarCurvatureQuotient",
+        "curvatureLock_iff_lockedEigenEquation"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "CLE4"
+    },
+    {
+      "caveat": "Flat-product torus model only; curvature corrections are not included.",
+      "lean_declarations": [
+        "flatProductTorusEigenvalue",
+        "flatProductTorusEigenvalue_nonnegative"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CLE5"
+    },
+    {
+      "caveat": "Requires the stated n=+1 winding selection and flat-product spectrum.",
+      "lean_declarations": [
+        "flatProductTorus_fixedWinding_one_minimal",
+        "flatProductTorus_fixedWinding_one_eq_iff"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CLE8"
+    },
+    {
+      "caveat": "Exact reciprocal identity under nonzero curvature; physical radius identification remains model-specific.",
+      "lean_declarations": [
+        "curvatureRadius",
+        "curvatureRadius_mul_curvature"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "CLE9"
+    },
+    {
+      "caveat": "Scalar algebraic equivalence only; no confined-state existence theorem.",
+      "lean_declarations": [
+        "scalarCurvatureQuotient",
+        "curvatureScalarSq_iff_lockedEigenEquation"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "CLE10"
+    },
+    {
+      "caveat": "Envelope properties only; cosmological parameter calibration remains separate.",
+      "lean_declarations": [
+        "curvatureDampingEnvelope",
+        "curvatureDampingEnvelope_positive",
+        "curvatureDampingEnvelope_zero"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "CM11"
+    },
+    {
+      "caveat": "Finite-dimensional algebraic core; continuum differentiability and well-posedness are separate hypotheses.",
+      "lean_declarations": [
+        "finiteGradientFlowEnergyRate",
+        "finiteGradientFlowEnergyRate_nonpositive"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "TOP3"
+    },
+    {
+      "caveat": "Diagnostic consequence of the supplied mass law; not a universal mass-energy theorem.",
+      "lean_declarations": [
+        "constantCurvatureEnergyDensity",
+        "planarConstantCurvatureMass",
+        "planarConstantCurvatureMass_squared"
+      ],
+      "lean_source": "WCTLean/Models/DerivedConstraints.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "TOP7"
+    },
+    {
+      "caveat": "Formalizes the error enclosure under a uniform relative-denominator fluctuation bound; it does not prove that physical solutions satisfy that bound.",
+      "lean_declarations": [
+        "meanAmplitudeReciprocalFactor",
+        "meanAmplitudeReciprocalFactor_band",
+        "meanAmplitudeReciprocal_upperError_exact"
+      ],
+      "lean_source": "WCTLean/Models/CoverageExpansion.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "formalizes_same_claim",
+      "sympy_id": "CORR2"
+    }
+  ],
+  "policy": {
+    "lean_mapped_means": "The canonical object has a maintained Lean definition, theorem, proposition, counterexample, or analytic contract beyond registry metadata.",
+    "lean_proved_means": "The named Lean declaration is kernel-checked in wct-lean.",
+    "prohibition": "A SymPy PASS must never be reported as a Lean proof.",
+    "sympy_pass_means": "The registered symbolic, dimensional, numerical, or counterexample check passed."
+  },
+  "summary": {
+    "definition_mapping_count": 12,
+    "full_registry_mapped": 80,
+    "full_registry_total": 142,
+    "legacy_registry_mapped": 4,
+    "legacy_registry_total": 5,
+    "mapping_count": 84,
+    "note": "Mapping coverage is not theorem coverage; definitions and TODOs remain distinct from proved support.",
+    "proved_mapping_count": 71,
+    "todo_mapping_count": 1
+  }
+}

@@ -1,4 +1,4 @@
-version: 4
+version: 5
 lean_repository: rickyjreyes/wct-lean
 lean_library_root: WCTLean
 policy:
@@ -7,74 +7,875 @@ policy:
   lean_mapped_means: The canonical object has a maintained Lean definition, theorem, proposition, counterexample, or analytic contract beyond registry metadata.
   prohibition: A SymPy PASS must never be reported as a Lean proof.
 mappings:
-  - {sympy_id: D1_10, registry: legacy, sympy_claim: mass dimension closure, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Dimension.lean, lean_declarations: [hbar_div_c_mul_k_is_mass]}
-
-  - {sympy_id: M1, registry: full, sympy_claim: finite curvature-locking action positivity and exact-lock vanishing, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/Locking.lean, lean_declarations: [finiteLockingAction, finiteLockingAction_nonnegative, finiteLockingAction_zero], caveat: Finite algebraic model; no curve-integral variational existence theorem is claimed.}
-  - {sympy_id: M2, registry: full, sympy_claim: corrected complex curvature denominator safety, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/ComplexCurvature.lean, lean_declarations: [complex_normSq_nonnegative, complexRegularizerDenominator_positive, complexRegularizerDenominator_ne_zero, complexRegularizerDenominator_at_zero, complexRegularizedReciprocal_at_zero, thetaComplex_zero_state], caveat: Local algebraic denominator safety; not a full PDE well-posedness theorem.}
-  - {sympy_id: M3, registry: full, sympy_claim: finite-band shell penalty sign and off-shell damping, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/BandPass.lean, lean_declarations: [finiteBandPenalty_nonpositive, finiteBandPenalty_at_shell, finiteBandPenalty_strict_off_shell], caveat: Fourier-symbol algebra only; nonlinear pattern selection remains open.}
-  - {sympy_id: M4, registry: full, sympy_claim: integer dimensional threshold with explicit Sobolev-curvature contract, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [h2SubcriticalDimension, h2Subcritical_iff_le_three, SobolevCurvatureContract], caveat: "Lean proves the integer equivalence n less than 4 iff n at most 3; the Sobolev embedding and curvature bound remain explicit contract fields."}
-  - {sympy_id: M5, registry: full, sympy_claim: norm-bounded averaged update and forward-invariant resource ball, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/CompactDynamics.lean, lean_declarations: [averagedUpdate, averagedUpdate_fixed_of_average_fixed, averagedUpdate_norm_le, InNormBound, averagedUpdate_preserves_normBound, BandLimitedInvariantSet], caveat: "Finite-dimensional bounded-dynamics support only; no complexity-class equivalence is claimed."}
-  - {sympy_id: M6A, registry: full, sympy_claim: corrected unified linear operator skeleton, relationship: definition_only, lean_status: definition, lean_source: WCTLean/Models/UnifiedOperator.lean, lean_declarations: [unifiedShellTerm, unifiedLinearSymbol, unifiedRealVectorField, UnifiedCoefficients], caveat: "This is a typed operator skeleton, not a derivation of the full nonlinear UWCT equation."}
-  - {sympy_id: M6B, registry: full, sympy_claim: exact canonical nonlinear curvature quotient and denominator safety, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/ComplexCurvature.lean, lean_declarations: [thetaComplex, thetaComplex_canonical_formula, thetaComplex_denominator_ne_zero], caveat: "The local operator form and positive-epsilon denominator are proved; uniqueness of the nonlinear closure and PDE well-posedness remain open."}
-  - {sympy_id: M7, registry: full, sympy_claim: corrected negative fourth-order shell sector, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/UnifiedOperator.lean, lean_declarations: [unifiedShellTerm_nonpositive, unifiedShellTerm_zero_on_shell], caveat: "Theorems cover the represented shell term, not the complete master dynamics."}
-
-  - {sympy_id: E1A, registry: full, sympy_claim: inverse-length-squared curvature density, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Curvature.lean, lean_declarations: [kappa_sq_dim, tau_sq_dim]}
-  - {sympy_id: E1B, registry: full, sympy_claim: inverse-length curvature spectral rate, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Curvature.lean, lean_declarations: [sqrt_inverse_length_squared, sqrt_kappa_sq_dim]}
-  - {sympy_id: E2, registry: full, sympy_claim: weighted average denominator and dimension support, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/ResolvedAudit.lean, lean_declarations: [densityWeightedAverage_denominator_ne_zero, weightedSum_dim, weighted_average_preserves_dimension]}
-  - {sympy_id: E3, registry: full, sympy_claim: finite locking mismatch nonnegativity, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/Locking.lean, lean_declarations: [finiteLockingAction_nonnegative, finiteLockingAction_zero, lockingMismatch_nonnegative, lockingMismatch_zero], caveat: Finite algebraic support; this is not an integral theorem on general curves.}
-  - {sympy_id: E4, registry: full, sympy_claim: scalar winding-closure constant and pointwise weighted lock, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/Locking.lean, lean_declarations: [alphaLock, alphaLock_closure, PointwiseLocked, pointwiseLocked_weighted], caveat: The denominator is assumed nonzero and no stationary curve solution is constructed.}
-  - {sympy_id: E5, registry: full, sympy_claim: effective-wavenumber chain under supplied closure and weighting hypotheses, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [effectiveWavenumber_eq_loopAverage, constantWeightedAverage_eq_loopAverage, resolved_e5_effectiveWavenumber_chain], caveat: Does not prove dynamic attainment of exact lock.}
-  - {sympy_id: E6, registry: full, sympy_claim: mass-curvature dimensional closure, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Dimension.lean, lean_declarations: [hbar_div_c_mul_k_is_mass, weighted_average_preserves_dimension], caveat: Dimensions only; not the physical identification.}
-  - {sympy_id: E7, registry: full, sympy_claim: solenoidal mass relation dimensional closure, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Dimension.lean, lean_declarations: [hbar_div_c_mul_k_is_mass, weighted_average_preserves_dimension], caveat: Dimensions only.}
-  - {sympy_id: E8, registry: full, sympy_claim: corrected finite density-weighted lock identity, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/Locking.lean, lean_declarations: [pointwiseLocked_weighted, correctedWeightedLockIdentity], caveat: Finite counting-measure analogue; general curve integration is not formalized.}
-  - {sympy_id: E9, registry: full, sympy_claim: phase-current and continuity residual algebra, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [polarCurrentProduct_im, phaseCurrent_of_polar_factorization, conservationResidual_zero_iff], caveat: Full function-space polar differentiation remains open.}
-  - {sympy_id: E10, registry: full, sympy_claim: radial-shell quantization with additive closure, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/PhaseFlux.lean, lean_declarations: [RadialShellQuantized, radialShellQuantized_add, radialShellQuantized_iff_windingQuantized], caveat: "Exact integer-law closure only; no dynamical shell-selection theorem is claimed."}
-  - {sympy_id: E11, registry: full, sympy_claim: winding quantization with additive closure, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/PhaseFlux.lean, lean_declarations: [WindingQuantized, windingQuantized_add, radialShellQuantized_iff_windingQuantized], caveat: "Exact integer-law closure only; no field-defect existence theorem is claimed."}
-  - {sympy_id: E12, registry: full, sympy_claim: quartic growth symbol and selected-shell upper bound, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/BandPass.lean, lean_declarations: [swiftHohenbergLinearSymbol_le_mu, swiftHohenbergLinearSymbol_at_shell, quarticGrowthSymbol_completedSquare], caveat: Symbol-level result; no nonlinear PDE selection theorem.}
-  - {sympy_id: E13, registry: full, sympy_claim: one-mode band-pass symbol, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [bandpass_oneMode_symbol], caveat: Not the full nonlinear pattern-selection theorem.}
-  - {sympy_id: E14, registry: full, sympy_claim: band-pass positivity and one-mode support, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [bandpass_oneMode_symbol, square_nonnegative, positive_quadratic_energy_nonnegative], caveat: Not full Lyapunov descent.}
-  - {sympy_id: E17, registry: full, sympy_claim: corrected complex denominator safety plus historical scalar counterexample, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/ComplexCurvature.lean, lean_declarations: [complexRegularizerDenominator_positive, complexRegularizerDenominator_ne_zero, complexRegularizerDenominator_at_zero, complexRegularizedReciprocal_at_zero, thetaComplex_zero_state, resolved_e17_counterexample], caveat: The corrected local complex denominator is proved safe for positive epsilon; full operator regularity and epsilon-to-zero control remain open.}
-  - {sympy_id: E18, registry: full, sympy_claim: energy nonnegativity and supplied-rate descent, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [resolved_e18_energy_nonnegative, resolved_e18_gradientFlow_descent], caveat: The complete functional chain rule remains an explicit hypothesis.}
-  - {sympy_id: E20, registry: full, sympy_claim: positive-semidefinite cavity quadratic sector, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [cavityQuadratic, cavityQuadratic_nonnegative], caveat: Scalar quadratic-sector positivity; not the full higher-order Euler-Lagrange equation.}
-  - {sympy_id: E24, registry: full, sympy_claim: arithmetic H2 subcritical threshold with explicit Sobolev contract, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [h2SubcriticalDimension, h2Subcritical_iff_le_three, SobolevCurvatureContract], caveat: "Lean proves n less than 4 iff n at most 3; the Sobolev embedding and curvature bound are contract fields, not proved analysis."}
-  - {sympy_id: E25, registry: full, sympy_claim: critical Sobolev exponent, relationship: definition_only, lean_status: definition, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [criticalSobolevExponent], caveat: Typed definition only.}
-  - {sympy_id: E26, registry: full, sympy_claim: Sobolev-to-curvature boundedness interface, relationship: analytic_contract_only, lean_status: definition, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [SobolevCurvatureContract], caveat: Contract exposes the required theorem and does not prove it.}
-  - {sympy_id: E27, registry: full, sympy_claim: finite confinement-energy predicate, relationship: definition_only, lean_status: definition, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [FiniteConfinementEnergy], caveat: Predicate definition only; existence of a confined state is not proved.}
-  - {sympy_id: E28, registry: full, sympy_claim: corrected alpha-drop sufficient inequality, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [alphaDropValue, alphaDrop_lt_one], caveat: Scalar implication under the encoded beta hypothesis.}
-  - {sympy_id: E29, registry: full, sympy_claim: entropy-pruning bound nonnegativity upper bound and antitonicity, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [entropyPrunedUpperBound, entropyPrunedUpperBound_nonnegative, entropyPrunedUpperBound_le_modeCount, entropyPrunedUpperBound_antitone], caveat: "Scalar bound under nonnegative mode-count assumptions; the entropy drop is not derived from the full PDE."}
-  - {sympy_id: E33, registry: full, sympy_claim: entropy-support exponential inequality, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [exp_entropy_le_support], caveat: Order-theoretic consequence of the supplied entropy bound.}
-  - {sympy_id: E36, registry: full, sympy_claim: averaged finite-dimensional update fixed-point and norm-bound preservation, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/CompactDynamics.lean, lean_declarations: [averagedUpdate, averagedUpdate_fixed_of_average_fixed, averagedUpdate_norm_le], caveat: "Concrete finite-dimensional special case; narrower than the full neighborhood-dependent WCC update."}
-  - {sympy_id: E45, registry: full, sympy_claim: positivity of corrected effective quality factor, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [effectiveQualityFactor, effectiveQualityFactor_positive]}
-  - {sympy_id: E47, registry: full, sympy_claim: stationary source-sink power balance equivalence, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [powerBalanceResidual, stationaryPowerBalance_iff]}
-  - {sympy_id: E49, registry: full, sympy_claim: effective-mass-squared identity from a supplied gap, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [effectiveMassSqFromGap, effectiveMassSqFromGap_eq], caveat: Definitional identity; does not derive a physical mass gap.}
-  - {sympy_id: E51, registry: full, sympy_claim: curvature-gradient quotient commutator identity, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [curvatureGradientCommutator, curvatureGradientCommutator_eq], caveat: Scalar component under a nonzero-denominator hypothesis.}
-  - {sympy_id: E53, registry: full, sympy_claim: nonnegative local curvature-pressure contribution, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [curvaturePressureDensity, curvaturePressureDensity_nonnegative]}
-  - {sympy_id: E57, registry: full, sympy_claim: selected-shell fourth-order penalty vanishes, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/BandPass.lean, lean_declarations: [finiteBandPenalty_at_shell], caveat: Scalar Fourier-shell identity only.}
-  - {sympy_id: E58, registry: full, sympy_claim: positive and bounded band Green kernel, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [bandGreenDenominator_pos, bandGreenDenominator_ge_offset, bandGreenKernel_pos, bandGreenKernel_le_inverseOffset, bandGreenKernel_at_shell]}
-  - {sympy_id: E59, registry: full, sympy_claim: fixed annular mask is an idempotent projection, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [maskProjection, maskProjection_idempotent], caveat: Coordinate-mask model; not a complete Hilbert-space Fourier projection theorem.}
-  - {sympy_id: E61, registry: full, sympy_claim: selected shell attains the on-shell growth value and is positive at onset, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/BandPass.lean, lean_declarations: [swiftHohenbergLinearSymbol_at_shell, selectedShell_positive_at_onset], caveat: Linear symbol statement only.}
-  - {sympy_id: E62, registry: full, sympy_claim: annular spectral-energy fraction lies in the unit interval, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [spectralEnergyFraction, spectralEnergyFraction_mem_unitInterval]}
-  - {sympy_id: E64, registry: full, sympy_claim: corrected selected wavelength is positive, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Models/BandPass.lean, lean_declarations: [selectedWavenumberSq, selectedWavelength, selectedWavelength_positive], caveat: Positivity and formula typing only; no measured wavelength prediction.}
-  - {sympy_id: E65, registry: full, sympy_claim: critical Sobolev exponent, relationship: definition_only, lean_status: definition, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [criticalSobolevExponent], caveat: Typed definition only.}
-  - {sympy_id: E66, registry: full, sympy_claim: Gagliardo-Nirenberg bound interface, relationship: analytic_contract_only, lean_status: definition, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [GagliardoNirenbergBound], caveat: Proposition encoding the required inequality; no proof of the analytic estimate.}
-  - {sympy_id: E67, registry: full, sympy_claim: arithmetic dimensional threshold with embedding contract, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [h2Subcritical_iff_le_three, SobolevCurvatureContract], caveat: Arithmetic equivalence is proved; embedding is an explicit contract assumption.}
-  - {sympy_id: E68, registry: full, sympy_claim: localized energy-bound interface, relationship: analytic_contract_only, lean_status: definition, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [LocalEnergyBound], caveat: Proposition definition only; the localized estimate is not proved.}
-  - {sympy_id: E69, registry: full, sympy_claim: curvature boundedness contract at the dimensional threshold, relationship: analytic_contract_only, lean_status: definition, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [SobolevCurvatureContract], caveat: Contract only; no analytic boundedness proof.}
-  - {sympy_id: E70, registry: full, sympy_claim: dimensional-stability criterion implies its explicit n-at-most-3 component, relationship: supporting_lemma_only, lean_status: proved, lean_source: WCTLean/Contracts/Analytic.lean, lean_declarations: [DimensionalStabilityCriterion, dimensional_stability_implies_le_three], caveat: The criterion includes the dimensional conclusion as a hypothesis; this is not an independent stability theorem.}
-  - {sympy_id: E78, registry: full, sympy_claim: Fourier and Fisher-information bound family, relationship: adjacent_todo_only, lean_status: stated_todo, lean_source: WCTLean/Fourier.lean, lean_declarations: [cos_orthogonality_TODO], caveat: The declaration records a proposition and is not a proof.}
-  - {sympy_id: E81, registry: full, sympy_claim: coherence-length observables, relationship: definition_only, lean_status: definition, lean_source: WCTLean/Models/AlgebraicChecks.lean, lean_declarations: [spectralCoherenceLength, gradientCoherenceLength], caveat: Definitions only; equivalence between the two coherence measures is not proved.}
-
-  - {sympy_id: G1, registry: full, sympy_claim: bounded log-periodic ghost-mode modulation, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/GhostModes.lean, lean_declarations: [ghostMode, abs_ghostMode_le], caveat: "The global amplitude bound is proved; no empirical fit or physical-origin theorem is claimed."}
-  - {sympy_id: EX, registry: full, sympy_claim: logarithmic field representation with positive-sector inverse, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/LogFlow.lean, lean_declarations: [logField, exp_logField_eq], caveat: "Restricted to positive real field values."}
-  - {sympy_id: EY, registry: full, sympy_claim: logarithmic curvature residual and Cole-Hopf residual factorization, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/LogFlow.lean, lean_declarations: [logCurvatureResidual, coleHopf_residual_factorization, diffusionResidual_zero_iff_logCurvatureResidual_zero], caveat: "Temporal and Laplacian chain rules are explicit hypotheses; function-space regularity remains open."}
-  - {sympy_id: EZ, registry: full, sympy_claim: diffusion residual and zero-residual equivalence under Cole-Hopf hypotheses, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/LogFlow.lean, lean_declarations: [diffusionResidual, coleHopf_residual_factorization, diffusionResidual_zero_iff_logCurvatureResidual_zero], caveat: "The algebraic bridge is proved under displayed hypotheses; PDE existence and regularity are not."}
-  - {sympy_id: FA, registry: full, sympy_claim: filament-localization condition equivalent to zero mismatch, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/Models/LogFlow.lean, lean_declarations: [FilamentLocalizationCondition, filamentLocalizationMismatch, filamentLocalizationCondition_iff_mismatch_zero], caveat: "Scalar equivalence only; no filament-existence or localization theorem is claimed."}
-
-  - {sympy_id: CM9, registry: full, sympy_claim: first-order and second-order oscillator equivalence, relationship: formalizes_same_claim, lean_status: proved, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [photonSecondOrder_iff_firstOrder, baryonSecondOrder_iff_firstOrder]}
-  - {sympy_id: CM12, registry: full, sympy_claim: dimensionless power-spectrum observable, relationship: definition_only, lean_status: definition, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [dimensionlessPowerSpectrum], caveat: A definition is not a cosmological derivation.}
-  - {sympy_id: CM13, registry: full, sympy_claim: peak-power and peak-scale ratios, relationship: definition_only, lean_status: definition, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [peakPowerRatio21, peakPowerRatio31, peakScaleRatio21, peakScaleRatio31], caveat: Definitions are not a fit to cosmological data.}
-  - {sympy_id: CM16, registry: full, sympy_claim: horizon wavenumber from a supplied radius, relationship: definition_only, lean_status: definition, lean_source: WCTLean/DerivedAudit.lean, lean_declarations: [horizonWavenumber], caveat: The horizon integral and dynamics remain open.}
-
-  - {sympy_id: CURV1, registry: legacy, sympy_claim: inverse-length curvature magnitude, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Curvature.lean, lean_declarations: [sqrt_inverse_length_squared, sqrt_kappa_sq_dim]}
-  - {sympy_id: CURV2, registry: legacy, sympy_claim: inverse-length-squared curvature density, relationship: dimensional_support, lean_status: proved, lean_source: WCTLean/Curvature.lean, lean_declarations: [kappa_sq_dim, tau_sq_dim]}
-  - {sympy_id: K1, registry: legacy, sympy_claim: Koide expression domain safety, relationship: domain_safety_only, lean_status: proved, lean_source: WCTLean/Koide.lean, lean_declarations: [koide_denominator_positive, koide_well_defined, koide_positive], caveat: Lean does not prove the numerical equality K = 2/3.}
+- sympy_id: D1_10
+  registry: legacy
+  sympy_claim: mass dimension closure
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Dimension.lean
+  lean_declarations:
+  - hbar_div_c_mul_k_is_mass
+- sympy_id: M1
+  registry: full
+  sympy_claim: finite curvature-locking action positivity and exact-lock vanishing
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/Locking.lean
+  lean_declarations:
+  - finiteLockingAction
+  - finiteLockingAction_nonnegative
+  - finiteLockingAction_zero
+  caveat: Finite algebraic model; no curve-integral variational existence theorem is claimed.
+- sympy_id: M2
+  registry: full
+  sympy_claim: corrected complex curvature denominator safety
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/ComplexCurvature.lean
+  lean_declarations:
+  - complex_normSq_nonnegative
+  - complexRegularizerDenominator_positive
+  - complexRegularizerDenominator_ne_zero
+  - complexRegularizerDenominator_at_zero
+  - complexRegularizedReciprocal_at_zero
+  - thetaComplex_zero_state
+  caveat: Local algebraic denominator safety; not a full PDE well-posedness theorem.
+- sympy_id: M3
+  registry: full
+  sympy_claim: finite-band shell penalty sign and off-shell damping
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/BandPass.lean
+  lean_declarations:
+  - finiteBandPenalty_nonpositive
+  - finiteBandPenalty_at_shell
+  - finiteBandPenalty_strict_off_shell
+  caveat: Fourier-symbol algebra only; nonlinear pattern selection remains open.
+- sympy_id: M4
+  registry: full
+  sympy_claim: integer dimensional threshold with explicit Sobolev-curvature contract
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - h2SubcriticalDimension
+  - h2Subcritical_iff_le_three
+  - SobolevCurvatureContract
+  caveat: Lean proves the integer equivalence n less than 4 iff n at most 3; the Sobolev embedding and curvature bound remain explicit contract fields.
+- sympy_id: M5
+  registry: full
+  sympy_claim: norm-bounded averaged update and forward-invariant resource ball
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CompactDynamics.lean
+  lean_declarations:
+  - averagedUpdate
+  - averagedUpdate_fixed_of_average_fixed
+  - averagedUpdate_norm_le
+  - InNormBound
+  - averagedUpdate_preserves_normBound
+  - BandLimitedInvariantSet
+  caveat: Finite-dimensional bounded-dynamics support only; no complexity-class equivalence is claimed.
+- sympy_id: M6A
+  registry: full
+  sympy_claim: corrected unified linear operator skeleton
+  relationship: definition_only
+  lean_status: definition
+  lean_source: WCTLean/Models/UnifiedOperator.lean
+  lean_declarations:
+  - unifiedShellTerm
+  - unifiedLinearSymbol
+  - unifiedRealVectorField
+  - UnifiedCoefficients
+  caveat: This is a typed operator skeleton, not a derivation of the full nonlinear UWCT equation.
+- sympy_id: M6B
+  registry: full
+  sympy_claim: exact canonical nonlinear curvature quotient and denominator safety
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/ComplexCurvature.lean
+  lean_declarations:
+  - thetaComplex
+  - thetaComplex_canonical_formula
+  - thetaComplex_denominator_ne_zero
+  caveat: The local operator form and positive-epsilon denominator are proved; uniqueness of the nonlinear closure and PDE well-posedness remain open.
+- sympy_id: M7
+  registry: full
+  sympy_claim: corrected negative fourth-order shell sector
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/UnifiedOperator.lean
+  lean_declarations:
+  - unifiedShellTerm_nonpositive
+  - unifiedShellTerm_zero_on_shell
+  caveat: Theorems cover the represented shell term, not the complete master dynamics.
+- sympy_id: E1A
+  registry: full
+  sympy_claim: inverse-length-squared curvature density
+  relationship: dimensional_support
+  lean_status: proved
+  lean_source: WCTLean/Curvature.lean
+  lean_declarations:
+  - kappa_sq_dim
+  - tau_sq_dim
+- sympy_id: E1B
+  registry: full
+  sympy_claim: inverse-length curvature spectral rate
+  relationship: dimensional_support
+  lean_status: proved
+  lean_source: WCTLean/Curvature.lean
+  lean_declarations:
+  - sqrt_inverse_length_squared
+  - sqrt_kappa_sq_dim
+- sympy_id: E2
+  registry: full
+  sympy_claim: weighted average denominator and dimension support
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/ResolvedAudit.lean
+  lean_declarations:
+  - densityWeightedAverage_denominator_ne_zero
+  - weightedSum_dim
+  - weighted_average_preserves_dimension
+- sympy_id: E3
+  registry: full
+  sympy_claim: finite locking mismatch nonnegativity
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/Locking.lean
+  lean_declarations:
+  - finiteLockingAction_nonnegative
+  - finiteLockingAction_zero
+  - lockingMismatch_nonnegative
+  - lockingMismatch_zero
+  caveat: Finite algebraic support; this is not an integral theorem on general curves.
+- sympy_id: E4
+  registry: full
+  sympy_claim: scalar winding-closure constant and pointwise weighted lock
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/Locking.lean
+  lean_declarations:
+  - alphaLock
+  - alphaLock_closure
+  - PointwiseLocked
+  - pointwiseLocked_weighted
+  caveat: The denominator is assumed nonzero and no stationary curve solution is constructed.
+- sympy_id: E5
+  registry: full
+  sympy_claim: effective-wavenumber chain under supplied closure and weighting hypotheses
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - effectiveWavenumber_eq_loopAverage
+  - constantWeightedAverage_eq_loopAverage
+  - resolved_e5_effectiveWavenumber_chain
+  caveat: Does not prove dynamic attainment of exact lock.
+- sympy_id: E6
+  registry: full
+  sympy_claim: mass-curvature dimensional closure
+  relationship: dimensional_support
+  lean_status: proved
+  lean_source: WCTLean/Dimension.lean
+  lean_declarations:
+  - hbar_div_c_mul_k_is_mass
+  - weighted_average_preserves_dimension
+  caveat: Dimensions only; not the physical identification.
+- sympy_id: E7
+  registry: full
+  sympy_claim: solenoidal mass relation dimensional closure
+  relationship: dimensional_support
+  lean_status: proved
+  lean_source: WCTLean/Dimension.lean
+  lean_declarations:
+  - hbar_div_c_mul_k_is_mass
+  - weighted_average_preserves_dimension
+  caveat: Dimensions only.
+- sympy_id: E8
+  registry: full
+  sympy_claim: corrected finite density-weighted lock identity
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/Locking.lean
+  lean_declarations:
+  - pointwiseLocked_weighted
+  - correctedWeightedLockIdentity
+  caveat: Finite counting-measure analogue; general curve integration is not formalized.
+- sympy_id: E9
+  registry: full
+  sympy_claim: phase-current and continuity residual algebra
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - polarCurrentProduct_im
+  - phaseCurrent_of_polar_factorization
+  - conservationResidual_zero_iff
+  caveat: Full function-space polar differentiation remains open.
+- sympy_id: E10
+  registry: full
+  sympy_claim: radial-shell quantization with additive closure
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/PhaseFlux.lean
+  lean_declarations:
+  - RadialShellQuantized
+  - radialShellQuantized_add
+  - radialShellQuantized_iff_windingQuantized
+  caveat: Exact integer-law closure only; no dynamical shell-selection theorem is claimed.
+- sympy_id: E11
+  registry: full
+  sympy_claim: winding quantization with additive closure
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/PhaseFlux.lean
+  lean_declarations:
+  - WindingQuantized
+  - windingQuantized_add
+  - radialShellQuantized_iff_windingQuantized
+  caveat: Exact integer-law closure only; no field-defect existence theorem is claimed.
+- sympy_id: E12
+  registry: full
+  sympy_claim: quartic growth symbol and selected-shell upper bound
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/BandPass.lean
+  lean_declarations:
+  - swiftHohenbergLinearSymbol_le_mu
+  - swiftHohenbergLinearSymbol_at_shell
+  - quarticGrowthSymbol_completedSquare
+  caveat: Symbol-level result; no nonlinear PDE selection theorem.
+- sympy_id: E13
+  registry: full
+  sympy_claim: one-mode band-pass symbol
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - bandpass_oneMode_symbol
+  caveat: Not the full nonlinear pattern-selection theorem.
+- sympy_id: E14
+  registry: full
+  sympy_claim: band-pass positivity and one-mode support
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - bandpass_oneMode_symbol
+  - square_nonnegative
+  - positive_quadratic_energy_nonnegative
+  caveat: Not full Lyapunov descent.
+- sympy_id: E17
+  registry: full
+  sympy_claim: corrected complex denominator safety plus historical scalar counterexample
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/ComplexCurvature.lean
+  lean_declarations:
+  - complexRegularizerDenominator_positive
+  - complexRegularizerDenominator_ne_zero
+  - complexRegularizerDenominator_at_zero
+  - complexRegularizedReciprocal_at_zero
+  - thetaComplex_zero_state
+  - resolved_e17_counterexample
+  caveat: The corrected local complex denominator is proved safe for positive epsilon; full operator regularity and epsilon-to-zero control remain open.
+- sympy_id: E18
+  registry: full
+  sympy_claim: energy nonnegativity and supplied-rate descent
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - resolved_e18_energy_nonnegative
+  - resolved_e18_gradientFlow_descent
+  caveat: The complete functional chain rule remains an explicit hypothesis.
+- sympy_id: E20
+  registry: full
+  sympy_claim: positive-semidefinite cavity quadratic sector
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - cavityQuadratic
+  - cavityQuadratic_nonnegative
+  caveat: Scalar quadratic-sector positivity; not the full higher-order Euler-Lagrange equation.
+- sympy_id: E24
+  registry: full
+  sympy_claim: arithmetic H2 subcritical threshold with explicit Sobolev contract
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - h2SubcriticalDimension
+  - h2Subcritical_iff_le_three
+  - SobolevCurvatureContract
+  caveat: Lean proves n less than 4 iff n at most 3; the Sobolev embedding and curvature bound are contract fields, not proved analysis.
+- sympy_id: E25
+  registry: full
+  sympy_claim: critical Sobolev exponent
+  relationship: definition_only
+  lean_status: definition
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - criticalSobolevExponent
+  caveat: Typed definition only.
+- sympy_id: E26
+  registry: full
+  sympy_claim: Sobolev-to-curvature boundedness interface
+  relationship: analytic_contract_only
+  lean_status: definition
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - SobolevCurvatureContract
+  caveat: Contract exposes the required theorem and does not prove it.
+- sympy_id: E27
+  registry: full
+  sympy_claim: finite confinement-energy predicate
+  relationship: definition_only
+  lean_status: definition
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - FiniteConfinementEnergy
+  caveat: Predicate definition only; existence of a confined state is not proved.
+- sympy_id: E28
+  registry: full
+  sympy_claim: corrected alpha-drop sufficient inequality
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - alphaDropValue
+  - alphaDrop_lt_one
+  caveat: Scalar implication under the encoded beta hypothesis.
+- sympy_id: E29
+  registry: full
+  sympy_claim: entropy-pruning bound nonnegativity upper bound and antitonicity
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - entropyPrunedUpperBound
+  - entropyPrunedUpperBound_nonnegative
+  - entropyPrunedUpperBound_le_modeCount
+  - entropyPrunedUpperBound_antitone
+  caveat: Scalar bound under nonnegative mode-count assumptions; the entropy drop is not derived from the full PDE.
+- sympy_id: E33
+  registry: full
+  sympy_claim: entropy-support exponential inequality
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - exp_entropy_le_support
+  caveat: Order-theoretic consequence of the supplied entropy bound.
+- sympy_id: E36
+  registry: full
+  sympy_claim: averaged finite-dimensional update fixed-point and norm-bound preservation
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CompactDynamics.lean
+  lean_declarations:
+  - averagedUpdate
+  - averagedUpdate_fixed_of_average_fixed
+  - averagedUpdate_norm_le
+  caveat: Concrete finite-dimensional special case; narrower than the full neighborhood-dependent WCC update.
+- sympy_id: E45
+  registry: full
+  sympy_claim: positivity of corrected effective quality factor
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - effectiveQualityFactor
+  - effectiveQualityFactor_positive
+- sympy_id: E47
+  registry: full
+  sympy_claim: stationary source-sink power balance equivalence
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - powerBalanceResidual
+  - stationaryPowerBalance_iff
+- sympy_id: E49
+  registry: full
+  sympy_claim: effective-mass-squared identity from a supplied gap
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - effectiveMassSqFromGap
+  - effectiveMassSqFromGap_eq
+  caveat: Definitional identity; does not derive a physical mass gap.
+- sympy_id: E51
+  registry: full
+  sympy_claim: curvature-gradient quotient commutator identity
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - curvatureGradientCommutator
+  - curvatureGradientCommutator_eq
+  caveat: Scalar component under a nonzero-denominator hypothesis.
+- sympy_id: E53
+  registry: full
+  sympy_claim: nonnegative local curvature-pressure contribution
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - curvaturePressureDensity
+  - curvaturePressureDensity_nonnegative
+- sympy_id: E57
+  registry: full
+  sympy_claim: selected-shell fourth-order penalty vanishes
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/BandPass.lean
+  lean_declarations:
+  - finiteBandPenalty_at_shell
+  caveat: Scalar Fourier-shell identity only.
+- sympy_id: E58
+  registry: full
+  sympy_claim: positive and bounded band Green kernel
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - bandGreenDenominator_pos
+  - bandGreenDenominator_ge_offset
+  - bandGreenKernel_pos
+  - bandGreenKernel_le_inverseOffset
+  - bandGreenKernel_at_shell
+- sympy_id: E59
+  registry: full
+  sympy_claim: fixed annular mask is an idempotent projection
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - maskProjection
+  - maskProjection_idempotent
+  caveat: Coordinate-mask model; not a complete Hilbert-space Fourier projection theorem.
+- sympy_id: E61
+  registry: full
+  sympy_claim: selected shell attains the on-shell growth value and is positive at onset
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/BandPass.lean
+  lean_declarations:
+  - swiftHohenbergLinearSymbol_at_shell
+  - selectedShell_positive_at_onset
+  caveat: Linear symbol statement only.
+- sympy_id: E62
+  registry: full
+  sympy_claim: annular spectral-energy fraction lies in the unit interval
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - spectralEnergyFraction
+  - spectralEnergyFraction_mem_unitInterval
+- sympy_id: E64
+  registry: full
+  sympy_claim: corrected selected wavelength is positive
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/BandPass.lean
+  lean_declarations:
+  - selectedWavenumberSq
+  - selectedWavelength
+  - selectedWavelength_positive
+  caveat: Positivity and formula typing only; no measured wavelength prediction.
+- sympy_id: E65
+  registry: full
+  sympy_claim: critical Sobolev exponent
+  relationship: definition_only
+  lean_status: definition
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - criticalSobolevExponent
+  caveat: Typed definition only.
+- sympy_id: E66
+  registry: full
+  sympy_claim: Gagliardo-Nirenberg bound interface
+  relationship: analytic_contract_only
+  lean_status: definition
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - GagliardoNirenbergBound
+  caveat: Proposition encoding the required inequality; no proof of the analytic estimate.
+- sympy_id: E67
+  registry: full
+  sympy_claim: arithmetic dimensional threshold with embedding contract
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - h2Subcritical_iff_le_three
+  - SobolevCurvatureContract
+  caveat: Arithmetic equivalence is proved; embedding is an explicit contract assumption.
+- sympy_id: E68
+  registry: full
+  sympy_claim: localized energy-bound interface
+  relationship: analytic_contract_only
+  lean_status: definition
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - LocalEnergyBound
+  caveat: Proposition definition only; the localized estimate is not proved.
+- sympy_id: E69
+  registry: full
+  sympy_claim: curvature boundedness contract at the dimensional threshold
+  relationship: analytic_contract_only
+  lean_status: definition
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - SobolevCurvatureContract
+  caveat: Contract only; no analytic boundedness proof.
+- sympy_id: E70
+  registry: full
+  sympy_claim: dimensional-stability criterion implies its explicit n-at-most-3 component
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Contracts/Analytic.lean
+  lean_declarations:
+  - DimensionalStabilityCriterion
+  - dimensional_stability_implies_le_three
+  caveat: The criterion includes the dimensional conclusion as a hypothesis; this is not an independent stability theorem.
+- sympy_id: E78
+  registry: full
+  sympy_claim: Fourier and Fisher-information bound family
+  relationship: adjacent_todo_only
+  lean_status: stated_todo
+  lean_source: WCTLean/Fourier.lean
+  lean_declarations:
+  - cos_orthogonality_TODO
+  caveat: The declaration records a proposition and is not a proof.
+- sympy_id: E81
+  registry: full
+  sympy_claim: coherence-length observables
+  relationship: definition_only
+  lean_status: definition
+  lean_source: WCTLean/Models/AlgebraicChecks.lean
+  lean_declarations:
+  - spectralCoherenceLength
+  - gradientCoherenceLength
+  caveat: Definitions only; equivalence between the two coherence measures is not proved.
+- sympy_id: G1
+  registry: full
+  sympy_claim: bounded log-periodic ghost-mode modulation
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/GhostModes.lean
+  lean_declarations:
+  - ghostMode
+  - abs_ghostMode_le
+  caveat: The global amplitude bound is proved; no empirical fit or physical-origin theorem is claimed.
+- sympy_id: EX
+  registry: full
+  sympy_claim: logarithmic field representation with positive-sector inverse
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/LogFlow.lean
+  lean_declarations:
+  - logField
+  - exp_logField_eq
+  caveat: Restricted to positive real field values.
+- sympy_id: EY
+  registry: full
+  sympy_claim: logarithmic curvature residual and Cole-Hopf residual factorization
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/LogFlow.lean
+  lean_declarations:
+  - logCurvatureResidual
+  - coleHopf_residual_factorization
+  - diffusionResidual_zero_iff_logCurvatureResidual_zero
+  caveat: Temporal and Laplacian chain rules are explicit hypotheses; function-space regularity remains open.
+- sympy_id: EZ
+  registry: full
+  sympy_claim: diffusion residual and zero-residual equivalence under Cole-Hopf hypotheses
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/LogFlow.lean
+  lean_declarations:
+  - diffusionResidual
+  - coleHopf_residual_factorization
+  - diffusionResidual_zero_iff_logCurvatureResidual_zero
+  caveat: The algebraic bridge is proved under displayed hypotheses; PDE existence and regularity are not.
+- sympy_id: FA
+  registry: full
+  sympy_claim: filament-localization condition equivalent to zero mismatch
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/LogFlow.lean
+  lean_declarations:
+  - FilamentLocalizationCondition
+  - filamentLocalizationMismatch
+  - filamentLocalizationCondition_iff_mismatch_zero
+  caveat: Scalar equivalence only; no filament-existence or localization theorem is claimed.
+- sympy_id: CM9
+  registry: full
+  sympy_claim: first-order and second-order oscillator equivalence
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - photonSecondOrder_iff_firstOrder
+  - baryonSecondOrder_iff_firstOrder
+- sympy_id: CM12
+  registry: full
+  sympy_claim: dimensionless power-spectrum observable
+  relationship: definition_only
+  lean_status: definition
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - dimensionlessPowerSpectrum
+  caveat: A definition is not a cosmological derivation.
+- sympy_id: CM13
+  registry: full
+  sympy_claim: peak-power and peak-scale ratios
+  relationship: definition_only
+  lean_status: definition
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - peakPowerRatio21
+  - peakPowerRatio31
+  - peakScaleRatio21
+  - peakScaleRatio31
+  caveat: Definitions are not a fit to cosmological data.
+- sympy_id: CM16
+  registry: full
+  sympy_claim: horizon wavenumber from a supplied radius
+  relationship: definition_only
+  lean_status: definition
+  lean_source: WCTLean/DerivedAudit.lean
+  lean_declarations:
+  - horizonWavenumber
+  caveat: The horizon integral and dynamics remain open.
+- sympy_id: CURV1
+  registry: legacy
+  sympy_claim: inverse-length curvature magnitude
+  relationship: dimensional_support
+  lean_status: proved
+  lean_source: WCTLean/Curvature.lean
+  lean_declarations:
+  - sqrt_inverse_length_squared
+  - sqrt_kappa_sq_dim
+- sympy_id: CURV2
+  registry: legacy
+  sympy_claim: inverse-length-squared curvature density
+  relationship: dimensional_support
+  lean_status: proved
+  lean_source: WCTLean/Curvature.lean
+  lean_declarations:
+  - kappa_sq_dim
+  - tau_sq_dim
+- sympy_id: K1
+  registry: legacy
+  sympy_claim: Koide expression domain safety
+  relationship: domain_safety_only
+  lean_status: proved
+  lean_source: WCTLean/Koide.lean
+  lean_declarations:
+  - koide_denominator_positive
+  - koide_well_defined
+  - koide_positive
+  caveat: Lean does not prove the numerical equality K = 2/3.
+- sympy_id: E16
+  registry: full
+  sympy_claim: linearized modal power selection under supplied growth rates
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - linearModePower
+  - linearModePower_nonnegative
+  - linearModePower_selects_larger_growth
+  caveat: Linearized supplied-growth theorem only; nonlinear global mode selection is not proved.
+- sympy_id: E19
+  registry: full
+  sympy_claim: gap-curvature to effective-mass-squared consistency bridge
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/DerivedConstraints.lean
+  lean_declarations:
+  - gapCurvatureFrequency
+  - effectiveMassSquaredFromGap
+  - gapCurvature_massSquared_chain
+  - gapCurvature_unitCoefficient_recovers_massLawSquared
+  caveat: Exact cross-equation consequence under the supplied gap law; the physical spectral-gap law remains conditional.
+- sympy_id: E22
+  registry: full
+  sympy_claim: complex metric derivative entry is Hermitian and its real part is symmetric
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/DerivedConstraints.lean
+  lean_declarations:
+  - complexMetricDerivativeEntry
+  - complexMetricDerivativeEntry_hermitian
+  - complexMetricDerivativeEntry_not_symmetric_example
+  - complexMetricDerivativeEntry_realPart_symmetric
+  caveat: Symmetry diagnostics only; dimensional normalization, nondegeneracy, and Lorentzian signature remain unresolved.
+- sympy_id: E32
+  registry: full
+  sympy_claim: uniform alpha-drop margin implies a strict subunit tail
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - alphaDropFromAverage
+  - alphaDrop_uniform_margin_bound
+  - alphaDrop_uniform_margin_lt_one
+  caveat: Pointwise uniform-margin core of the limsup statement; eventual-tail application requires the displayed uniform hypothesis.
+- sympy_id: E37
+  registry: full
+  sympy_claim: energy-limited wavenumber scale is nonnegative under physical sign assumptions
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - energyBandlimit
+  - energyBandlimit_nonnegative
+  caveat: Scalar sign theorem only; the physical coefficient and cutoff model are not derived.
+- sympy_id: E38
+  registry: full
+  sympy_claim: channel-capacity upper-bound expression is nonnegative under nonnegative factors
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - channelCapacityUpperBound
+  - channelCapacityUpperBound_nonnegative
+  caveat: Scalar structure only; no full computational-capacity theorem is claimed.
+- sympy_id: E41
+  registry: full
+  sympy_claim: iterated discrete retention bounds multiply and reproduce the alpha exponent bookkeeping
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/DerivedConstraints.lean
+  lean_declarations:
+  - retentionProduct
+  - retentionProduct_zero
+  - retentionProduct_succ
+  - iterated_count_retention_bound
+  - alphaFromRetentionLogSum
+  - alphaFromRetentionLogSum_exponent_identity
+  caveat: Finite nonnegative count-retention theorem; physical encoding and retention hypotheses remain model assumptions.
+- sympy_id: E50
+  registry: full
+  sympy_claim: phase-coherence integrand is finite under a positive phase-gradient floor
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - phaseCoherenceIntegrand
+  - phaseCoherenceIntegrand_bound
+  caveat: Pointwise bound; continuum finiteness also uses the stated L2 density integrability assumption.
+- sympy_id: E72
+  registry: full
+  sympy_claim: iterated discrete retention-count bound and alpha exponent bookkeeping
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/DerivedConstraints.lean
+  lean_declarations:
+  - retentionProduct
+  - iterated_count_retention_bound
+  - alphaFromRetentionLogSum
+  - alphaFromRetentionLogSum_exponent_identity
+  caveat: Finite counting theorem only; no independent complexity-class result is claimed.
+- sympy_id: CLE4
+  registry: full
+  sympy_claim: curvature quotient lock is equivalent to the locked eigen-equation away from field zeros
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - scalarCurvatureQuotient
+  - curvatureLock_iff_lockedEigenEquation
+  caveat: Scalar algebraic equivalence only; no toroidal solution existence theorem.
+- sympy_id: CLE5
+  registry: full
+  sympy_claim: flat-product torus Fourier eigenvalue is nonnegative
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - flatProductTorusEigenvalue
+  - flatProductTorusEigenvalue_nonnegative
+  caveat: Flat-product torus model only; curvature corrections are not included.
+- sympy_id: CLE8
+  registry: full
+  sympy_claim: fixed-winding flat-product torus mode m=0 is the unique lowest mode for nonzero major radius
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - flatProductTorus_fixedWinding_one_minimal
+  - flatProductTorus_fixedWinding_one_eq_iff
+  caveat: Requires the stated n=+1 winding selection and flat-product spectrum.
+- sympy_id: CLE9
+  registry: full
+  sympy_claim: curvature radius is reciprocal to nonzero curvature
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - curvatureRadius
+  - curvatureRadius_mul_curvature
+  caveat: Exact reciprocal identity under nonzero curvature; physical radius identification remains model-specific.
+- sympy_id: CLE10
+  registry: full
+  sympy_claim: squared curvature quotient lock is equivalent to the squared locked eigen-equation away from zeros
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - scalarCurvatureQuotient
+  - curvatureScalarSq_iff_lockedEigenEquation
+  caveat: Scalar algebraic equivalence only; no confined-state existence theorem.
+- sympy_id: CM11
+  registry: full
+  sympy_claim: Gaussian curvature-damping envelope is positive and normalized at zero wavenumber
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - curvatureDampingEnvelope
+  - curvatureDampingEnvelope_positive
+  - curvatureDampingEnvelope_zero
+  caveat: Envelope properties only; cosmological parameter calibration remains separate.
+- sympy_id: TOP3
+  registry: full
+  sympy_claim: exact negative-gradient-flow energy rate is nonpositive
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - finiteGradientFlowEnergyRate
+  - finiteGradientFlowEnergyRate_nonpositive
+  caveat: Finite-dimensional algebraic core; continuum differentiability and well-posedness are separate hypotheses.
+- sympy_id: TOP7
+  registry: full
+  sympy_claim: constant-curvature planar reduction gives mass squared linear in curvature-energy density
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/DerivedConstraints.lean
+  lean_declarations:
+  - constantCurvatureEnergyDensity
+  - planarConstantCurvatureMass
+  - planarConstantCurvatureMass_squared
+  caveat: Diagnostic consequence of the supplied mass law; not a universal mass-energy theorem.
+- sympy_id: CORR2
+  registry: full
+  sympy_claim: weak-intermittency reciprocal denominator has a rigorous error band
+  relationship: formalizes_same_claim
+  lean_status: proved
+  lean_source: WCTLean/Models/CoverageExpansion.lean
+  lean_declarations:
+  - meanAmplitudeReciprocalFactor
+  - meanAmplitudeReciprocalFactor_band
+  - meanAmplitudeReciprocal_upperError_exact
+  caveat: Formalizes the error enclosure under a uniform relative-denominator fluctuation bound; it does not prove that physical solutions satisfy that bound.
