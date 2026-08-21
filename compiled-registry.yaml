@@ -1,6 +1,6 @@
 schema_version: 2.0.0
 registry_id: wct-effective-registry
-generated_at: '2026-08-20T06:01:35+00:00'
+generated_at: '2026-08-21T04:26:22+00:00'
 status_policy:
   PASS: The assigned check succeeds under its declared assumptions.
   CONDITIONAL: Additional mathematical, model, regularity, or empirical assumptions
@@ -8251,7 +8251,7 @@ objects:
 provenance:
   registry_version: 2.0.0
   source_commits:
-    wct-sympy: 5c72a9e2e790d9f151431e984bec1bd7bd4510c9
+    wct-sympy: 386309ebf60ab15a7b248841a4886ff3c8258458
     geometry_of_resonance: null
     wct-lean: null
   generator: scripts/compile_registry.py
