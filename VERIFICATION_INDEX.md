@@ -12,15 +12,15 @@ This index covers all 142 registered equation objects after applying `equations/
 
 A SymPy `PASS` is not a Lean proof or empirical validation.
 
-> **Status precedence:** the `51 PASS / 32 CONDITIONAL / 23 DEFINITION / 36 OPEN` distribution embedded in the canonical equation document is the pre-derivation baseline. After the active derived overrides are applied, the effective distribution is `59 / 27 / 26 / 30`. The equation document remains canonical for equation text and assumptions; this index is canonical for the current effective SymPy classification.
+> **Status precedence:** the `51 PASS / 32 CONDITIONAL / 23 DEFINITION / 36 OPEN` distribution embedded in the canonical equation document is the pre-derivation baseline. After the active derived overrides are applied, the effective distribution is `68 PASS / 18 CONDITIONAL / 26 DEFINITION / 30 OPEN`. The equation document remains canonical for equation text and assumptions; this index is canonical for the current effective SymPy classification.
 
-## PASS — 59
+## PASS — 68
 
-`M2 M3 M4 M7 E1A E1B E2 E3 E4 E5 E6 E7 E8 E9 E10 E11 E12 E13 E14 E16 E17 E18 E20 E21 E24 E26 E28 E29 E30 E33 E37 E38 E45 E47 E49 E51 E53 E57 E58 E59 E61 E62 E64 E65 E67 E69 E81 CLE2 CLE4 CLE6 CLE7 CLE9 CLE10 G1 EX EY EZ CM9 CM11`
+`M2 M3 M4 M7 E1A E1B E2 E3 E4 E5 E6 E7 E8 E9 E10 E11 E12 E13 E14 E15 E16 E17 E18 E20 E21 E24 E26 E28 E29 E30 E32 E33 E37 E38 E41 E45 E47 E49 E50 E51 E53 E57 E58 E59 E61 E62 E64 E65 E67 E69 E72 E81 CLE2 CLE4 CLE5 CLE6 CLE7 CLE8 CLE9 CLE10 G1 EX EY EZ CM9 CM11 TOP3 CORR2`
 
-## CONDITIONAL — 27
+## CONDITIONAL — 18
 
-`M1 M5 E15 E19 E22 E23 E31 E32 E40 E41 E48 E50 E54 E56 E66 E68 E70 E71 E72 E76 E80 CLE5 CLE8 FA TOP3 TOP7 CORR2`
+`M1 M5 E19 E22 E23 E31 E40 E48 E54 E56 E66 E68 E70 E71 E76 E80 FA TOP7`
 
 ## DEFINITION — 26
 
@@ -32,6 +32,18 @@ A SymPy `PASS` is not a Lean proof or empirical validation.
 
 ## Effective totals
 
-`59 PASS + 27 CONDITIONAL + 26 DEFINITION + 30 OPEN = 142`.
+`68 PASS + 18 CONDITIONAL + 26 DEFINITION + 30 OPEN = 142`.
+
+## Additional exact certificates
+
+The September 2026 formal-upgrade batch in `wct_sympy/formal_upgrades.py` adds executable, non-registry certificates for:
+
+- the toroidal shape selector `eta^2(1-eta^2) <= 1/4`, with equality only at `eta^2=1/2`;
+- the completed-square finite-band Hessian maximum;
+- the helix identity `kappa^2+tau^2 = 1/(R^2+p^2)` and its aspect-ratio reduction;
+- the radial-core convergence threshold `p>1/2`;
+- the exact constrained curvature-lock stationarity relation `phi' = sigma - lambda/(2w)`.
+
+These certificates do not by themselves change canonical equation statuses. They isolate exact mathematics from the remaining geometric, PDE, topological, and physical assumptions.
 
 Use the canonical registry for equation text and assumptions, the YAML registries for checker assignments, and `wct-lean` for kernel-checked declarations.
