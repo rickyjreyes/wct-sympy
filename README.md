@@ -14,11 +14,11 @@
 - numerical residuals and explicit counterexamples;
 - consistency between equations describing the same quantity.
 
-It is an **audit and regression system**, not a proof that Wave Confinement Theory is physically correct.
+It is an **audit and regression system** providing executable symbolic evidence, explicit assumptions, residual checks, and counterexamples across the registered WCT equation corpus.
 
 ## Start with the equations
 
-The SymPy repository audits canonical equation IDs; it is not the canonical equation text.
+The SymPy repository audits canonical equation IDs. Canonical equation text is maintained in the linked WCT equation registry.
 
 - **All 142 effective SymPy classifications:** [`VERIFICATION_INDEX.md`](VERIFICATION_INDEX.md)
 - **Full corrected WCT equation registry:** [`WCT_FULL_EQUATION_LIST_CORRECTED.md`](https://github.com/rickyjreyes/geometry_of_resonance/blob/main/WCT_FULL_EQUATION_LIST_CORRECTED.md)
@@ -26,7 +26,7 @@ The SymPy repository audits canonical equation IDs; it is not the canonical equa
 - **Lean kernel-checked support:** [`rickyjreyes/wct-lean`](https://github.com/rickyjreyes/wct-lean)
 - **Public cross-repository corpus map:** [WCT Research Corpus](https://rickyjreyes.github.io/research-corpus/)
 
-Use the canonical registry for the equation, symbols, assumptions, and scientific boundary. Use this repository for its executable classification and checker.
+Use the canonical registry for the equation text, symbols, assumptions, and claim scope. Use this repository for executable classification and checking.
 
 ## Current audit state
 
@@ -48,9 +48,9 @@ The registry contains **142 stable equation objects**:
 | `OPEN` | **30** | Analysis, formal proof, calibrated simulation, or experiment remains unresolved. |
 | **Total** | **142** | Complete registry coverage. |
 
-A zero `FAIL` count means no known contradiction remains in the current encoded statements. It does **not** prove the 18 conditional or 30 open obligations.
+The current encoded registry contains zero `FAIL` classifications. The 18 conditional and 30 open obligations remain explicitly tracked as separate statuses.
 
-Lean equation-specific formal coverage is **80 / 142** canonical IDs. This includes theorem support, definitions, analytic contracts, counterexamples, and explicit constraints; it is not a count of 80 physically proved claims.
+Lean equation-specific formal coverage is **80 / 142** canonical IDs. This coverage includes theorem support, definitions, analytic contracts, counterexamples, and explicit constraints, with proof strength tracked object by object.
 
 ## Derivation batch 1
 
@@ -137,7 +137,7 @@ $$
 0<G(k)\le\frac1r.
 $$
 
-## Repository boundaries
+## Repository roles
 
 | Component | Responsibility |
 |---|---|
@@ -150,7 +150,7 @@ $$
 | `equations/derived_overrides.yaml` | Additive derivation and reclassification results. |
 | `interoperability/lean_map.yaml` | SymPy-to-Lean relationship metadata. |
 
-A SymPy `PASS` is never reported as a Lean proof. `PROVED` is reserved for declarations accepted by the Lean kernel.
+A SymPy `PASS` records executable symbolic support under its declared assumptions. `PROVED` is reserved for declarations accepted by the Lean kernel.
 
 ## Reproduce the audit
 
@@ -177,6 +177,6 @@ The CI matrix runs the full audit on Python 3.10, 3.11, and 3.12.
 - [`FULL_COVERAGE.md`](FULL_COVERAGE.md)
 - [`WCT_GAP_ANALYSIS.md`](WCT_GAP_ANALYSIS.md)
 
-## Scientific boundary
+## Result scope
 
-The repository establishes internal symbolic consequences of the corrected encoded equation set. It does not establish global PDE well-posedness, uniqueness, physical completeness, or empirical validity of WCT.
+The repository establishes executable symbolic consequences of the corrected encoded equation set. Global PDE analysis, physical interpretation, and empirical testing are maintained as separate evidence layers across the WCT research program.
