@@ -908,3 +908,102 @@ mappings:
   - cle7_angular_mode
   - cle7_angular_mode_periodic
   caveat: Only 2-pi periodicity of the explicitly defined family is proved here; not the angular ODE or completeness of its solutions.
+
+- sympy_id: TOP6
+  registry: full
+  sympy_claim: positive-dilation inverse-square scaling of the unnormalized curvature statistic
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - top6CurvatureStatistic
+  - top6_statistic_scales_inverse_square
+  - top6_dilation_changes_statistic
+  caveat: Scalar scaling law with assumed geometric dilation rules; full curve-isotopy/topology-band impossibility argument remains analytic, not Lean-encoded.
+
+- sympy_id: CM3
+  registry: full
+  sympy_claim: nonzero-wavenumber Fourier-potential Poisson algebra
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - cm3_potential_poisson_relation
+  caveat: Algebraic identity only at nonzero wavenumber; zero modes, constitutive law and cosmological field equations are not derived.
+
+- sympy_id: CM4
+  registry: full
+  sympy_claim: real decay rate compatible with a phase-locked potential precisely when the logarithmic rate is nonpositive
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - cm4_decay_iff_nonpositive_logarithmic_rate
+  caveat: Real scalar constant-coupling reduction only; no global cosmological decay theorem, complex-mode law or horizon dynamics.
+
+- sympy_id: CM10
+  registry: full
+  sympy_claim: convex discrete drag update contracts the baryon-photon mismatch
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - cm10_drag_contracts_difference
+  caveat: One-step real scalar convex update with drag between zero and one and fixed comparison state; no coupled cosmology derivation.
+
+- sympy_id: CM15
+  registry: full
+  sympy_claim: curvature-energy expansion rate agrees with CM20 ansatz exactly under the indicated energy-loss identity
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - cm15ImpliedHubble
+  - cm20ProposedHubble
+  - cm15_cm20_compatible_iff_energy_loss
+  caveat: Exact instantaneous algebraic equivalence for nonzero energy; continuum differentiation of the scale factor and physical energy closure are not proved here.
+
+- sympy_id: CM20
+  registry: full
+  sympy_claim: CM20 proposed expansion ansatz is equivalent to CM15 energy-loss constraint when paired with CM15 definition
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - cm20ProposedHubble
+  - cm15_cm20_compatible_iff_energy_loss
+  caveat: Compatibility constraint for supplied real parameters only, not a Friedmann equation or calibrated physical prediction.
+
+- sympy_id: E44
+  registry: full
+  sympy_claim: corrected local curvature quotient is invariant under constant unit-phase rotation while the same-eigenvalue nonlinear equation has an obstruction
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - e44_local_curvature_global_phase_invariance
+  - e44_phase_rotated_eigenvalue_obstruction
+  caveat: Local complex scalar phase-cancellation and conditional eigenvalue obstruction; does not classify eigenmodes, normalize fields or establish a nonlinear spectrum.
+
+- sympy_id: E60
+  registry: full
+  sympy_claim: real cubic amplitude ODE yields an exact squared-amplitude derivative and stationary-state factorization
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - e60_real_squared_amplitude_derivative
+  - e60_real_stationary_iff
+  caveat: Only the supplied real scalar cubic amplitude equation; no full center-manifold theorem, PDE reduction error bound or global dynamical solution.
+
+- sympy_id: E82
+  registry: full
+  sympy_claim: finite real feature Gram tensor is symmetric and has nonnegative diagonal and sum-of-squares quadratic form
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/RegistryOnlyClosures.lean
+  lean_declarations:
+  - e82_information_gram_symmetric
+  - e82_information_gram_diagonal_nonnegative
+  - e82_information_gram_quadratic_nonnegative
+  caveat: Finite real features only; the explicit indexed Gram quadratic identity and continuum information geometry are not fully Lean-formalized.
