@@ -40,3 +40,21 @@ def test_cosmology_definitions_are_not_reported_as_proofs():
     for object_id in ("CM12", "CM13", "CM16"):
         assert by_id[object_id].lean_status == "definition"
         assert by_id[object_id].relationship == "definition_only"
+
+
+def test_new_canonical_reductions_have_narrow_explicit_scope():
+    _, mappings = load_lean_map()
+    by_id = {item.sympy_id: item for item in mappings}
+    expected = {
+        "E15": "complex Fourier coefficients",
+        "CLE6": "toroidal PDE",
+        "CLE7": "angular ODE",
+    }
+    for object_id, limitation in expected.items():
+        item = by_id[object_id]
+        assert item.registry == "full"
+        assert item.lean_status == "proved"
+        assert item.relationship == "supporting_lemma_only"
+        assert item.lean_source == "WCTLean/Models/NarrowCanonicalCoverage.lean"
+        assert item.lean_declarations
+        assert limitation in item.caveat
