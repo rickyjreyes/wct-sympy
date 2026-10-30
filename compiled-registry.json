@@ -7988,12 +7988,20 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cm10DragRatio",
+          "cm10DragRatio_mem_unitInterval",
+          "cm10DragUpdate",
+          "cm10DragUpdate_mismatch",
+          "cm10DragUpdate_between"
+        ],
+        "source": "WCTLean/Models/FiniteLoopAndDrag.lean",
+        "limitations": [
+          "Assumes nonnegative exchange bounded by positive compression and one ordered-input interval case; physical acoustic dynamics, measured energies and cosmological predictions are not established."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -8684,12 +8692,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "top1FiniteSpectralLoop",
+          "top1FiniteSpectralLoop_periodic",
+          "top1FiniteSpectralLoop_closes"
+        ],
+        "source": "WCTLean/Models/FiniteLoopAndDrag.lean",
+        "limitations": [
+          "Proves exact closure of the declared finite real trigonometric representation; no embedded knot, spectral emergence, or physical evolution theorem."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",

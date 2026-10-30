@@ -908,3 +908,29 @@ mappings:
   - cle7_angular_mode
   - cle7_angular_mode_periodic
   caveat: Only 2-pi periodicity of the explicitly defined family is proved here; not the angular ODE or completeness of its solutions.
+
+- sympy_id: TOP1
+  registry: full
+  sympy_claim: finite integer-harmonic Fourier loop is exactly 2π-periodic and endpoint-closed
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/FiniteLoopAndDrag.lean
+  lean_declarations:
+  - top1FiniteSpectralLoop
+  - top1FiniteSpectralLoop_periodic
+  - top1FiniteSpectralLoop_closes
+  caveat: Proves exact closure of the declared finite real trigonometric representation; no embedded knot, spectral emergence, or physical evolution theorem.
+
+- sympy_id: CM10
+  registry: full
+  sympy_claim: nonnegative exchange/compression ratio and convex photon/baryon drag update
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/FiniteLoopAndDrag.lean
+  lean_declarations:
+  - cm10DragRatio
+  - cm10DragRatio_mem_unitInterval
+  - cm10DragUpdate
+  - cm10DragUpdate_mismatch
+  - cm10DragUpdate_between
+  caveat: Assumes nonnegative exchange bounded by positive compression and one ordered-input interval case; physical acoustic dynamics, measured energies and cosmological predictions are not established.
