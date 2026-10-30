@@ -2119,12 +2119,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "e15_scalar_modal_power_derivative",
+          "e15_scalar_modal_growth_bound"
+        ],
+        "source": "WCTLean/Models/NarrowCanonicalCoverage.lean",
+        "limitations": [
+          "A prescribed real scalar cubic-saturation ODE only; no statement about arbitrary complex Fourier coefficients or nonlinear PDE mode dynamics."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6780,12 +6785,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cle6_separated_mode_quotient"
+        ],
+        "source": "WCTLean/Models/NarrowCanonicalCoverage.lean",
+        "limitations": [
+          "Algebraic implication given the separated product equation and nonzero f, g, r; no proof that a toroidal PDE separates or has these solutions."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -6840,12 +6849,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cle7_angular_mode",
+          "cle7_angular_mode_periodic"
+        ],
+        "source": "WCTLean/Models/NarrowCanonicalCoverage.lean",
+        "limitations": [
+          "Only 2-pi periodicity of the explicitly defined family is proved here; not the angular ODE or completeness of its solutions."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
