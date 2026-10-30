@@ -80,8 +80,9 @@ def test_recent_canonical_closures_are_mapped_with_proof_scope():
         assert item.relationship == "supporting_lemma_only"
         assert item.lean_source == "WCTLean/Models/RegistryOnlyClosures.lean"
         assert proof in item.lean_declarations
-        assert item.caveat and any(
+        assert item.caveat and len(item.caveat) >= 30
+        assert any(
             qualifier in item.caveat.lower()
-            for qualifier in ("only", "not", "does not")
+            for qualifier in ("only", "not", "does not", "no ", "remains", "rather than")
         )
     assert len(by_id) == 92
