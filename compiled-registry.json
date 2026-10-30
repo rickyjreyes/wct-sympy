@@ -4000,12 +4000,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "e44_local_curvature_global_phase_invariance",
+          "e44_phase_rotated_eigenvalue_obstruction"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "Local complex scalar phase-cancellation and conditional eigenvalue obstruction; does not classify eigenmodes, normalize fields or establish a nonlinear spectrum."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -5011,12 +5016,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "e60_real_squared_amplitude_derivative",
+          "e60_real_stationary_iff"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "Only the supplied real scalar cubic amplitude equation; no full center-manifold theorem, PDE reduction error bound or global dynamical solution."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -6412,12 +6422,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "e82_information_gram_symmetric",
+          "e82_information_gram_diagonal_nonnegative",
+          "e82_information_gram_quadratic_nonnegative"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "Finite real features only; the explicit indexed Gram quadratic identity and continuum information geometry are not fully Lean-formalized."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_APPLICABLE",
@@ -7562,12 +7578,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cm3_potential_poisson_relation"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "Algebraic identity only at nonzero wavenumber; zero modes, constitutive law and cosmological field equations are not derived."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -7622,12 +7642,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cm4_decay_iff_nonpositive_logarithmic_rate"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "Real scalar constant-coupling reduction only; no global cosmological decay theorem, complex-mode law or horizon dynamics."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -7988,12 +8012,16 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cm10_drag_contracts_difference"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "One-step real scalar convex update with drag between zero and one and fixed comparison state; no coupled cosmology derivation."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -8314,12 +8342,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cm15ImpliedHubble",
+          "cm20ProposedHubble",
+          "cm15_cm20_compatible_iff_energy_loss"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "Exact instantaneous algebraic equivalence for nonzero energy; continuum differentiation of the scale factor and physical energy closure are not proved here."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -8624,12 +8658,17 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "cm20ProposedHubble",
+          "cm15_cm20_compatible_iff_energy_loss"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "Compatibility constraint for supplied real parameters only, not a Friedmann equation or calibrated physical prediction."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",
@@ -8992,12 +9031,18 @@
       },
       "assumptions": [],
       "formalization": {
-        "status": "OPEN",
-        "relationship": null,
-        "declaration_type": "unmapped",
-        "declarations": [],
-        "source": null,
-        "limitations": []
+        "status": "PROVED",
+        "relationship": "supporting_lemma_only",
+        "declaration_type": "supporting_lemma_only",
+        "declarations": [
+          "top6CurvatureStatistic",
+          "top6_statistic_scales_inverse_square",
+          "top6_dilation_changes_statistic"
+        ],
+        "source": "WCTLean/Models/RegistryOnlyClosures.lean",
+        "limitations": [
+          "Scalar scaling law with assumed geometric dilation rules; full curve-isotopy/topology-band impossibility argument remains analytic, not Lean-encoded."
+        ]
       },
       "empirical_validation": {
         "status": "NOT_TESTED",

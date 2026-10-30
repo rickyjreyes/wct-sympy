@@ -50,7 +50,7 @@ The registry contains **142 stable equation objects**:
 
 The current encoded registry contains zero `FAIL` classifications. The 18 conditional and 30 open obligations remain explicitly tracked as separate statuses.
 
-Lean equation-specific formal coverage is **80 / 142** canonical IDs. This coverage includes theorem support, definitions, analytic contracts, counterexamples, and explicit constraints, with proof strength tracked object by object.
+Lean equation-specific formal coverage is **92 / 142** canonical IDs (64.8%). This coverage includes theorem support, definitions, analytic contracts, counterexamples, and explicit constraints, with proof strength tracked object by object. The latest additions are nine scoped kernel-checked results for TOP6, CM3, CM4, CM10, CM15, CM20, E44, E60 and E82 in `WCTLean/Models/RegistryOnlyClosures.lean`, beyond the existing E15, CLE6 and CLE7 reductions. See the [Lean scope report](https://github.com/rickyjreyes/wct-lean/blob/main/docs/REGISTRY_ONLY_CLOSURES_2026-10-30.md). Full PDE, cosmological and physical claims remain separate.
 
 ## Derivation batch 1
 
