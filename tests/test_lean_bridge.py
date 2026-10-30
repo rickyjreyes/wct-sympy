@@ -58,3 +58,30 @@ def test_new_canonical_reductions_have_narrow_explicit_scope():
         assert item.lean_source == "WCTLean/Models/NarrowCanonicalCoverage.lean"
         assert item.lean_declarations
         assert limitation in item.caveat
+
+
+def test_recent_canonical_closures_are_mapped_with_proof_scope():
+    _, mappings = load_lean_map()
+    by_id = {item.sympy_id: item for item in mappings if item.registry == "full"}
+    required = {
+        "TOP6": "top6_statistic_scales_inverse_square",
+        "CM3": "cm3_potential_poisson_relation",
+        "CM4": "cm4_decay_iff_nonpositive_logarithmic_rate",
+        "CM10": "cm10_drag_contracts_difference",
+        "CM15": "cm15_cm20_compatible_iff_energy_loss",
+        "CM20": "cm15_cm20_compatible_iff_energy_loss",
+        "E44": "e44_phase_rotated_eigenvalue_obstruction",
+        "E60": "e60_real_stationary_iff",
+        "E82": "e82_information_gram_quadratic_nonnegative",
+    }
+    for object_id, proof in required.items():
+        item = by_id[object_id]
+        assert item.lean_status == "proved"
+        assert item.relationship == "supporting_lemma_only"
+        assert item.lean_source == "WCTLean/Models/RegistryOnlyClosures.lean"
+        assert proof in item.lean_declarations
+        assert item.caveat and any(
+            qualifier in item.caveat.lower()
+            for qualifier in ("only", "not", "does not")
+        )
+    assert len(by_id) == 92
