@@ -1052,6 +1052,114 @@
       "registry": "full",
       "relationship": "formalizes_same_claim",
       "sympy_id": "CORR2"
+    },
+    {
+      "caveat": "Scalar scaling law with assumed geometric dilation rules; full curve-isotopy/topology-band impossibility argument remains analytic, not Lean-encoded.",
+      "lean_declarations": [
+        "top6CurvatureStatistic",
+        "top6_statistic_scales_inverse_square",
+        "top6_dilation_changes_statistic"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "TOP6"
+    },
+    {
+      "caveat": "Algebraic identity only at nonzero wavenumber; zero modes, constitutive law and cosmological field equations are not derived.",
+      "lean_declarations": [
+        "cm3_potential_poisson_relation"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CM3"
+    },
+    {
+      "caveat": "Real scalar constant-coupling reduction only; no global cosmological decay theorem, complex-mode law or horizon dynamics.",
+      "lean_declarations": [
+        "cm4_decay_iff_nonpositive_logarithmic_rate"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CM4"
+    },
+    {
+      "caveat": "One-step real scalar convex update with drag between zero and one and fixed comparison state; no coupled cosmology derivation.",
+      "lean_declarations": [
+        "cm10_drag_contracts_difference"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CM10"
+    },
+    {
+      "caveat": "Exact instantaneous algebraic equivalence for nonzero energy; continuum differentiation of the scale factor and physical energy closure are not proved here.",
+      "lean_declarations": [
+        "cm15ImpliedHubble",
+        "cm20ProposedHubble",
+        "cm15_cm20_compatible_iff_energy_loss"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CM15"
+    },
+    {
+      "caveat": "Compatibility constraint for supplied real parameters only, not a Friedmann equation or calibrated physical prediction.",
+      "lean_declarations": [
+        "cm20ProposedHubble",
+        "cm15_cm20_compatible_iff_energy_loss"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CM20"
+    },
+    {
+      "caveat": "Local complex scalar phase-cancellation and conditional eigenvalue obstruction; does not classify eigenmodes, normalize fields or establish a nonlinear spectrum.",
+      "lean_declarations": [
+        "e44_local_curvature_global_phase_invariance",
+        "e44_phase_rotated_eigenvalue_obstruction"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E44"
+    },
+    {
+      "caveat": "Only the supplied real scalar cubic amplitude equation; no full center-manifold theorem, PDE reduction error bound or global dynamical solution.",
+      "lean_declarations": [
+        "e60_real_squared_amplitude_derivative",
+        "e60_real_stationary_iff"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E60"
+    },
+    {
+      "caveat": "Finite real features only; the explicit indexed Gram quadratic identity and continuum information geometry are not fully Lean-formalized.",
+      "lean_declarations": [
+        "e82_information_gram_symmetric",
+        "e82_information_gram_diagonal_nonnegative",
+        "e82_information_gram_quadratic_nonnegative"
+      ],
+      "lean_source": "WCTLean/Models/RegistryOnlyClosures.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E82"
     }
   ],
   "policy": {
@@ -1062,13 +1170,13 @@
   },
   "summary": {
     "definition_mapping_count": 12,
-    "full_registry_mapped": 80,
+    "full_registry_mapped": 89,
     "full_registry_total": 142,
     "legacy_registry_mapped": 4,
     "legacy_registry_total": 5,
-    "mapping_count": 84,
+    "mapping_count": 93,
     "note": "Mapping coverage is not theorem coverage; definitions and TODOs remain distinct from proved support.",
-    "proved_mapping_count": 71,
+    "proved_mapping_count": 80,
     "todo_mapping_count": 1
   }
 }
