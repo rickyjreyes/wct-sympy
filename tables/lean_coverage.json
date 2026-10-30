@@ -1160,6 +1160,41 @@
       "registry": "full",
       "relationship": "supporting_lemma_only",
       "sympy_id": "E82"
+    },
+    {
+      "caveat": "A prescribed real scalar cubic-saturation ODE only; no statement about arbitrary complex Fourier coefficients or nonlinear PDE mode dynamics.",
+      "lean_declarations": [
+        "e15_scalar_modal_power_derivative",
+        "e15_scalar_modal_growth_bound"
+      ],
+      "lean_source": "WCTLean/Models/NarrowCanonicalCoverage.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "E15"
+    },
+    {
+      "caveat": "Algebraic implication given the separated product equation and nonzero f, g, r; no proof that a toroidal PDE separates or has these solutions.",
+      "lean_declarations": [
+        "cle6_separated_mode_quotient"
+      ],
+      "lean_source": "WCTLean/Models/NarrowCanonicalCoverage.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CLE6"
+    },
+    {
+      "caveat": "Only 2-pi periodicity of the explicitly defined family is proved here; not the angular ODE or completeness of its solutions.",
+      "lean_declarations": [
+        "cle7_angular_mode",
+        "cle7_angular_mode_periodic"
+      ],
+      "lean_source": "WCTLean/Models/NarrowCanonicalCoverage.lean",
+      "lean_status": "proved",
+      "registry": "full",
+      "relationship": "supporting_lemma_only",
+      "sympy_id": "CLE7"
     }
   ],
   "policy": {
@@ -1170,13 +1205,13 @@
   },
   "summary": {
     "definition_mapping_count": 12,
-    "full_registry_mapped": 89,
+    "full_registry_mapped": 92,
     "full_registry_total": 142,
     "legacy_registry_mapped": 4,
     "legacy_registry_total": 5,
-    "mapping_count": 93,
+    "mapping_count": 96,
     "note": "Mapping coverage is not theorem coverage; definitions and TODOs remain distinct from proved support.",
-    "proved_mapping_count": 80,
+    "proved_mapping_count": 83,
     "todo_mapping_count": 1
   }
 }
