@@ -1,6 +1,6 @@
 schema_version: 2.0.0
 registry_id: wct-effective-registry
-generated_at: '2026-10-30T10:58:06+00:00'
+generated_at: '2026-10-30T18:45:28+00:00'
 status_policy:
   PASS: The assigned check succeeds under its declared assumptions.
   CONDITIONAL: Additional mathematical, model, regularity, or empirical assumptions
@@ -3464,7 +3464,8 @@ objects:
     - e44_phase_rotated_eigenvalue_obstruction
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "Local complex scalar phase-cancellation and conditional eigenvalue obstruction; does not classify eigenmodes, normalize fields or establish a nonlinear spectrum."
+    - Local complex scalar phase-cancellation and conditional eigenvalue obstruction;
+      does not classify eigenmodes, normalize fields or establish a nonlinear spectrum.
   empirical_validation:
     status: NOT_APPLICABLE
     evidence_ids: []
@@ -4341,7 +4342,8 @@ objects:
     - e60_real_stationary_iff
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "Only the supplied real scalar cubic amplitude equation; no full center-manifold theorem, PDE reduction error bound or global dynamical solution."
+    - Only the supplied real scalar cubic amplitude equation; no full center-manifold
+      theorem, PDE reduction error bound or global dynamical solution.
   empirical_validation:
     status: NOT_APPLICABLE
     evidence_ids: []
@@ -5528,7 +5530,8 @@ objects:
     - e82_information_gram_quadratic_nonnegative
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "Finite real features only; the explicit indexed Gram quadratic identity and continuum information geometry are not fully Lean-formalized."
+    - Finite real features only; the explicit indexed Gram quadratic identity and
+      continuum information geometry are not fully Lean-formalized.
   empirical_validation:
     status: NOT_APPLICABLE
     evidence_ids: []
@@ -6525,7 +6528,8 @@ objects:
     - cm3_potential_poisson_relation
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "Algebraic identity only at nonzero wavenumber; zero modes, constitutive law and cosmological field equations are not derived."
+    - Algebraic identity only at nonzero wavenumber; zero modes, constitutive law
+      and cosmological field equations are not derived.
   empirical_validation:
     status: NOT_TESTED
     evidence_ids: []
@@ -6580,7 +6584,8 @@ objects:
     - cm4_decay_iff_nonpositive_logarithmic_rate
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "Real scalar constant-coupling reduction only; no global cosmological decay theorem, complex-mode law or horizon dynamics."
+    - Real scalar constant-coupling reduction only; no global cosmological decay theorem,
+      complex-mode law or horizon dynamics.
   empirical_validation:
     status: NOT_TESTED
     evidence_ids: []
@@ -6909,7 +6914,8 @@ objects:
     - cm10_drag_contracts_difference
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "One-step real scalar convex update with drag between zero and one and fixed comparison state; no coupled cosmology derivation."
+    - One-step real scalar convex update with drag between zero and one and fixed
+      comparison state; no coupled cosmology derivation.
   empirical_validation:
     status: NOT_TESTED
     evidence_ids: []
@@ -7195,7 +7201,8 @@ objects:
     - cm15_cm20_compatible_iff_energy_loss
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "Exact instantaneous algebraic equivalence for nonzero energy; continuum differentiation of the scale factor and physical energy closure are not proved here."
+    - Exact instantaneous algebraic equivalence for nonzero energy; continuum differentiation
+      of the scale factor and physical energy closure are not proved here.
   empirical_validation:
     status: NOT_TESTED
     evidence_ids: []
@@ -7461,7 +7468,8 @@ objects:
     - cm15_cm20_compatible_iff_energy_loss
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "Compatibility constraint for supplied real parameters only, not a Friedmann equation or calibrated physical prediction."
+    - Compatibility constraint for supplied real parameters only, not a Friedmann
+      equation or calibrated physical prediction.
   empirical_validation:
     status: NOT_TESTED
     evidence_ids: []
@@ -7783,7 +7791,8 @@ objects:
     - top6_dilation_changes_statistic
     source: WCTLean/Models/RegistryOnlyClosures.lean
     limitations:
-    - "Scalar scaling law with assumed geometric dilation rules; full curve-isotopy/topology-band impossibility argument remains analytic, not Lean-encoded."
+    - Scalar scaling law with assumed geometric dilation rules; full curve-isotopy/topology-band
+      impossibility argument remains analytic, not Lean-encoded.
   empirical_validation:
     status: NOT_TESTED
     evidence_ids: []
@@ -8289,7 +8298,7 @@ objects:
 provenance:
   registry_version: 2.0.0
   source_commits:
-    wct-sympy: 7c85764b51e20f0ac6008da001b233bfb82a91f8
+    wct-sympy: 7514dc305a60d23875fc5225eb268e1d39e7930b
     geometry_of_resonance: null
     wct-lean: null
   generator: scripts/compile_registry.py
