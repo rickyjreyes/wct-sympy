@@ -879,3 +879,32 @@ mappings:
   - meanAmplitudeReciprocalFactor_band
   - meanAmplitudeReciprocal_upperError_exact
   caveat: Formalizes the error enclosure under a uniform relative-denominator fluctuation bound; it does not prove that physical solutions satisfy that bound.
+- sympy_id: E15
+  registry: full
+  sympy_claim: quadratic power growth for a real scalar cubic-saturation mode
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/NarrowCanonicalCoverage.lean
+  lean_declarations:
+  - e15_scalar_modal_power_derivative
+  - e15_scalar_modal_growth_bound
+  caveat: A prescribed real scalar cubic-saturation ODE only; no statement about arbitrary complex Fourier coefficients or nonlinear PDE mode dynamics.
+- sympy_id: CLE6
+  registry: full
+  sympy_claim: separated-product equation implies the quotient relation at nonzero mode values
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/NarrowCanonicalCoverage.lean
+  lean_declarations:
+  - cle6_separated_mode_quotient
+  caveat: Algebraic implication given the separated product equation and nonzero f, g, r; no proof that a toroidal PDE separates or has these solutions.
+- sympy_id: CLE7
+  registry: full
+  sympy_claim: integer-frequency trigonometric angular mode family is periodic
+  relationship: supporting_lemma_only
+  lean_status: proved
+  lean_source: WCTLean/Models/NarrowCanonicalCoverage.lean
+  lean_declarations:
+  - cle7_angular_mode
+  - cle7_angular_mode_periodic
+  caveat: Only 2-pi periodicity of the explicitly defined family is proved here; not the angular ODE or completeness of its solutions.
